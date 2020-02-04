@@ -11,16 +11,14 @@ public class Boost : MonoBehaviour {
 	public int numPixels;
 	
 	private Rigidbody2D playerRB;
-	private PlayerState state;
-	private MoveWithWASD wasd;
+	private Player player;
 	
 	private AudioSource boostFX;
 	
 	// Use this for initialization
 	void Awake () {
 		playerRB = GetComponent<Rigidbody2D>();
-		state = GetComponent<PlayerState>();
-		wasd = GetComponent<MoveWithWASD>();
+		player = GetComponent<Player>();
 		
 		boostCooldown = boostCooldownMax;
 		
@@ -44,9 +42,9 @@ public class Boost : MonoBehaviour {
 		
 		boostFX.Play();
 
-		playerRB.AddForce(new Vector3(0, 1.5f, 0) * wasd.jumpForce, ForceMode2D.Impulse);
-		state.onGround = false;	
-		state.jumpHeldDown = true;
+		playerRB.AddForce(new Vector3(0, 1.5f, 0) * player.jumpForce, ForceMode2D.Impulse);
+		player.onGround = false;	
+		player.jumpHeldDown = true;
 		
 		for(int i=0; i<numPixels; i++){
 			GameObject pixelClone = (GameObject) Instantiate(pixel, transform.position, transform.rotation);

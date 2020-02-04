@@ -14,8 +14,8 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 	private Rigidbody2D rb;
 	private AudioSource explFX;
 	
-	private GameObject feet;
-	private Collider2D ft_col;
+	//private GameObject feet;
+	//private Collider2D ft_col;
 
 	// Use this for initialization
 	void Awake () {
@@ -25,9 +25,6 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 		explFX = GameObject.Find("DeathFX").GetComponent<AudioSource>();
 		
 		exploded = false;
-		
-		feet = GameObject.Find("PlayerFeet");
-		ft_col = feet.GetComponent<Collider2D>();
 	}
 	
 	// Update is called once per frame
@@ -68,7 +65,7 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 			rb.gravityScale = 0f;
 			rb.mass = 999999999;
 			
-			ft_col.enabled = false;
+			//ft_col.enabled = false;
 		}
 	}
 }
