@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
 
     //player component references
     private Rigidbody2D playerRB;
+    private PlayerExplodesIntoPixels exploder;
 
     //ground
     public LayerMask whatIsGround;
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour {
 	
 	// Use this for initialization
 	void Awake () {
-
+        exploder = GetComponent<PlayerExplodesIntoPixels>();
         onGround = false;
         jumpHeldDown = false;
 
@@ -49,6 +50,12 @@ public class Player : MonoBehaviour {
 
     void Update() {
             
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0.05f) {
+            exploder.Explode();
+        }
     }
 
     void FixedUpdate () {
