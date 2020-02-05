@@ -59,7 +59,6 @@ public class Player : MonoBehaviour {
             jumpDownTrueUntil = Time.time + inputMemoryLength;   //set the time until we forget the player pressed the button
         }
 
-        horizontalIn = Input.GetAxis("Horizontal"); //will be passed to a method in FixedUpdate
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -71,6 +70,8 @@ public class Player : MonoBehaviour {
     void FixedUpdate () {
         jumpResetCheck();
         applyVerticalPhysics();
+        horizontalIn = Input.GetAxis("Horizontal"); //TODO, move to Update somehow
+        Debug.Log("Horiz: " + horizontalIn);
         applyHorizontalPhysics(horizontalIn);
 	}
 

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Controlls whether the indicator text for boost being available 
+ *  appears or not.
+ */
 public class TiedToBoostCooldown : MonoBehaviour {
 
 	private Text text;
@@ -18,7 +22,7 @@ public class TiedToBoostCooldown : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(boost.boostCooldown == 0){
+		if(boost.boostReady){
 			text.enabled = true;
 		}
 		else{
