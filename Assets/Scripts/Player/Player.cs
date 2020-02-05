@@ -71,7 +71,6 @@ public class Player : MonoBehaviour {
         jumpResetCheck();
         applyVerticalPhysics();
         horizontalIn = Input.GetAxis("Horizontal"); //TODO, move to Update somehow
-        Debug.Log("Horiz: " + horizontalIn);
         applyHorizontalPhysics(horizontalIn);
 	}
 
@@ -79,7 +78,7 @@ public class Player : MonoBehaviour {
         Collider2D[] groundCollisions = Physics2D.OverlapCircleAll
             (groundChecker.position, groundCheckerRadius, whatIsGround);
         foreach (Collider2D col in groundCollisions) {
-            Debug.Log("Ground collision activated.");
+            //Debug.Log("Ground collision activated.");
             if (whatIsGround.Contains(col.gameObject.layer)) {  //utilizes extension method!
                 onGround = true;
             }
