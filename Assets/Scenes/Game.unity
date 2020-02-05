@@ -721,7 +721,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674593837}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1287,7 +1287,7 @@ Transform:
   m_LocalScale: {x: 2, y: 0.08, z: 1}
   m_Children: []
   m_Father: {fileID: 1827037384}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &855904494
 MonoBehaviour:
@@ -1475,8 +1475,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 674593838}
-  m_Father: {fileID: 1827037384}
-  m_RootOrder: 8
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.4
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -1541,7 +1541,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!1 &941875475
 GameObject:
@@ -3908,8 +3908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1632a30b4e8dae74994b6cb41ce739dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostCooldownMax: 1200
-  boostCooldown: 0
+  cooldownLength: 5
+  boostReady: 0
   pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   numPixels: 10
 --- !u!114 &1827037380
@@ -4043,8 +4043,6 @@ Transform:
   - {fileID: 1532503681}
   - {fileID: 1072309187}
   - {fileID: 2029432109}
-  - {fileID: 2065785458}
-  - {fileID: 932055723}
   - {fileID: 855904493}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -4063,7 +4061,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onGround: 1
   jumpHeldDown: 0
-  facingRight: 1
   jumpForce: 50
   continuousJumpForce: 5
   continuousJumpDecay: 0.5
@@ -4358,8 +4355,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1756470524}
-  m_Father: {fileID: 1827037384}
-  m_RootOrder: 7
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4397,7 +4394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.4
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -4424,5 +4421,5 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
