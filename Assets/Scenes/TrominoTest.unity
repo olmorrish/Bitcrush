@@ -876,9 +876,9 @@ MonoBehaviour:
   pentoY2: {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
   pentoZ: {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
   pentoZ2: {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
-  fireOnlyTrominoes: 0
+  fireOnlyTrominoes: 1
   fireOnlyTetrominoes: 0
-  fireOnlyPentominoes: 1
+  fireOnlyPentominoes: 0
   fire: 0
   startFiringOffset: 10
 --- !u!212 &723187059
@@ -1970,9 +1970,9 @@ MonoBehaviour:
   pentoY2: {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
   pentoZ: {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
   pentoZ2: {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
-  fireOnlyTrominoes: 0
+  fireOnlyTrominoes: 1
   fireOnlyTetrominoes: 0
-  fireOnlyPentominoes: 1
+  fireOnlyPentominoes: 0
   fire: 0
   startFiringOffset: 170
 --- !u!212 &1072309189
@@ -3054,9 +3054,9 @@ MonoBehaviour:
   pentoY2: {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
   pentoZ: {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
   pentoZ2: {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
-  fireOnlyTrominoes: 0
+  fireOnlyTrominoes: 1
   fireOnlyTetrominoes: 0
-  fireOnlyPentominoes: 1
+  fireOnlyPentominoes: 0
   fire: 0
   startFiringOffset: 400
 --- !u!212 &1532503683
@@ -3535,9 +3535,9 @@ MonoBehaviour:
   pentoY2: {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
   pentoZ: {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
   pentoZ2: {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
-  fireOnlyTrominoes: 0
+  fireOnlyTrominoes: 1
   fireOnlyTetrominoes: 0
-  fireOnlyPentominoes: 1
+  fireOnlyPentominoes: 0
   fire: 0
   startFiringOffset: 200
 --- !u!212 &1716036341
