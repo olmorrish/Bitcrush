@@ -8,10 +8,16 @@ using UnityEngine;
  */
 public class Player : MonoBehaviour {
 
-    //states
+    //timing variables for button inputs
+    float jumpDownTrueUntil = -1f;
+
+    //time until a button input is forgotten
+    float inputMemoryLength = 0.5f;
+
+    //state booleans
     public bool onGround = true;
     public bool jumpHeldDown = false;
-    public bool facingRight = true;
+    //public bool facingRight = true;
 
     //jump values
     public float jumpForce = 300f;
@@ -24,10 +30,10 @@ public class Player : MonoBehaviour {
     //walk values
     public float horizontalForce = 750f;
     public float maxHorizontalVelocity = 4f;
-    [Range(0, 1)] public float decelerationMultiplier = 0.5f; //horizontal velocity is multiplied by this on each frame where no horiz input is given
+    [Range(0, 1)] public float decelerationMultiplier = 0.5f;   //horizontal velocity is multiplied by this on each frame where no horiz input is given
         
     //input
-    private float HorizontalIn; //the horizontal input; updates each frame
+    private float horizontalIn; //the horizontal input; updates each frame
 
     //player component references
     private Rigidbody2D playerRB;
@@ -49,7 +55,11 @@ public class Player : MonoBehaviour {
 	}
 
     void Update() {
-            
+        if (Input.GetButtonDown("Jump")) {
+            jumpDownTrueUntil = Time.time + inputMemoryLength;   //set the time until we forget the player pressed the button
+        }
+
+        horizontalIn = Input.GetAxis("Horizontal"); //will be passed to a method in FixedUpdate
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -59,75 +69,66 @@ public class Player : MonoBehaviour {
     }
 
     void FixedUpdate () {
+        jumpResetCheck();
+        applyVerticalPhysics();
+        applyHorizontalPhysics(horizontalIn);
+	}
 
-        ///////////////////////////
-        // Fetch Inputs
-        ///////////////////////////
-
-        HorizontalIn = Input.GetAxis("Horizontal");
-
-        ///////////////////////////
-        // Jump Reset Updates
-        ///////////////////////////
-
-        //gather all colliders the ground hit; if one is on the "Environment" layer, reset the jump
-
+    private void jumpResetCheck() {
         Collider2D[] groundCollisions = Physics2D.OverlapCircleAll
             (groundChecker.position, groundCheckerRadius, whatIsGround);
-        foreach(Collider2D col in groundCollisions) {
+        foreach (Collider2D col in groundCollisions) {
             Debug.Log("Ground collision activated.");
             if (whatIsGround.Contains(col.gameObject.layer)) {  //utilizes extension method!
                 onGround = true;
             }
         }
+    }
 
+    private void applyVerticalPhysics() {
 
-        ///////////////////////////
-        // Vertical Player Movement
-        ///////////////////////////
+        if (Time.time > jumpDownTrueUntil)  //Check if the jump button cooldown has expired. If so, reset it.
+            jumpDownTrueUntil = -1f;
 
-        if (Input.GetButton("Jump")){	 
-		
-			//begin to jump condition
-			if(onGround){
-				playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
-				onGround = false;	
-				jumpHeldDown = true;
-			}
-			
-			//hold to jump higher
-			else if(!onGround && jumpHeldDown){
-				
-				playerRB.AddForce(new Vector3(0, 1.0f, 0) * continuousJumpForce, ForceMode2D.Impulse);
-				
-				//update the continuous force being added by holding 
-				if(continuousJumpForce<0){
-					continuousJumpForce = 0;
-					jumpHeldDown = false;	//disables the flag - no more effect
-				}
-				else if(continuousJumpForce>0){
-					continuousJumpForce -= continuousJumpDecay;
-				}
-			}
+        else {
 
-			//otherwise the player is not on ground and jump is not held down
-			else{
-				jumpHeldDown = false;
-			}
-			
-			//ensures falling players cannot jump
-			if(playerRB.velocity.y < 0){
-				jumpHeldDown = false;
-			}
-		}
+            //begin to jump condition
+            if (onGround) {
+                playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
+                onGround = false;
+                jumpHeldDown = true;
+            }
 
+            //hold to jump higher
+            else if (!onGround && jumpHeldDown) {
 
-        /////////////////////////////
-        // Horizontal Player Movement
-        /////////////////////////////
+                playerRB.AddForce(new Vector3(0, 1.0f, 0) * continuousJumpForce, ForceMode2D.Impulse);
 
+                //update the continuous force being added by holding 
+                if (continuousJumpForce < 0) {
+                    continuousJumpForce = 0;
+                    jumpHeldDown = false;   //disables the flag - no more effect
+                }
+                else if (continuousJumpForce > 0) {
+                    continuousJumpForce -= continuousJumpDecay;
+                }
+            }
+
+            //otherwise the player is not on ground and jump is not held down
+            else {
+                jumpHeldDown = false;
+            }
+
+            //ensures falling players cannot jump
+            if (playerRB.velocity.y < 0) {
+                jumpHeldDown = false;
+            }
+        }
+    }
+
+    private void applyHorizontalPhysics(float direction) {
         //right input
-        if (HorizontalIn > 0){
+        if (direction > 0) {
             if (!onGround)
                 playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce * airControlMultiplier, ForceMode2D.Force);
             else
@@ -135,7 +136,7 @@ public class Player : MonoBehaviour {
         }
 
         //left input
-		if(HorizontalIn < 0){
+        if (direction < 0) {
             if (!onGround)
                 playerRB.AddForce((new Vector3(-1, 0, 0)) * horizontalForce * airControlMultiplier, ForceMode2D.Force);
             else
@@ -144,37 +145,36 @@ public class Player : MonoBehaviour {
 
         //slow the player if they are on the ground and giving no input
         //  this ensures landing and running don't result in slipping
-        if (HorizontalIn == 0 && onGround) {
+        if (direction == 0 && onGround) {
             playerRB.velocity = new Vector2(decelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
         }
 
         //update or reset airControlMultiplier
-        if (onGround){
-			airControlMultiplier = 1;
-			continuousJumpForce = maxContJumpForce;
-		}
-		if(!onGround && airControlMultiplier>0){
-			airControlMultiplier -= airControlDecay;
-		}
+        if (onGround) {
+            airControlMultiplier = 1;
+            continuousJumpForce = maxContJumpForce;
+        }
+        if (!onGround && airControlMultiplier > 0) {
+            airControlMultiplier -= airControlDecay;
+        }
 
-		// Restrict Horizontal Velocity
-		if(playerRB.velocity.x > maxHorizontalVelocity){
-			playerRB.AddForce((new Vector3(-1,0,0)) * horizontalForce, ForceMode2D.Force);
-		}
-		
-		if(playerRB.velocity.x < -maxHorizontalVelocity){
-			playerRB.AddForce((new Vector3(1,0,0)) * horizontalForce, ForceMode2D.Force);
-		}
-	}
+        // Restrict Horizontal Velocity
+        if (playerRB.velocity.x > maxHorizontalVelocity) {
+            playerRB.AddForce((new Vector3(-1, 0, 0)) * horizontalForce, ForceMode2D.Force);
+        }
 
-
-    private void Flip() {
-        // Switch the way the player is labelled as facing.
-        facingRight = !facingRight;
-
-        // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        if (playerRB.velocity.x < -maxHorizontalVelocity) {
+            playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce, ForceMode2D.Force);
+        }
     }
+
+    //private void Flip() {
+    //    // Switch the way the player is labelled as facing.
+    //    facingRight = !facingRight;
+
+    //    // Multiply the player's x local scale by -1.
+    //    Vector3 theScale = transform.localScale;
+    //    theScale.x *= -1;
+    //    transform.localScale = theScale;
+    //}
 }
