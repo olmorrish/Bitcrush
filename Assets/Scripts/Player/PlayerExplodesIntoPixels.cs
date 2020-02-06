@@ -12,7 +12,7 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 	private Collider2D col;
 	private SpriteRenderer rend; 
 	private Rigidbody2D rb;
-	private AudioSource explFX;
+	public AudioSource explodeFX;
 	
 	//private GameObject feet;
 	//private Collider2D ft_col;
@@ -22,17 +22,10 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 		col = GetComponent<Collider2D>();
 		rend = GetComponent<SpriteRenderer>();
 		rb = GetComponent<Rigidbody2D>();
-		explFX = GameObject.Find("DeathFX").GetComponent<AudioSource>();
 		
 		exploded = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
-	
-	
 	void OnCollisionEnter2D(Collision2D collision){
 		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > pressureToExplode){
 			Explode();
@@ -44,14 +37,11 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 		}
 	}
 	
-	
-	
-	
 	public void Explode(){
 		
 		if(!exploded){
 			exploded = true;
-			explFX.Play();
+            explodeFX.Play();
 			
 			for(int i = 0; i<numPixels; i++){
 				GameObject pixelClone = (GameObject) Instantiate(pixel, transform.position, transform.rotation);

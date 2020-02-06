@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/* Allows the object to be controlled via WASD and Spacebar
- * Controls and restricts player movement speed
- * This class can be modified to include fine-tuning in combo with the State class
+/* Allows the object to be controlled via (1) Horziontal Axis input and (2) "Jump" button.  
+ * Setup:
+ *  After attaching the script to a player-controlled object, 
+ *  (1) Create an empty object as a child of the player, and drag it to the "groundChecker" reference. Ensure it is below the player.
+ *  (2) Define the LayerMask "whatIsGround" to decide what should reset a player jump when touched by the checker.
+ *  (3) Set "jumpFX" as an audio clip to play on jump.
  */
 public class Player : MonoBehaviour {
 
     //timing variables for button inputs
-    float jumpDownTrueUntil = -1f;
-
-    //time until a button input is forgotten
-    float inputMemoryLength = 0.5f;
+    private float jumpDownTrueUntil = -1f;
+    public float inputMemoryLength = 0.5f;     //time until a button input is forgotten
+    private float horizontalIn; //the horizontal input; updates each frame
 
     //state booleans
-    public bool onGround = true;
+    public bool onGround = false;
     public bool jumpHeldDown = false;
     //public bool facingRight = true;
 
@@ -32,60 +34,59 @@ public class Player : MonoBehaviour {
     public float maxHorizontalVelocity = 4f;
     [Range(0, 1)] public float decelerationMultiplier = 0.5f;   //horizontal velocity is multiplied by this on each frame where no horiz input is given
         
-    //input
-    private float horizontalIn; //the horizontal input; updates each frame
-
     //player component references
     private Rigidbody2D playerRB;
-    private PlayerExplodesIntoPixels exploder;
+    public AudioSource jumpFX;
+    private PlayerExplodesIntoPixels exploderScript;    //TODO - extract; specific to BiTCRUSH
 
-    //ground
+    //jump reset variables
     public LayerMask whatIsGround;
     public Transform groundChecker;
     const float groundCheckerRadius = 0.1f;   //radius around ground marker to collision-check
 	
 	// Use this for initialization
 	void Awake () {
-        exploder = GetComponent<PlayerExplodesIntoPixels>();
         onGround = false;
         jumpHeldDown = false;
 
         maxContJumpForce = continuousJumpForce;
 		playerRB = GetComponent<Rigidbody2D>();
-	}
+        exploderScript = GetComponent<PlayerExplodesIntoPixels>();
+    }
 
     void Update() {
         if (Input.GetButtonDown("Jump")) {
             jumpDownTrueUntil = Time.time + inputMemoryLength;   //set the time until we forget the player pressed the button
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0.05f) {
-            exploder.Explode();
+            exploderScript.Explode();
         }
     }
 
     void FixedUpdate () {
-        jumpResetCheck();
-        applyVerticalPhysics();
+        JumpResetCheck();
+        ApplyVerticalPhysics();
         horizontalIn = Input.GetAxis("Horizontal"); //TODO, move to Update somehow
-        applyHorizontalPhysics(horizontalIn);
+        ApplyHorizontalPhysics(horizontalIn);
 	}
 
-    private void jumpResetCheck() {
+    private void JumpResetCheck() {
+
         Collider2D[] groundCollisions = Physics2D.OverlapCircleAll
             (groundChecker.position, groundCheckerRadius, whatIsGround);
+
         foreach (Collider2D col in groundCollisions) {
-            //Debug.Log("Ground collision activated.");
+            //Debug.Log("Ground collision detected.");
             if (whatIsGround.Contains(col.gameObject.layer)) {  //utilizes extension method!
                 onGround = true;
             }
         }
     }
 
-    private void applyVerticalPhysics() {
+    private void ApplyVerticalPhysics() {
 
         if (Time.time > jumpDownTrueUntil)  //Check if the jump button cooldown has expired. If so, reset it.
             jumpDownTrueUntil = -1f;
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour {
                 playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
                 onGround = false;
                 jumpHeldDown = true;
+                jumpFX.Play();
             }
 
             //hold to jump higher
@@ -126,7 +128,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void applyHorizontalPhysics(float direction) {
+    private void ApplyHorizontalPhysics(float direction) {
         //right input
         if (direction > 0) {
             if (!onGround)
@@ -144,7 +146,7 @@ public class Player : MonoBehaviour {
         }
 
         //slow the player if they are on the ground and giving no input
-        //  this ensures landing and running don't result in slipping
+        //  this ensures landing and running don't result in slipping - makes movement "snappier"
         if (direction == 0 && onGround) {
             playerRB.velocity = new Vector2(decelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
         }

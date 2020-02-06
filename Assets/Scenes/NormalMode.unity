@@ -220,67 +220,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &139622858
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 139622859}
-  - component: {fileID: 139622861}
-  - component: {fileID: 139622860}
-  m_Layer: 12
-  m_Name: PlayerHeart
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &139622859
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139622858}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.004, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1827037384}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &139622860
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139622858}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.075}
-  serializedVersion: 2
-  m_Radius: 0.005
---- !u!114 &139622861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139622858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38fae8564b3efd4684960a7d0a8f3d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ticker: 0
 --- !u!1 &199974460
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +869,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 1827037384}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &723187058
 MonoBehaviour:
@@ -1461,7 +1400,7 @@ Transform:
   m_LocalScale: {x: 2, y: 0.08, z: 1}
   m_Children: []
   m_Father: {fileID: 1827037384}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &855904494
 MonoBehaviour:
@@ -2000,7 +1939,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 1827037384}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1072309188
 MonoBehaviour:
@@ -3084,7 +3023,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 1827037384}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1532503682
 MonoBehaviour:
@@ -3565,7 +3504,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 1827037384}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1716036340
 MonoBehaviour:
@@ -3864,10 +3803,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1632a30b4e8dae74994b6cb41ce739dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownLength: 5
+  boostMultiplier: 2
+  cooldownLength: 10
+  numPixels: 10
+  inputMemoryLength: 0.5
   boostReady: 0
   pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
-  numPixels: 10
+  boostFX: {fileID: 1481427070}
 --- !u!114 &1827037380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3884,6 +3826,7 @@ MonoBehaviour:
   numPixels: 125
   pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   exploded: 0
+  explodeFX: {fileID: 215242075}
 --- !u!50 &1827037381
 Rigidbody2D:
   serializedVersion: 4
@@ -3993,7 +3936,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 266255851}
-  - {fileID: 139622859}
   - {fileID: 1716036339}
   - {fileID: 723187057}
   - {fileID: 1532503681}
@@ -4015,16 +3957,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cbf0b2e87b3fe4994c685f00c48e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputMemoryLength: 0.5
   onGround: 1
   jumpHeldDown: 0
-  jumpForce: 50
-  continuousJumpForce: 5
-  continuousJumpDecay: 0.5
+  jumpForce: 35
+  continuousJumpForce: 0
+  continuousJumpDecay: 0
   airControlMultiplier: 0
   airControlDecay: 0.001
-  horizontalForce: 750
+  horizontalForce: 900
   maxHorizontalVelocity: 4
   decelerationMultiplier: 0.5
+  jumpFX: {fileID: 1260407784}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
@@ -4346,7 +4290,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1827037384}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &2029432110
 AudioListener:

@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Boost : MonoBehaviour {
 
-    //timing variables for button inputs
-    float boostDownTrueUntil = -1f;
-    float inputMemoryLength = 0.5f; //time until a button input is forgotten
-
-	public float cooldownLength = 5.0f;
+    //behaviour values
+    public float boostMultiplier = 1.75f;
+    public float cooldownLength = 5.0f;
     private float cooldownDoneTime;
+    public int numPixels;
 
+    //timing variables for button inputs
+    private float boostDownTrueUntil = -1f;
+    public float inputMemoryLength = 0.5f; //time until a button input is forgotten
+
+    //state variables
     public bool boostReady = false;  //flag whether player can boost or not
 
+    //gameObject and component references
     public GameObject pixel;
-	public int numPixels;
-	
 	private Rigidbody2D playerRB;
 	private Player player;
-	
-	private AudioSource boostFX;
+	public AudioSource boostFX;
 	
 	// Use this for initialization
 	void Awake () {
@@ -28,8 +30,6 @@ public class Boost : MonoBehaviour {
 		
 		cooldownDoneTime = Time.time + cooldownLength;    //set the point where the cooldown will be done
         boostReady = false;
-
-        boostFX = GameObject.Find("BoostFX").GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -62,7 +62,7 @@ public class Boost : MonoBehaviour {
             cooldownDoneTime = Time.time + cooldownLength;    //reset the cooldown
             boostFX.Play();
 
-            playerRB.AddForce(new Vector3(0, 1.5f, 0) * player.jumpForce, ForceMode2D.Impulse);
+            playerRB.AddForce(new Vector3(0, boostMultiplier, 0) * player.jumpForce, ForceMode2D.Impulse);
             player.onGround = false;
             player.jumpHeldDown = true;     
 	}
