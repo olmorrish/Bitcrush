@@ -8,32 +8,29 @@ public class GameMasterFirePattern : MonoBehaviour {
     public GameObject[] chuckers = new GameObject[4];
     private ChuckerBehavior[] chuckerFireScripts = new ChuckerBehavior[4];
 	public PauseMenu pause;
-	
-	public int minWaitTime = 50;
-	public int maxWaitTime = 150;
+
+    public float minWaitTime;
+    public float maxWaitTime;
+    private float timeOfNextFire;
+
+    //public int minWaitTime = 50;
+	//public int maxWaitTime = 150;
 	
 	// Use this for initialization
 	void Start () {
         for(int i =0; i < chuckers.Length; i++) {
             chuckerFireScripts[i] = chuckers[i].GetComponent<ChuckerBehavior>();
         }
-	}
+
+        timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTime);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if(!pause.isPaused){
-			if (framesToNextFire <= 0){
-				Fire();
-				framesToNextFire = Random.Range(minWaitTime,maxWaitTime);
-			}
-			else{
-				framesToNextFire -= 1;
-			}
-		}
-	}
-	
-	void Fire(){
-		int pick = Random.Range(1,5);
-        chuckerFireScripts[pick].Throw();
+		if(!pause.isPaused && (timeOfNextFire < Time.time)) {
+            chuckerFireScripts[Random.Range(0, 4)].Throw();
+            timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTime);
+        }
 	}
 }
