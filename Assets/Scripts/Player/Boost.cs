@@ -61,7 +61,10 @@ public class Boost : MonoBehaviour {
         cooldownDoneTime = Time.time + cooldownLength;    //reset the cooldown
         boostFX.Play();
 
-        playerRB.AddForce(new Vector3(0, (player.jumpForce * boostMultiplier), 0), ForceMode2D.Impulse);
+        float boostVal = player.jumpForce * boostMultiplier;   
+        boostVal -= (boostMultiplier * playerRB.velocity.y);  //increases boost if moving down but reduces if moving up - makes boost feel more consistent!
+                                                                    
+        playerRB.AddForce(new Vector3(0, (boostVal), 0), ForceMode2D.Impulse);
 
         player.onGround = false;
         player.jumpHeldDown = true;     
