@@ -2,26 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovesUpwards : MonoBehaviour {
+public class KillLineController : MonoBehaviour {
 
 	public GameObject gameMaster;
-    private GameData gameData;
+    private ScoreData scoreData;
 
 	// Use this for initialization
 	void Start () {
-		gameData = gameMaster.GetComponent<GameData>();
+		scoreData = gameMaster.GetComponent<ScoreData>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (gameData.hiScore < 15) {
+        if (scoreData.hiScore < 15)
             MoveUp(0.002f);
-        }
 
-        else {
+        else
             MoveUp(0.0045f);
-        }	
 	}
 	
 	void MoveUp(float increase){

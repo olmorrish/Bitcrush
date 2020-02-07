@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameData : MonoBehaviour{
+public class ScoreData : MonoBehaviour{
 
     private float height;
     public float hiScore;
