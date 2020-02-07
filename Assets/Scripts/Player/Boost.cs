@@ -5,8 +5,8 @@ using UnityEngine;
 public class Boost : MonoBehaviour {
 
     //behaviour values
-    public float boostMultiplier = 1.75f;
-    public float cooldownLength = 5.0f;
+    public float boostMultiplier = 2f;
+    public float cooldownLength = 10.0f;
     private float cooldownDoneTime;
     public int numPixels;
 
@@ -58,12 +58,13 @@ public class Boost : MonoBehaviour {
 
     private void ApplyBoost(){
         //boost activation
-            cooldownDoneTime = Time.time + cooldownLength;    //reset the cooldown
-            boostFX.Play();
+        cooldownDoneTime = Time.time + cooldownLength;    //reset the cooldown
+        boostFX.Play();
 
-            playerRB.AddForce(new Vector3(0, boostMultiplier, 0) * player.jumpForce, ForceMode2D.Impulse);
-            player.onGround = false;
-            player.jumpHeldDown = true;     
+        playerRB.AddForce(new Vector3(0, (player.jumpForce * boostMultiplier), 0), ForceMode2D.Impulse);
+
+        player.onGround = false;
+        player.jumpHeldDown = true;     
 	}
 
     private void SpawnBoostConfetti() {
