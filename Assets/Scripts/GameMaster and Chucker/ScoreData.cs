@@ -25,13 +25,13 @@ public class ScoreData : MonoBehaviour{
         height = player.transform.position.y;
         if (height > hiScore) {
             hiScore = height;
-            PushNewHiScore(Mathf.Ceil(hiScore));
+            PushNewHiScore(hiScore);
         }
     }
 
     void PushNewHiScore(float score) {
-        gameplayScore.text = "SCORE: " + score.ToString();
-        gameOverScore.text = "SCORE: " + score.ToString();
+        gameplayScore.text = "SCORE: " + Mathf.Ceil(score).ToString();
+        gameOverScore.text = "SCORE: " + Mathf.Ceil(score).ToString();
         scoreLine.transform.position = new Vector3(0, score, 0);
     }
 }

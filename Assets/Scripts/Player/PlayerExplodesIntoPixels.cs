@@ -13,16 +13,18 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 	private SpriteRenderer rend; 
 	private Rigidbody2D rb;
 	public AudioSource explodeFX;
-	
-	//private GameObject feet;
-	//private Collider2D ft_col;
+
+    public GameObject killLine;
+    private Collider2D killLineCollider;
 
 	// Use this for initialization
 	void Awake () {
 		col = GetComponent<Collider2D>();
 		rend = GetComponent<SpriteRenderer>();
 		rb = GetComponent<Rigidbody2D>();
-		
+
+        killLineCollider = killLine.GetComponent<Collider2D>();
+
 		exploded = false;
 	}
 
@@ -30,12 +32,18 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > pressureToExplode){
 			Explode();
 		}
+        else if (collision.gameObject.Equals(killLine)) {
+            Explode();
+        }
 	}
 	void OnCollisionStay2D(Collision2D collision){
 		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > pressureToExplode){
 			Explode();
 		}
-	}
+        else if (collision.gameObject.Equals(killLine)) {
+            Explode();
+        }
+    }
 	
 	public void Explode(){
 		

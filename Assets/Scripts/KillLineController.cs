@@ -7,10 +7,17 @@ public class KillLineController : MonoBehaviour {
 	public GameObject gameMaster;
     private ScoreData scoreData;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject player;
+    private Collider2D playerCollider;
+    private PlayerExplodesIntoPixels exploder;
+    private Collider2D myCol;
+
+    // Use this for initialization
+    void Start () {
 		scoreData = gameMaster.GetComponent<ScoreData>();
-	}
+        playerCollider = player.GetComponent<Collider2D>();
+        exploder = player.GetComponent<PlayerExplodesIntoPixels>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,8 +28,8 @@ public class KillLineController : MonoBehaviour {
         else
             MoveUp(0.0045f);
 	}
-	
-	void MoveUp(float increase){
+
+    void MoveUp(float increase){
 		Vector3 pos = transform.position;
 		pos.y += increase;
 		transform.position = pos;

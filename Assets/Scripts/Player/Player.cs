@@ -19,7 +19,6 @@ public class Player : MonoBehaviour {
     //state booleans
     public bool onGround = false;
     public bool jumpHeldDown = false;
-    //public bool facingRight = true;
 
     //jump values
     public float jumpForce = 15f;
@@ -29,40 +28,36 @@ public class Player : MonoBehaviour {
     [Range(0, 1)] public float airControlMultiplier;
     public float airControlDecay = 0.001f;
 
+    public float jumpResetDeadZoneTime = 0.75f;  //the time after jumping before a jump reset is permitted
+    private float jumpResetBlockedUntil;        //marks the time at which a jump reset is now okay 
+
     //walk values
     public float horizontalForce = 900f;
     public float maxHorizontalVelocity = 4f;
-    [Range(0, 1)] public float decelerationMultiplier = 0.7f;   //horizontal velocity is multiplied by this on each frame where no horiz input is given
+    [Range(0, 1)] public float groundDecelerationMultiplier = 0.7f;   //horizontal velocity is multiplied by this on each frame where no horiz input is given
         
     //player component references
     private Rigidbody2D playerRB;
     public AudioSource jumpFX;
-    private PlayerExplodesIntoPixels exploderScript;    //TODO - extract; specific to BiTCRUSH
 
     //jump reset variables
     public LayerMask whatIsGround;
     public Transform groundChecker;
-    const float groundCheckerRadius = 0.1f;   //radius around ground marker to collision-check
+    public float groundCheckerRadius = 0.05f;   //radius around ground marker to collision-check
 	
 	// Use this for initialization
 	void Awake () {
         onGround = false;
         jumpHeldDown = false;
+        jumpResetBlockedUntil = Time.time;
 
         maxContJumpForce = continuousJumpForce;
 		playerRB = GetComponent<Rigidbody2D>();
-        exploderScript = GetComponent<PlayerExplodesIntoPixels>();
     }
 
     void Update() {
         if (Input.GetButton("Jump")) {
             jumpDownTrueUntil = Time.time + inputMemoryLength;   //set the time until we forget the player pressed the button
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0.05f) {
-            exploderScript.Explode();
         }
     }
 
@@ -75,13 +70,15 @@ public class Player : MonoBehaviour {
 
     private void JumpResetCheck() {
 
-        Collider2D[] groundCollisions = Physics2D.OverlapCircleAll
-            (groundChecker.position, groundCheckerRadius, whatIsGround);
+        Collider2D[] groundCollisions = Physics2D.OverlapCircleAll (groundChecker.position, groundCheckerRadius, whatIsGround);
 
-        foreach (Collider2D col in groundCollisions) {
-            //Debug.Log("Ground collision detected.");
-            if (whatIsGround.Contains(col.gameObject.layer)) {  //utilizes extension method!
-                onGround = true;
+        if (Time.time > jumpResetBlockedUntil) {
+            foreach (Collider2D col in groundCollisions) {
+                //Debug.Log("Ground collision detected.");
+                if (whatIsGround.Contains(col.gameObject.layer)) {  //utilizes extension method!
+                    onGround = true;
+                    jumpResetBlockedUntil = Time.time + jumpResetDeadZoneTime; //set the point at which a jump reset may occur again
+                }
             }
         }
     }
@@ -96,9 +93,10 @@ public class Player : MonoBehaviour {
         //process the jump input
         else {
             //begin to jump condition
-            if (onGround) {
-                playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
+            if (onGround && !jumpHeldDown) {
+                Debug.Log("Beginning jump.");
                 onGround = false;
+                playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
                 jumpHeldDown = true;
                 jumpFX.Play();
             }
@@ -148,7 +146,7 @@ public class Player : MonoBehaviour {
         //slow the player if they are on the ground and giving no input
         //  this ensures landing and running don't result in slipping - makes movement "snappier"
         if (direction == 0 && onGround) {
-            playerRB.velocity = new Vector2(decelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
+            playerRB.velocity = new Vector2(groundDecelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
         }
 
         //update or reset airControlMultiplier
@@ -169,14 +167,4 @@ public class Player : MonoBehaviour {
             playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce, ForceMode2D.Force);
         }
     }
-
-    //private void Flip() {
-    //    // Switch the way the player is labelled as facing.
-    //    facingRight = !facingRight;
-
-    //    // Multiply the player's x local scale by -1.
-    //    Vector3 theScale = transform.localScale;
-    //    theScale.x *= -1;
-    //    transform.localScale = theScale;
-    //}
 }
