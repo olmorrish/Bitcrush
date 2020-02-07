@@ -8,8 +8,8 @@ public class Freezer : MonoBehaviour {
 	public Vector3 frozenPos;
 	
 	private Rigidbody2D rb;
-	
-	private AudioSource hit1;
+
+    private AudioSource hit1;
 	private AudioSource hit2;
 	private AudioSource hit3;
 	
