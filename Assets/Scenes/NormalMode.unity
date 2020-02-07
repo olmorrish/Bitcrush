@@ -997,38 +997,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTrajectory: {x: 100, y: 100, z: 0}
   trajectoryRandomFactor: 70
-  trominoLine: {fileID: 1615153149545458, guid: d071412f421bdd0439e254fc98f8088e,
-    type: 3}
-  trominoTurn: {fileID: 1826922725267608, guid: 98eb7d8c0db7c344cbff034a3b94bccc,
-    type: 3}
-  red: {fileID: 1040193278753300, guid: ffe995567d5275946b1a28405b1df1ac, type: 3}
-  orange: {fileID: 1459629329954804, guid: 6bfe50debd9b18a44b4c5d4dcde740b1, type: 3}
-  yellow: {fileID: 1054377598553222, guid: 8f6fdfd7475741e4e8b54474a88355f2, type: 3}
-  green: {fileID: 1822710549196852, guid: 42967b083561e144c96279f3a37e474d, type: 3}
-  blue: {fileID: 1497311948865998, guid: 67886de501ef2604dbad27f9693efab0, type: 3}
-  indigo: {fileID: 1565982721421904, guid: 337c2c28220a5de43921d699c98d2ccc, type: 3}
-  violet: {fileID: 1387641495576300, guid: 687354551c412fa4597f066c523cb153, type: 3}
-  pentoF: {fileID: 1198229349178386, guid: 595fe7a47589cb14585ac61087cc0604, type: 3}
-  pentoF2: {fileID: 1240229498326464, guid: 04679e7c310066c4d9a970789b5a5bf5, type: 3}
-  pentoI: {fileID: 1292441462339066, guid: e662628f141289642877c50e966bd533, type: 3}
-  pentoL: {fileID: 1020807341971398, guid: 6146d5d676542c940bd9f428b8f5f423, type: 3}
-  pentoL2: {fileID: 1992944082165734, guid: 8ae616e0f66f2ca48af832d6ef7bda0c, type: 3}
-  pentoN: {fileID: 1533100533349830, guid: 3c639ab8caefc85459492b7f99392f55, type: 3}
-  pentoN2: {fileID: 1663361320725324, guid: 586f384502d951d46b022adc82830e47, type: 3}
-  pentoP: {fileID: 1480000145641412, guid: 62f7daa8d79c5d944a357a34b698cd2f, type: 3}
-  pentoP2: {fileID: 1817241942056186, guid: 3db5e335f0de66f4ebc7ee68751ff4a8, type: 3}
-  pentoT: {fileID: 1830897541135588, guid: 086a7be06e7b1dc4ca9eb4b423489908, type: 3}
-  pentoU: {fileID: 1940103426934594, guid: ae7d6b1ea8154bd4792ad35e543f380b, type: 3}
-  pentoV: {fileID: 1339146567252274, guid: 5fc40ec2489cdd345b7286dfe981c81c, type: 3}
-  pentoW: {fileID: 1113364658796294, guid: 738e890d58c1d9d4bb2b3d6b4bd7548c, type: 3}
-  pentoX: {fileID: 1143489854889106, guid: 2c564b554d8a38646ae0f9cae6208b19, type: 3}
-  pentoY: {fileID: 1270758372733538, guid: 619b4f3478348c34fa2a1170f1af628f, type: 3}
-  pentoY2: {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
-  pentoZ: {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
-  pentoZ2: {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
-  fireOnlyTrominoes: 0
-  fireOnlyTetrominoes: 1
-  fireOnlyPentominoes: 0
+  trominoObjects:
+  - {fileID: 1615153149545458, guid: d071412f421bdd0439e254fc98f8088e, type: 3}
+  - {fileID: 1826922725267608, guid: 98eb7d8c0db7c344cbff034a3b94bccc, type: 3}
+  tetrominoObjects:
+  - {fileID: 1497311948865998, guid: 67886de501ef2604dbad27f9693efab0, type: 3}
+  - {fileID: 1459629329954804, guid: 6bfe50debd9b18a44b4c5d4dcde740b1, type: 3}
+  - {fileID: 1040193278753300, guid: ffe995567d5275946b1a28405b1df1ac, type: 3}
+  - {fileID: 1565982721421904, guid: 337c2c28220a5de43921d699c98d2ccc, type: 3}
+  - {fileID: 1822710549196852, guid: 42967b083561e144c96279f3a37e474d, type: 3}
+  - {fileID: 1054377598553222, guid: 8f6fdfd7475741e4e8b54474a88355f2, type: 3}
+  - {fileID: 1387641495576300, guid: 687354551c412fa4597f066c523cb153, type: 3}
+  pentominoObjects:
+  - {fileID: 1198229349178386, guid: 595fe7a47589cb14585ac61087cc0604, type: 3}
+  - {fileID: 1240229498326464, guid: 04679e7c310066c4d9a970789b5a5bf5, type: 3}
+  - {fileID: 1292441462339066, guid: e662628f141289642877c50e966bd533, type: 3}
+  - {fileID: 1020807341971398, guid: 6146d5d676542c940bd9f428b8f5f423, type: 3}
+  - {fileID: 1992944082165734, guid: 8ae616e0f66f2ca48af832d6ef7bda0c, type: 3}
+  - {fileID: 1533100533349830, guid: 3c639ab8caefc85459492b7f99392f55, type: 3}
+  - {fileID: 1663361320725324, guid: 586f384502d951d46b022adc82830e47, type: 3}
+  - {fileID: 1480000145641412, guid: 62f7daa8d79c5d944a357a34b698cd2f, type: 3}
+  - {fileID: 1817241942056186, guid: 3db5e335f0de66f4ebc7ee68751ff4a8, type: 3}
+  - {fileID: 1830897541135588, guid: 086a7be06e7b1dc4ca9eb4b423489908, type: 3}
+  - {fileID: 1940103426934594, guid: ae7d6b1ea8154bd4792ad35e543f380b, type: 3}
+  - {fileID: 1339146567252274, guid: 5fc40ec2489cdd345b7286dfe981c81c, type: 3}
+  - {fileID: 1113364658796294, guid: 738e890d58c1d9d4bb2b3d6b4bd7548c, type: 3}
+  - {fileID: 1143489854889106, guid: 2c564b554d8a38646ae0f9cae6208b19, type: 3}
+  - {fileID: 1270758372733538, guid: 619b4f3478348c34fa2a1170f1af628f, type: 3}
+  - {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
+  - {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
+  - {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
+  fireTrominoes: 0
+  fireTetrominoes: 1
+  firePentominoes: 0
   fire: 0
   startFiringOffset: 10
 --- !u!212 &723187059
@@ -2054,38 +2055,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTrajectory: {x: -300, y: 400, z: 0}
   trajectoryRandomFactor: 70
-  trominoLine: {fileID: 1615153149545458, guid: d071412f421bdd0439e254fc98f8088e,
-    type: 3}
-  trominoTurn: {fileID: 1826922725267608, guid: 98eb7d8c0db7c344cbff034a3b94bccc,
-    type: 3}
-  red: {fileID: 1040193278753300, guid: ffe995567d5275946b1a28405b1df1ac, type: 3}
-  orange: {fileID: 1459629329954804, guid: 6bfe50debd9b18a44b4c5d4dcde740b1, type: 3}
-  yellow: {fileID: 1054377598553222, guid: 8f6fdfd7475741e4e8b54474a88355f2, type: 3}
-  green: {fileID: 1822710549196852, guid: 42967b083561e144c96279f3a37e474d, type: 3}
-  blue: {fileID: 1497311948865998, guid: 67886de501ef2604dbad27f9693efab0, type: 3}
-  indigo: {fileID: 1565982721421904, guid: 337c2c28220a5de43921d699c98d2ccc, type: 3}
-  violet: {fileID: 1387641495576300, guid: 687354551c412fa4597f066c523cb153, type: 3}
-  pentoF: {fileID: 1198229349178386, guid: 595fe7a47589cb14585ac61087cc0604, type: 3}
-  pentoF2: {fileID: 1240229498326464, guid: 04679e7c310066c4d9a970789b5a5bf5, type: 3}
-  pentoI: {fileID: 1292441462339066, guid: e662628f141289642877c50e966bd533, type: 3}
-  pentoL: {fileID: 1020807341971398, guid: 6146d5d676542c940bd9f428b8f5f423, type: 3}
-  pentoL2: {fileID: 1992944082165734, guid: 8ae616e0f66f2ca48af832d6ef7bda0c, type: 3}
-  pentoN: {fileID: 1533100533349830, guid: 3c639ab8caefc85459492b7f99392f55, type: 3}
-  pentoN2: {fileID: 1663361320725324, guid: 586f384502d951d46b022adc82830e47, type: 3}
-  pentoP: {fileID: 1480000145641412, guid: 62f7daa8d79c5d944a357a34b698cd2f, type: 3}
-  pentoP2: {fileID: 1817241942056186, guid: 3db5e335f0de66f4ebc7ee68751ff4a8, type: 3}
-  pentoT: {fileID: 1830897541135588, guid: 086a7be06e7b1dc4ca9eb4b423489908, type: 3}
-  pentoU: {fileID: 1940103426934594, guid: ae7d6b1ea8154bd4792ad35e543f380b, type: 3}
-  pentoV: {fileID: 1339146567252274, guid: 5fc40ec2489cdd345b7286dfe981c81c, type: 3}
-  pentoW: {fileID: 1113364658796294, guid: 738e890d58c1d9d4bb2b3d6b4bd7548c, type: 3}
-  pentoX: {fileID: 1143489854889106, guid: 2c564b554d8a38646ae0f9cae6208b19, type: 3}
-  pentoY: {fileID: 1270758372733538, guid: 619b4f3478348c34fa2a1170f1af628f, type: 3}
-  pentoY2: {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
-  pentoZ: {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
-  pentoZ2: {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
-  fireOnlyTrominoes: 0
-  fireOnlyTetrominoes: 1
-  fireOnlyPentominoes: 0
+  trominoObjects:
+  - {fileID: 1615153149545458, guid: d071412f421bdd0439e254fc98f8088e, type: 3}
+  - {fileID: 1826922725267608, guid: 98eb7d8c0db7c344cbff034a3b94bccc, type: 3}
+  tetrominoObjects:
+  - {fileID: 1497311948865998, guid: 67886de501ef2604dbad27f9693efab0, type: 3}
+  - {fileID: 1459629329954804, guid: 6bfe50debd9b18a44b4c5d4dcde740b1, type: 3}
+  - {fileID: 1040193278753300, guid: ffe995567d5275946b1a28405b1df1ac, type: 3}
+  - {fileID: 1565982721421904, guid: 337c2c28220a5de43921d699c98d2ccc, type: 3}
+  - {fileID: 1822710549196852, guid: 42967b083561e144c96279f3a37e474d, type: 3}
+  - {fileID: 1054377598553222, guid: 8f6fdfd7475741e4e8b54474a88355f2, type: 3}
+  - {fileID: 1387641495576300, guid: 687354551c412fa4597f066c523cb153, type: 3}
+  pentominoObjects:
+  - {fileID: 1198229349178386, guid: 595fe7a47589cb14585ac61087cc0604, type: 3}
+  - {fileID: 1240229498326464, guid: 04679e7c310066c4d9a970789b5a5bf5, type: 3}
+  - {fileID: 1292441462339066, guid: e662628f141289642877c50e966bd533, type: 3}
+  - {fileID: 1020807341971398, guid: 6146d5d676542c940bd9f428b8f5f423, type: 3}
+  - {fileID: 1992944082165734, guid: 8ae616e0f66f2ca48af832d6ef7bda0c, type: 3}
+  - {fileID: 1533100533349830, guid: 3c639ab8caefc85459492b7f99392f55, type: 3}
+  - {fileID: 1663361320725324, guid: 586f384502d951d46b022adc82830e47, type: 3}
+  - {fileID: 1480000145641412, guid: 62f7daa8d79c5d944a357a34b698cd2f, type: 3}
+  - {fileID: 1817241942056186, guid: 3db5e335f0de66f4ebc7ee68751ff4a8, type: 3}
+  - {fileID: 1830897541135588, guid: 086a7be06e7b1dc4ca9eb4b423489908, type: 3}
+  - {fileID: 1940103426934594, guid: ae7d6b1ea8154bd4792ad35e543f380b, type: 3}
+  - {fileID: 1339146567252274, guid: 5fc40ec2489cdd345b7286dfe981c81c, type: 3}
+  - {fileID: 1113364658796294, guid: 738e890d58c1d9d4bb2b3d6b4bd7548c, type: 3}
+  - {fileID: 1143489854889106, guid: 2c564b554d8a38646ae0f9cae6208b19, type: 3}
+  - {fileID: 1270758372733538, guid: 619b4f3478348c34fa2a1170f1af628f, type: 3}
+  - {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
+  - {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
+  - {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
+  fireTrominoes: 0
+  fireTetrominoes: 1
+  firePentominoes: 0
   fire: 0
   startFiringOffset: 170
 --- !u!212 &1072309189
@@ -2379,7 +2381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1213384754
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3268,38 +3270,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTrajectory: {x: -100, y: 100, z: 0}
   trajectoryRandomFactor: 70
-  trominoLine: {fileID: 1615153149545458, guid: d071412f421bdd0439e254fc98f8088e,
-    type: 3}
-  trominoTurn: {fileID: 1826922725267608, guid: 98eb7d8c0db7c344cbff034a3b94bccc,
-    type: 3}
-  red: {fileID: 1040193278753300, guid: ffe995567d5275946b1a28405b1df1ac, type: 3}
-  orange: {fileID: 1459629329954804, guid: 6bfe50debd9b18a44b4c5d4dcde740b1, type: 3}
-  yellow: {fileID: 1054377598553222, guid: 8f6fdfd7475741e4e8b54474a88355f2, type: 3}
-  green: {fileID: 1822710549196852, guid: 42967b083561e144c96279f3a37e474d, type: 3}
-  blue: {fileID: 1497311948865998, guid: 67886de501ef2604dbad27f9693efab0, type: 3}
-  indigo: {fileID: 1565982721421904, guid: 337c2c28220a5de43921d699c98d2ccc, type: 3}
-  violet: {fileID: 1387641495576300, guid: 687354551c412fa4597f066c523cb153, type: 3}
-  pentoF: {fileID: 1198229349178386, guid: 595fe7a47589cb14585ac61087cc0604, type: 3}
-  pentoF2: {fileID: 1240229498326464, guid: 04679e7c310066c4d9a970789b5a5bf5, type: 3}
-  pentoI: {fileID: 1292441462339066, guid: e662628f141289642877c50e966bd533, type: 3}
-  pentoL: {fileID: 1020807341971398, guid: 6146d5d676542c940bd9f428b8f5f423, type: 3}
-  pentoL2: {fileID: 1992944082165734, guid: 8ae616e0f66f2ca48af832d6ef7bda0c, type: 3}
-  pentoN: {fileID: 1533100533349830, guid: 3c639ab8caefc85459492b7f99392f55, type: 3}
-  pentoN2: {fileID: 1663361320725324, guid: 586f384502d951d46b022adc82830e47, type: 3}
-  pentoP: {fileID: 1480000145641412, guid: 62f7daa8d79c5d944a357a34b698cd2f, type: 3}
-  pentoP2: {fileID: 1817241942056186, guid: 3db5e335f0de66f4ebc7ee68751ff4a8, type: 3}
-  pentoT: {fileID: 1830897541135588, guid: 086a7be06e7b1dc4ca9eb4b423489908, type: 3}
-  pentoU: {fileID: 1940103426934594, guid: ae7d6b1ea8154bd4792ad35e543f380b, type: 3}
-  pentoV: {fileID: 1339146567252274, guid: 5fc40ec2489cdd345b7286dfe981c81c, type: 3}
-  pentoW: {fileID: 1113364658796294, guid: 738e890d58c1d9d4bb2b3d6b4bd7548c, type: 3}
-  pentoX: {fileID: 1143489854889106, guid: 2c564b554d8a38646ae0f9cae6208b19, type: 3}
-  pentoY: {fileID: 1270758372733538, guid: 619b4f3478348c34fa2a1170f1af628f, type: 3}
-  pentoY2: {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
-  pentoZ: {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
-  pentoZ2: {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
-  fireOnlyTrominoes: 0
-  fireOnlyTetrominoes: 1
-  fireOnlyPentominoes: 0
+  trominoObjects:
+  - {fileID: 1615153149545458, guid: d071412f421bdd0439e254fc98f8088e, type: 3}
+  - {fileID: 1826922725267608, guid: 98eb7d8c0db7c344cbff034a3b94bccc, type: 3}
+  tetrominoObjects:
+  - {fileID: 1497311948865998, guid: 67886de501ef2604dbad27f9693efab0, type: 3}
+  - {fileID: 1459629329954804, guid: 6bfe50debd9b18a44b4c5d4dcde740b1, type: 3}
+  - {fileID: 1040193278753300, guid: ffe995567d5275946b1a28405b1df1ac, type: 3}
+  - {fileID: 1565982721421904, guid: 337c2c28220a5de43921d699c98d2ccc, type: 3}
+  - {fileID: 1822710549196852, guid: 42967b083561e144c96279f3a37e474d, type: 3}
+  - {fileID: 1054377598553222, guid: 8f6fdfd7475741e4e8b54474a88355f2, type: 3}
+  - {fileID: 1387641495576300, guid: 687354551c412fa4597f066c523cb153, type: 3}
+  pentominoObjects:
+  - {fileID: 1198229349178386, guid: 595fe7a47589cb14585ac61087cc0604, type: 3}
+  - {fileID: 1240229498326464, guid: 04679e7c310066c4d9a970789b5a5bf5, type: 3}
+  - {fileID: 1292441462339066, guid: e662628f141289642877c50e966bd533, type: 3}
+  - {fileID: 1020807341971398, guid: 6146d5d676542c940bd9f428b8f5f423, type: 3}
+  - {fileID: 1992944082165734, guid: 8ae616e0f66f2ca48af832d6ef7bda0c, type: 3}
+  - {fileID: 1533100533349830, guid: 3c639ab8caefc85459492b7f99392f55, type: 3}
+  - {fileID: 1663361320725324, guid: 586f384502d951d46b022adc82830e47, type: 3}
+  - {fileID: 1480000145641412, guid: 62f7daa8d79c5d944a357a34b698cd2f, type: 3}
+  - {fileID: 1817241942056186, guid: 3db5e335f0de66f4ebc7ee68751ff4a8, type: 3}
+  - {fileID: 1830897541135588, guid: 086a7be06e7b1dc4ca9eb4b423489908, type: 3}
+  - {fileID: 1940103426934594, guid: ae7d6b1ea8154bd4792ad35e543f380b, type: 3}
+  - {fileID: 1339146567252274, guid: 5fc40ec2489cdd345b7286dfe981c81c, type: 3}
+  - {fileID: 1113364658796294, guid: 738e890d58c1d9d4bb2b3d6b4bd7548c, type: 3}
+  - {fileID: 1143489854889106, guid: 2c564b554d8a38646ae0f9cae6208b19, type: 3}
+  - {fileID: 1270758372733538, guid: 619b4f3478348c34fa2a1170f1af628f, type: 3}
+  - {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
+  - {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
+  - {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
+  fireTrominoes: 0
+  fireTetrominoes: 1
+  firePentominoes: 0
   fire: 0
   startFiringOffset: 400
 --- !u!212 &1532503683
@@ -3750,38 +3753,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTrajectory: {x: 300, y: 400, z: 0}
   trajectoryRandomFactor: 70
-  trominoLine: {fileID: 1615153149545458, guid: d071412f421bdd0439e254fc98f8088e,
-    type: 3}
-  trominoTurn: {fileID: 1826922725267608, guid: 98eb7d8c0db7c344cbff034a3b94bccc,
-    type: 3}
-  red: {fileID: 1040193278753300, guid: ffe995567d5275946b1a28405b1df1ac, type: 3}
-  orange: {fileID: 1459629329954804, guid: 6bfe50debd9b18a44b4c5d4dcde740b1, type: 3}
-  yellow: {fileID: 1054377598553222, guid: 8f6fdfd7475741e4e8b54474a88355f2, type: 3}
-  green: {fileID: 1822710549196852, guid: 42967b083561e144c96279f3a37e474d, type: 3}
-  blue: {fileID: 1497311948865998, guid: 67886de501ef2604dbad27f9693efab0, type: 3}
-  indigo: {fileID: 1565982721421904, guid: 337c2c28220a5de43921d699c98d2ccc, type: 3}
-  violet: {fileID: 1387641495576300, guid: 687354551c412fa4597f066c523cb153, type: 3}
-  pentoF: {fileID: 1198229349178386, guid: 595fe7a47589cb14585ac61087cc0604, type: 3}
-  pentoF2: {fileID: 1240229498326464, guid: 04679e7c310066c4d9a970789b5a5bf5, type: 3}
-  pentoI: {fileID: 1292441462339066, guid: e662628f141289642877c50e966bd533, type: 3}
-  pentoL: {fileID: 1020807341971398, guid: 6146d5d676542c940bd9f428b8f5f423, type: 3}
-  pentoL2: {fileID: 1992944082165734, guid: 8ae616e0f66f2ca48af832d6ef7bda0c, type: 3}
-  pentoN: {fileID: 1533100533349830, guid: 3c639ab8caefc85459492b7f99392f55, type: 3}
-  pentoN2: {fileID: 1663361320725324, guid: 586f384502d951d46b022adc82830e47, type: 3}
-  pentoP: {fileID: 1480000145641412, guid: 62f7daa8d79c5d944a357a34b698cd2f, type: 3}
-  pentoP2: {fileID: 1817241942056186, guid: 3db5e335f0de66f4ebc7ee68751ff4a8, type: 3}
-  pentoT: {fileID: 1830897541135588, guid: 086a7be06e7b1dc4ca9eb4b423489908, type: 3}
-  pentoU: {fileID: 1940103426934594, guid: ae7d6b1ea8154bd4792ad35e543f380b, type: 3}
-  pentoV: {fileID: 1339146567252274, guid: 5fc40ec2489cdd345b7286dfe981c81c, type: 3}
-  pentoW: {fileID: 1113364658796294, guid: 738e890d58c1d9d4bb2b3d6b4bd7548c, type: 3}
-  pentoX: {fileID: 1143489854889106, guid: 2c564b554d8a38646ae0f9cae6208b19, type: 3}
-  pentoY: {fileID: 1270758372733538, guid: 619b4f3478348c34fa2a1170f1af628f, type: 3}
-  pentoY2: {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
-  pentoZ: {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
-  pentoZ2: {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
-  fireOnlyTrominoes: 0
-  fireOnlyTetrominoes: 1
-  fireOnlyPentominoes: 0
+  trominoObjects:
+  - {fileID: 1615153149545458, guid: d071412f421bdd0439e254fc98f8088e, type: 3}
+  - {fileID: 1826922725267608, guid: 98eb7d8c0db7c344cbff034a3b94bccc, type: 3}
+  tetrominoObjects:
+  - {fileID: 1497311948865998, guid: 67886de501ef2604dbad27f9693efab0, type: 3}
+  - {fileID: 1459629329954804, guid: 6bfe50debd9b18a44b4c5d4dcde740b1, type: 3}
+  - {fileID: 1040193278753300, guid: ffe995567d5275946b1a28405b1df1ac, type: 3}
+  - {fileID: 1565982721421904, guid: 337c2c28220a5de43921d699c98d2ccc, type: 3}
+  - {fileID: 1822710549196852, guid: 42967b083561e144c96279f3a37e474d, type: 3}
+  - {fileID: 1054377598553222, guid: 8f6fdfd7475741e4e8b54474a88355f2, type: 3}
+  - {fileID: 1387641495576300, guid: 687354551c412fa4597f066c523cb153, type: 3}
+  pentominoObjects:
+  - {fileID: 1198229349178386, guid: 595fe7a47589cb14585ac61087cc0604, type: 3}
+  - {fileID: 1240229498326464, guid: 04679e7c310066c4d9a970789b5a5bf5, type: 3}
+  - {fileID: 1292441462339066, guid: e662628f141289642877c50e966bd533, type: 3}
+  - {fileID: 1020807341971398, guid: 6146d5d676542c940bd9f428b8f5f423, type: 3}
+  - {fileID: 1992944082165734, guid: 8ae616e0f66f2ca48af832d6ef7bda0c, type: 3}
+  - {fileID: 1533100533349830, guid: 3c639ab8caefc85459492b7f99392f55, type: 3}
+  - {fileID: 1663361320725324, guid: 586f384502d951d46b022adc82830e47, type: 3}
+  - {fileID: 1480000145641412, guid: 62f7daa8d79c5d944a357a34b698cd2f, type: 3}
+  - {fileID: 1817241942056186, guid: 3db5e335f0de66f4ebc7ee68751ff4a8, type: 3}
+  - {fileID: 1830897541135588, guid: 086a7be06e7b1dc4ca9eb4b423489908, type: 3}
+  - {fileID: 1940103426934594, guid: ae7d6b1ea8154bd4792ad35e543f380b, type: 3}
+  - {fileID: 1339146567252274, guid: 5fc40ec2489cdd345b7286dfe981c81c, type: 3}
+  - {fileID: 1113364658796294, guid: 738e890d58c1d9d4bb2b3d6b4bd7548c, type: 3}
+  - {fileID: 1143489854889106, guid: 2c564b554d8a38646ae0f9cae6208b19, type: 3}
+  - {fileID: 1270758372733538, guid: 619b4f3478348c34fa2a1170f1af628f, type: 3}
+  - {fileID: 1403498302762446, guid: 22eb38960a391a04bbc12a9c634c12b0, type: 3}
+  - {fileID: 1077764840483972, guid: 7ecf9ba14f39f7d44b4c3b3b416b3d08, type: 3}
+  - {fileID: 1433828308363116, guid: 028cd821c32ce874c8e622a09650c84d, type: 3}
+  fireTrominoes: 0
+  fireTetrominoes: 1
+  firePentominoes: 0
   fire: 0
   startFiringOffset: 200
 --- !u!212 &1716036341

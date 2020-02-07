@@ -5,22 +5,18 @@ using UnityEngine;
 public class GameMasterFirePattern : MonoBehaviour {
 
 	private int framesToNextFire;
-	private ChuckerBehavior c1;
-	private ChuckerBehavior c2;
-	private ChuckerBehavior c3;
-	private ChuckerBehavior c4;
-	private PauseMenu pause;
+    public GameObject[] chuckers = new GameObject[4];
+    private ChuckerBehavior[] chuckerFireScripts = new ChuckerBehavior[4];
+	public PauseMenu pause;
 	
 	public int minWaitTime = 50;
 	public int maxWaitTime = 150;
 	
 	// Use this for initialization
 	void Start () {
-		c1 = GameObject.Find("Chucker1").GetComponent<ChuckerBehavior>();
-		c2 = GameObject.Find("Chucker2").GetComponent<ChuckerBehavior>();
-		c3 = GameObject.Find("Chucker3").GetComponent<ChuckerBehavior>();
-		c4 = GameObject.Find("Chucker4").GetComponent<ChuckerBehavior>();
-		pause = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
+        for(int i =0; i < chuckers.Length; i++) {
+            chuckerFireScripts[i] = chuckers[i].GetComponent<ChuckerBehavior>();
+        }
 	}
 	
 	// Update is called once per frame
@@ -36,22 +32,8 @@ public class GameMasterFirePattern : MonoBehaviour {
 		}
 	}
 	
-	
 	void Fire(){
-		int selector = Random.Range(1,5);
-		
-		switch(selector){
-			case 1: 
-				c1.Throw(); break;
-			case 2: 
-				c2.Throw(); break;
-			case 3: 
-				c3.Throw(); break;
-			case 4: 
-				c4.Throw(); break;
-			default: break;
-			
-		}
-		
+		int pick = Random.Range(1,5);
+        chuckerFireScripts[pick].Throw();
 	}
 }
