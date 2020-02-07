@@ -12,7 +12,7 @@ public class Boost : MonoBehaviour {
 
     //timing variables for button inputs
     private float boostDownTrueUntil = -1f;
-    public float inputMemoryLength = 0.5f; //time until a button input is forgotten
+    public float inputMemoryLength = 0.075f; //time until a button input is forgotten
 
     //state variables
     public bool boostReady = false;  //flag whether player can boost or not
