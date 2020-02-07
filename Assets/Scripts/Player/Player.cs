@@ -94,10 +94,9 @@ public class Player : MonoBehaviour {
         else {
             //begin to jump condition
             if (onGround && !jumpHeldDown) {
-                Debug.Log("Beginning jump.");
                 onGround = false;
-                playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
                 jumpHeldDown = true;
+                playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
                 jumpFX.Play();
             }
 
