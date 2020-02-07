@@ -40,7 +40,6 @@ public class Boost : MonoBehaviour {
         }
         else {
             boostReady = true;
-            Debug.Log("Boost is ready.");
         }
 
         if (Input.GetButtonDown("Boost")) {

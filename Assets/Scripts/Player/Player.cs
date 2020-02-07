@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 
     //timing variables for button inputs
     private float jumpDownTrueUntil = -1f;
-    public float inputMemoryLength = 0.5f;     //time until a button input is forgotten
+    public float inputMemoryLength = 0.075f;     //time until a button input is forgotten
     private float horizontalIn; //the horizontal input; updates each frame
 
     //state booleans
@@ -22,17 +22,17 @@ public class Player : MonoBehaviour {
     //public bool facingRight = true;
 
     //jump values
-    public float jumpForce = 300f;
-	public float continuousJumpForce = 5f;	   //force added by holding down the button
-	public float continuousJumpDecay = 0.5f;   //amount by which the upwards force of holding "jump" decreases each frame
+    public float jumpForce = 15f;
+	public float continuousJumpForce = 250f;	   //force added by holding down the button
+	public float continuousJumpDecay = 15f;   //amount by which the upwards force of holding "jump" decreases each frame
     private float maxContJumpForce;
     [Range(0, 1)] public float airControlMultiplier;
     public float airControlDecay = 0.001f;
 
     //walk values
-    public float horizontalForce = 750f;
+    public float horizontalForce = 900f;
     public float maxHorizontalVelocity = 4f;
-    [Range(0, 1)] public float decelerationMultiplier = 0.5f;   //horizontal velocity is multiplied by this on each frame where no horiz input is given
+    [Range(0, 1)] public float decelerationMultiplier = 0.7f;   //horizontal velocity is multiplied by this on each frame where no horiz input is given
         
     //player component references
     private Rigidbody2D playerRB;
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButton("Jump")) {
             jumpDownTrueUntil = Time.time + inputMemoryLength;   //set the time until we forget the player pressed the button
         }
     }
@@ -88,11 +88,13 @@ public class Player : MonoBehaviour {
 
     private void ApplyVerticalPhysics() {
 
-        if (Time.time > jumpDownTrueUntil)  //Check if the jump button cooldown has expired. If so, reset it.
+        if (Time.time > jumpDownTrueUntil) {  //Check if the jump button cooldown has expired. If so, reset it.
             jumpDownTrueUntil = -1f;
+            jumpHeldDown = false;
+        }
 
+        //process the jump input
         else {
-
             //begin to jump condition
             if (onGround) {
                 playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
@@ -103,13 +105,11 @@ public class Player : MonoBehaviour {
 
             //hold to jump higher
             else if (!onGround && jumpHeldDown) {
+                playerRB.AddForce(new Vector3(0, 1.0f, 0) * continuousJumpForce, ForceMode2D.Force);
 
-                playerRB.AddForce(new Vector3(0, 1.0f, 0) * continuousJumpForce, ForceMode2D.Impulse);
-
-                //update the continuous force being added by holding 
                 if (continuousJumpForce < 0) {
                     continuousJumpForce = 0;
-                    jumpHeldDown = false;   //disables the flag - no more effect
+                    jumpHeldDown = false;   
                 }
                 else if (continuousJumpForce > 0) {
                     continuousJumpForce -= continuousJumpDecay;
