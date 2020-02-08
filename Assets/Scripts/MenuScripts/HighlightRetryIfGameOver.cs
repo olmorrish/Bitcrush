@@ -17,11 +17,11 @@ public class HighlightRetryIfGameOver : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(goMenu.go && !retrySet){
+		if(goMenu.isGameOver && !retrySet){
 			retryButton.Select();
 			retrySet = true;
 		}
-		else if(!goMenu.go){
+		else if(!goMenu.isGameOver){
 			retrySet = false;
 		}
 	}

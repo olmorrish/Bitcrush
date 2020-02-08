@@ -6,38 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour {
 
-	public bool go = false; 
-	public GameObject goMenuUI;
-	private PauseMenu pauseMenu;
-	private PlayerExplodesIntoPixels exp;
-	private AudioSource music;
-	
-	private Text mainGameScore;
-	private Text postGameScore;
+	public bool isGameOver = false; 
+	private GameObject theGameOverMenu;
+	private PauseMenu thePauseMenu;
+
+    public GameObject player;
+	private PlayerExplodesIntoPixels exploder;
+    public GameObject musicObject;
+	private AudioSource musicTrack;
 
 	// Use this for initialization
 	void Start () {
-		goMenuUI = GameObject.Find("GameOverMenu");
-		goMenuUI.SetActive(false);
-		exp = GameObject.Find("Player").GetComponent<PlayerExplodesIntoPixels>();
-		pauseMenu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
-		music = GameObject.Find("Music").GetComponent<AudioSource>();
+		theGameOverMenu = GameObject.Find("GameOverMenu");                      //thanks, past me - don't know how this works but it does
+		thePauseMenu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
+		theGameOverMenu.SetActive(false);
+
+		exploder = player.GetComponent<PlayerExplodesIntoPixels>();
+		musicTrack = musicObject.GetComponent<AudioSource>();
 		
-		mainGameScore = GameObject.Find("ScoreText").GetComponent<Text>();
-		
-		go = false;
+		isGameOver = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(exp.exploded && !go){
+		if(exploder.exploded && !isGameOver){
 			GameOver();
-			go = true;
+			isGameOver = true;
 		}
 		
 		//don't allow player to pause if on GO screen
-		if(go && pauseMenu.isPaused){
-			pauseMenu.Resume();
+		if(isGameOver && thePauseMenu.isPaused){
+			thePauseMenu.Resume();
 		}
 	}
 	
@@ -45,22 +44,18 @@ public class GameOverMenu : MonoBehaviour {
 	 * Activates Gameover
 	 */
 	public void GameOver(){
-		goMenuUI.SetActive(true);
-		
-		postGameScore = GameObject.Find("FinalScore").GetComponent<Text>();	
-		postGameScore.text = "FiNAL " + mainGameScore.text;
+		theGameOverMenu.SetActive(true);
+		musicTrack.volume = (0.5f) * musicTrack.volume;
 		//Time.timeScale = 0f;
-		
-		music.volume = (0.5f) * music.volume;
 	}
 	
 	/*
 	 * Activates Gameover
 	 */
 	public void Retry(){
-		goMenuUI.SetActive(false);
+		theGameOverMenu.SetActive(false);
 		//Time.timeScale = 1f;
-		go = false;
+		isGameOver = false;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
 	}
 	
@@ -68,7 +63,7 @@ public class GameOverMenu : MonoBehaviour {
 	 * returns to main menu
 	 */
 	public void Exit(){
-		go = false;
+		isGameOver = false;
 		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 	}
 }

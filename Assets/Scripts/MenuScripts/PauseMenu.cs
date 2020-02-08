@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
 	public bool isPaused = false; 
-	public GameObject pauseMenuUI; 
+	public GameObject thePauseMenu; 
 
 	// Use this for initialization
 	void Awake () {
-		pauseMenuUI = GameObject.Find("PauseMenu");
-		pauseMenuUI.SetActive(false);
+		thePauseMenu = GameObject.Find("PauseMenu");
+		thePauseMenu.SetActive(false);
 		Resume();
 	}
 	
@@ -29,7 +29,7 @@ public class PauseMenu : MonoBehaviour {
 	
 	public void Resume(){
 		
-		pauseMenuUI.SetActive(false);
+		thePauseMenu.SetActive(false);
 		Time.timeScale = 1f;
 		isPaused = false;
 	}
@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour {
 	
 	public void Pause(){
 		
-		pauseMenuUI.SetActive(true);
+		thePauseMenu.SetActive(true);
 		Time.timeScale = 0f;
 		isPaused = true;
 	}

@@ -21,7 +21,7 @@ public class HighlightResumeIfPaused : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(pauseMenu.isPaused && !goMenu.go && !resumeSet){
+		if(pauseMenu.isPaused && !goMenu.isGameOver && !resumeSet){
 			resumeButton.Select();
 			resumeSet = true;
 		}
