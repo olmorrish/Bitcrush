@@ -31,7 +31,7 @@ public class ScoreData : MonoBehaviour{
 
     void PushNewHiScore(float score) {
         gameplayScore.text = "SCORE: " + Mathf.Ceil(score).ToString();
-        gameOverScore.text = "SCORE: " + Mathf.Ceil(score).ToString();
+        gameOverScore.text = "FiNAL SCORE: " + Mathf.Ceil(score).ToString();
         scoreLine.transform.position = new Vector3(0, score, 0);
     }
 }
