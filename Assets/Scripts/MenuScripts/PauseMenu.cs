@@ -33,9 +33,13 @@ public class PauseMenu : MonoBehaviour {
 		Time.timeScale = 1f;
 		isPaused = false;
 	}
-	
-	
-	public void Pause(){
+
+    public void Retry() {
+        Resume();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+    }
+
+    public void Pause(){
 		
 		thePauseMenu.SetActive(true);
 		Time.timeScale = 0f;

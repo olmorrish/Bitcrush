@@ -50,7 +50,7 @@ public class GameOverMenu : MonoBehaviour {
 	}
 	
 	/*
-	 * Activates Gameover
+	 * Loads scene again
 	 */
 	public void Retry(){
 		theGameOverMenu.SetActive(false);
