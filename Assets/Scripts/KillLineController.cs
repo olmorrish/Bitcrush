@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Controller for Kill Line - To be used by GameMaster
+ */
 public class KillLineController : MonoBehaviour {
 
-	public GameObject gameMaster;
+    public float baseRaiseSpeed = 0.002f;
+
+
+    public GameObject gameMaster;
     private ScoreData scoreData;
 
     public GameObject player;
@@ -22,16 +27,11 @@ public class KillLineController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (scoreData.hiScore < 15)
-            MoveUp(0.002f);
-
-        else
-            MoveUp(0.0045f);
 	}
 
-    void MoveUp(float increase){
+    public void MoveUp(float multiplier){
 		Vector3 pos = transform.position;
-		pos.y += increase;
+		pos.y += baseRaiseSpeed * multiplier;
 		transform.position = pos;
 	}
 }

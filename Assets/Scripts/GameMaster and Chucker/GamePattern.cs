@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMasterFirePattern : MonoBehaviour {
+public class GamePattern : MonoBehaviour {
 
+    //chucker variables
 	private int framesToNextFire;
     public GameObject[] chuckers = new GameObject[4];
     private ChuckerBehavior[] chuckerFireScripts = new ChuckerBehavior[4];
 	public PauseMenu pause;
 
+    //chucker firing pattern variables
     public float minWaitTime;
     public float maxWaitTime;
     private float timeOfNextFire;
 
-    //public int minWaitTime = 50;
-	//public int maxWaitTime = 150;
+    //kill line movement variables
+    public GameObject killLine;
+    public float killLineSpeed;                           //make larger for higher difficulties
+    private KillLineController killLineController;
+
+    private ScoreData scoreData;
 	
 	// Use this for initialization
 	void Start () {
@@ -24,6 +30,8 @@ public class GameMasterFirePattern : MonoBehaviour {
 
         timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTime);
 
+        scoreData = GetComponent<ScoreData>();
+        killLineController = killLine.GetComponent<KillLineController>();
     }
 	
 	// Update is called once per frame
@@ -32,5 +40,15 @@ public class GameMasterFirePattern : MonoBehaviour {
             chuckerFireScripts[Random.Range(0, 4)].Throw();
             timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTime);
         }
-	}
+
+        //current score decides the speed of the kill line
+        float score = scoreData.hiScore;
+        if (score < 30)
+            killLineController.MoveUp(killLineSpeed);    
+        else if (score < 50)
+            killLineController.MoveUp(killLineSpeed * 2.5f);   //TODO: extract doubling calculation to start()
+        else
+            killLineController.MoveUp(killLineSpeed * 3.2f);
+
+    }
 }
