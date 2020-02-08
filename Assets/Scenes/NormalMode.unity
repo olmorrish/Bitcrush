@@ -2176,7 +2176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
-  pauseMenuUI: {fileID: 1973556983}
+  thePauseMenu: {fileID: 0}
 --- !u!114 &1004985260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,8 +2656,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e2edaac7ce476448d5c1aa248e07b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go: 0
-  goMenuUI: {fileID: 0}
+  isGameOver: 0
+  player: {fileID: 1827037376}
+  musicObject: {fileID: 733425185}
 --- !u!114 &1231062537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4314,7 +4315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84cf95ebd4d5ecb4db5a7445c1a46366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressureToExplode: 3
+  collisionSpeedtoExplode: 1
   numPixels: 125
   pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   exploded: 0

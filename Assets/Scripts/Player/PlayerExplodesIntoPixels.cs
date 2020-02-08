@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerExplodesIntoPixels : MonoBehaviour {
 
-	public float pressureToExplode = 3;
+	public float collisionSpeedtoExplode = 1f;
 	public int numPixels= 25;
 	public GameObject pixel;
 	public bool exploded;
@@ -29,7 +29,7 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
-		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > pressureToExplode){
+		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedtoExplode){
 			Explode();
 		}
         else if (collision.gameObject.Equals(killLine)) {
@@ -37,7 +37,7 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
         }
 	}
 	void OnCollisionStay2D(Collision2D collision){
-		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > pressureToExplode){
+		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedtoExplode){
 			Explode();
 		}
         else if (collision.gameObject.Equals(killLine)) {
@@ -62,8 +62,6 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 			rb.velocity = Vector3.zero;
 			rb.gravityScale = 0f;
 			rb.mass = 999999999;
-			
-			//ft_col.enabled = false;
 		}
 	}
 }
