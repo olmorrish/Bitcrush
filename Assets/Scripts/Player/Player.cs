@@ -125,26 +125,17 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void ApplyHorizontalPhysics(float direction) {
-        //right input
-        if (direction > 0) {
-            if (!onGround)
-                playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce * airControlMultiplier, ForceMode2D.Force);
-            else
-                playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce, ForceMode2D.Force);
-        }
-
-        //left input
-        if (direction < 0) {
-            if (!onGround)
-                playerRB.AddForce((new Vector3(-1, 0, 0)) * horizontalForce * airControlMultiplier, ForceMode2D.Force);
-            else
-                playerRB.AddForce((new Vector3(-1, 0, 0)) * horizontalForce, ForceMode2D.Force);
-        }
+    private void ApplyHorizontalPhysics(float horizontalIn) {
+        
+        //apply physics
+        if (!onGround)
+            playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce * horizontalIn * airControlMultiplier, ForceMode2D.Force);
+        else
+            playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce * horizontalIn, ForceMode2D.Force);
 
         //slow the player if they are on the ground and giving no input
         //  this ensures landing and running don't result in slipping - makes movement "snappier"
-        if (direction == 0 && onGround) {
+        if (horizontalIn == 0 && onGround) {
             playerRB.velocity = new Vector2(groundDecelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
         }
 
