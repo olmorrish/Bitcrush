@@ -40,15 +40,16 @@ public class GamePattern : MonoBehaviour {
             chuckerFireScripts[Random.Range(0, 4)].Throw();
             timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTime);
         }
+    }
 
+    private void FixedUpdate() {
         //current score decides the speed of the kill line
         float score = scoreData.hiScore;
         if (score < 30)
-            killLineController.MoveUp(killLineSpeed);    
+            killLineController.MoveUp(killLineSpeed);
         else if (score < 50)
             killLineController.MoveUp(killLineSpeed * 2.5f);   //TODO: extract doubling calculation to start()
         else
             killLineController.MoveUp(killLineSpeed * 3.2f);
-
     }
 }

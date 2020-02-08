@@ -4,69 +4,32 @@ using UnityEngine;
 
 public class Freezer : MonoBehaviour {
 
-	public bool frozen;			//indicates whether Freeze() has been called on the block
-	public Vector3 frozenPos;
-	
+	public bool frozen; //used to check when player collides - player explodes if not frozen
+
 	private Rigidbody2D rb;
+    public AudioSource[] hitFX = new AudioSource[2];
 
-    private AudioSource hit1;
-	private AudioSource hit2;
-	private AudioSource hit3;
-	
-	void Awake () {
+    void Awake () {
+        frozen = false;
+
 		rb = GetComponent<Rigidbody2D>();
-		hit1 = GameObject.Find("HitFX1").GetComponent<AudioSource>();
-		hit2 = GameObject.Find("HitFX3").GetComponent<AudioSource>();
-		hit3 = GameObject.Find("HitFX3").GetComponent<AudioSource>();
-	}
-
-	void OnCollisionEnter2D(Collision2D col){	
-		if(col.gameObject.tag != "Player"){
-			HitSound();
-		}
-	}
+        hitFX[0] = GameObject.Find("HitFX1").GetComponent<AudioSource>();
+        hitFX[1] = GameObject.Find("HitFX2").GetComponent<AudioSource>();
+    }
 	
 	void Update(){
-		if(frozen){
-			transform.position = frozenPos;
-		}
-		
-		if(rb.velocity == Vector2.zero && !frozen){
+        //if not moving, freeze
+		if(rb.velocity.magnitude < 0.01f && !frozen){
 			Freeze();
 		}
 	}
 	
 	
 	public void Freeze(){
-		
-		HitSound();
-		
-		frozen = true;
-		frozenPos = transform.position;
-		
-		Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        frozen = true;
+
+        hitFX[Random.Range(0, hitFX.Length - 1)].Play();
 		rb.constraints = RigidbodyConstraints2D.FreezeAll;
 		rb.velocity = Vector3.zero;
-	}
-
-	
-	
-	
-	void HitSound(){
-		int soundSelect = Random.Range(0,3);
-		
-		switch(soundSelect){
-			case 0:
-				hit1.Play(); break;
-			case 1:
-				hit2.Play(); break;
-			case 2:
-				hit3.Play(); break;
-			default:
-				break;
-		}
-	}
-	
-	
-	
+	}	
 }
