@@ -25,5 +25,7 @@ public class PersistentSettings : MonoBehaviour {
 
     void ApplyGameModeSettings(Scene scene, LoadSceneMode mode) {
         Debug.Log("Loaded Scene: \"" + scene.name + "\" in mode: \"" + mode + "\"");
+
+
     }
 }

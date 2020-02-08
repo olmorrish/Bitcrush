@@ -15,11 +15,10 @@ public class ChuckerBehavior : MonoBehaviour {
     public GameObject octominoF;
 
     //game mode modifiers
-    public bool rotateBy45Degrees = false;
 	
 	private GameObject toSpawn;
 	
-	public void Throw(string fireMode){
+	public void Throw(string fireMode, bool rotate45){
 
         if (fireMode.Equals("tetromino")) {
             int pick = Random.Range(0, 7);
@@ -70,7 +69,7 @@ public class ChuckerBehavior : MonoBehaviour {
         rotation = 90f * (Mathf.Floor(Random.Range(0, 4)));
 
         //mode modifier
-        if (rotateBy45Degrees)
+        if (rotate45)
             rotation += 45f;
 
 		GameObject tetrominoClone = (GameObject) Instantiate(toSpawn, transform.position, transform.rotation);

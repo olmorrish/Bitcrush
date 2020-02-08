@@ -156,7 +156,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: rotateBy45Degrees
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -747,7 +747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266255850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.131, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1827037384}
@@ -943,7 +943,8 @@ MonoBehaviour:
   - {fileID: 449379942}
   - {fileID: 263438351}
   pause: {fileID: 1004985259}
-  fireMode: university
+  fireMode: tetromino
+  rotateBy45Degrees: 0
   minWaitTime: 0.4
   maxWaitTime: 2.5
   killLine: {fileID: 1644050581}
@@ -1204,7 +1205,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: rotateBy45Degrees
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -4329,7 +4330,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: rotateBy45Degrees
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -4595,7 +4596,7 @@ MonoBehaviour:
   continuousJumpDecay: 25
   airControlMultiplier: 0
   airControlDecay: 0.001
-  jumpResetDeadZoneTime: 0.75
+  jumpResetDeadZoneTime: 1
   horizontalForce: 900
   maxHorizontalVelocity: 4
   groundDecelerationMultiplier: 0.7
@@ -5095,7 +5096,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: rotateBy45Degrees
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}

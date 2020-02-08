@@ -12,7 +12,9 @@ public class GamePattern : MonoBehaviour {
 
     //game mode variables
     public string fireMode;
-   
+    public bool rotateBy45Degrees;
+
+
     //chucker firing pattern variables
     public float minWaitTime;
     public float maxWaitTime;
@@ -40,7 +42,7 @@ public class GamePattern : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(!pause.isPaused && (timeOfNextFire < Time.time)) {
-            chuckerFireScripts[Random.Range(0, 4)].Throw(fireMode);
+            chuckerFireScripts[Random.Range(0, 4)].Throw(fireMode, rotateBy45Degrees);
             timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTime);
         }
     }
