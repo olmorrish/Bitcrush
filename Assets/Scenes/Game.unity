@@ -156,8 +156,14 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: rotateBy45Degrees
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: octominoF
+      value: 
+      objectReference: {fileID: 5742546934180788117, guid: b41009b86ba7d7f4ab3bb6ac3bec9913,
+        type: 3}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -937,7 +943,8 @@ MonoBehaviour:
   - {fileID: 449379942}
   - {fileID: 263438351}
   pause: {fileID: 1004985259}
-  minWaitTime: 0.8
+  fireMode: university
+  minWaitTime: 0.4
   maxWaitTime: 2.5
   killLine: {fileID: 1644050581}
   killLineSpeed: 1.3
@@ -1197,8 +1204,14 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: rotateBy45Degrees
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: octominoF
+      value: 
+      objectReference: {fileID: 5742546934180788117, guid: b41009b86ba7d7f4ab3bb6ac3bec9913,
+        type: 3}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1964,7 +1977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 796}
+  m_AnchoredPosition: {x: 0, y: 903}
   m_SizeDelta: {x: 958.8, y: 243.90002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &941875477
@@ -2363,7 +2376,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1004985259}
-        m_MethodName: Resume
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3286,7 +3299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 547}
+  m_AnchoredPosition: {x: 0, y: 654}
   m_SizeDelta: {x: 605.8, y: 236.40002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370579371
@@ -4316,8 +4329,14 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: rotateBy45Degrees
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: octominoF
+      value: 
+      objectReference: {fileID: 5742546934180788117, guid: b41009b86ba7d7f4ab3bb6ac3bec9913,
+        type: 3}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4580,6 +4599,7 @@ MonoBehaviour:
   horizontalForce: 900
   maxHorizontalVelocity: 4
   groundDecelerationMultiplier: 0.7
+  airDecelerationMultiplier: 0.7
   jumpFX: {fileID: 1260407784}
   whatIsGround:
     serializedVersion: 2
@@ -5075,8 +5095,14 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: rotateBy45Degrees
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: octominoF
+      value: 
+      objectReference: {fileID: 5742546934180788117, guid: b41009b86ba7d7f4ab3bb6ac3bec9913,
+        type: 3}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.x

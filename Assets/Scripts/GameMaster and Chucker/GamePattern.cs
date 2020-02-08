@@ -5,11 +5,14 @@ using UnityEngine;
 public class GamePattern : MonoBehaviour {
 
     //chucker variables
-	private int framesToNextFire;
+    private int framesToNextFire;
     public GameObject[] chuckers = new GameObject[4];
     private ChuckerBehavior[] chuckerFireScripts = new ChuckerBehavior[4];
-	public PauseMenu pause;
+    public PauseMenu pause;
 
+    //game mode variables
+    public string fireMode;
+   
     //chucker firing pattern variables
     public float minWaitTime;
     public float maxWaitTime;
@@ -17,7 +20,7 @@ public class GamePattern : MonoBehaviour {
 
     //kill line movement variables
     public GameObject killLine;
-    public float killLineSpeed;                           //make larger for higher difficulties
+    public float killLineSpeed;                           //make larger for higher difficulties!
     private KillLineController killLineController;
 
     private ScoreData scoreData;
@@ -37,7 +40,7 @@ public class GamePattern : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(!pause.isPaused && (timeOfNextFire < Time.time)) {
-            chuckerFireScripts[Random.Range(0, 4)].Throw();
+            chuckerFireScripts[Random.Range(0, 4)].Throw(fireMode);
             timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTime);
         }
     }

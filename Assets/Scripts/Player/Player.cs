@@ -35,7 +35,8 @@ public class Player : MonoBehaviour {
     public float horizontalForce = 900f;
     public float maxHorizontalVelocity = 4f;
     [Range(0, 1)] public float groundDecelerationMultiplier = 0.7f;   //horizontal velocity is multiplied by this on each frame where no horiz input is given
-        
+    [Range(0, 1)] public float airDecelerationMultiplier = 0.7f;
+
     //player component references
     private Rigidbody2D playerRB;
     public AudioSource jumpFX;
@@ -133,10 +134,13 @@ public class Player : MonoBehaviour {
         else
             playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce * horizontalIn, ForceMode2D.Force);
 
-        //slow the player if they are on the ground and giving no input
-        //  this ensures landing and running don't result in slipping - makes movement "snappier"
-        if (horizontalIn == 0 && onGround) {
-            playerRB.velocity = new Vector2(groundDecelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
+        //slow the player if they are giving no input
+        //  makes movement "snappier"
+        if(horizontalIn == 0) {
+            if (onGround)
+                 playerRB.velocity = new Vector2(groundDecelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
+            else
+                playerRB.velocity = new Vector2(airDecelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
         }
 
         //update or reset airControlMultiplier
@@ -152,8 +156,7 @@ public class Player : MonoBehaviour {
         if (playerRB.velocity.x > maxHorizontalVelocity) {
             playerRB.AddForce((new Vector3(-1, 0, 0)) * horizontalForce, ForceMode2D.Force);
         }
-
-        if (playerRB.velocity.x < -maxHorizontalVelocity) {
+        else if (playerRB.velocity.x < -maxHorizontalVelocity) {
             playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce, ForceMode2D.Force);
         }
     }

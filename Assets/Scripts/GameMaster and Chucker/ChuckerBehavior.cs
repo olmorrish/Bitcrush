@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ChuckerBehavior : MonoBehaviour {
 
@@ -10,29 +12,29 @@ public class ChuckerBehavior : MonoBehaviour {
     public GameObject[] trominoObjects;
     public GameObject[] tetrominoObjects;
     public GameObject[] pentominoObjects;
+    public GameObject octominoF;
 
     //game mode modifiers
-	public bool fireTrominoes = false; 
-	public bool fireTetrominoes = false; 
-	public bool firePentominoes = false; 
     public bool rotateBy45Degrees = false;
 	
 	private GameObject toSpawn;
 	
-	public void Throw(){
+	public void Throw(string fireMode){
 
-        if (fireTetrominoes) {
+        if (fireMode.Equals("tetromino")) {
             int pick = Random.Range(0, 7);
             toSpawn = tetrominoObjects[pick];
         }
-        else if (fireTrominoes) {
+        else if (fireMode.Equals("tromino")) {
             int pick = Random.Range(0, 2);
             toSpawn = trominoObjects[pick];
         }
-        else if (firePentominoes) {
+        else if (fireMode.Equals("pentomino")) {
             int pick = Random.Range(0, 18);
             toSpawn = pentominoObjects[pick];
         }
+        else if (fireMode.Equals("university"))
+            toSpawn = octominoF;
 		  
 		//how fast?
 		float xtraj = Random.Range(-trajectoryRandomFactor, trajectoryRandomFactor);
