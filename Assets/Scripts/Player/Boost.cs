@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Boost : MonoBehaviour {
 
+
+
     //behaviour values
-    public float boostMultiplier = 2f;
+    public float boostVelocity = 15f;
     public float cooldownLength = 10.0f;
     private float cooldownDoneTime;
     public int numPixels;
@@ -15,7 +17,7 @@ public class Boost : MonoBehaviour {
     public float inputMemoryLength = 0.075f; //time until a button input is forgotten
 
     //state variables
-    public bool boostReady = false;  //flag whether player can boost or not
+    [HideInInspector] public bool boostReady = false;  //flag whether player can boost or not - accessed by text prompt
 
     //gameObject and component references
     public GameObject pixel;
@@ -61,10 +63,8 @@ public class Boost : MonoBehaviour {
         cooldownDoneTime = Time.time + cooldownLength;    //reset the cooldown
         boostFX.Play();
 
-        float boostVal = player.jumpForce * boostMultiplier;   
-        boostVal -= (boostMultiplier * playerRB.velocity.y);  //increases boost if moving down but reduces if moving up - makes boost feel more consistent!
-                                                                    
-        playerRB.AddForce(new Vector3(0, (boostVal), 0), ForceMode2D.Impulse);
+        //just setting the velocity feels much better for falling players                         
+        playerRB.velocity = (new Vector3(playerRB.velocity.x, boostVelocity ,playerRB.velocity.x));
 
         player.onGround = false;
         player.jumpHeldDown = true;     

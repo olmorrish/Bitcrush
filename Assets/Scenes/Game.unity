@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: baseTrajectory.x
-      value: -300
+      value: -350
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -164,6 +164,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5742546934180788117, guid: b41009b86ba7d7f4ab3bb6ac3bec9913,
         type: 3}
+    - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: trajectoryRandomFactor
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -172,7 +177,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -943,7 +948,7 @@ MonoBehaviour:
   - {fileID: 449379942}
   - {fileID: 263438351}
   pause: {fileID: 1004985259}
-  fireMode: university
+  fireMode: tetromino
   rotateBy45Degrees: 0
   minWaitTime: 0.4
   maxWaitTime: 2.5
@@ -1175,7 +1180,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: baseTrajectory.x
-      value: -100
+      value: -125
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -1213,10 +1218,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5742546934180788117, guid: b41009b86ba7d7f4ab3bb6ac3bec9913,
         type: 3}
+    - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: trajectoryRandomFactor
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -4300,7 +4310,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: baseTrajectory.x
-      value: 100
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -4338,10 +4348,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5742546934180788117, guid: b41009b86ba7d7f4ab3bb6ac3bec9913,
         type: 3}
+    - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: trajectoryRandomFactor
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -4434,7 +4449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1632a30b4e8dae74994b6cb41ce739dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostMultiplier: 2
+  boostVelocity: 15
   cooldownLength: 15
   numPixels: 15
   inputMemoryLength: 0.075
@@ -5104,6 +5119,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5742546934180788117, guid: b41009b86ba7d7f4ab3bb6ac3bec9913,
         type: 3}
+    - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: baseTrajectory.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: trajectoryRandomFactor
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5112,7 +5137,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}

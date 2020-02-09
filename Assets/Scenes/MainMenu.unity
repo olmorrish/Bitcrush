@@ -1221,6 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb8fd6fb82a1dc4a85591c724802082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingsObject: {fileID: 1162775391}
 --- !u!1 &959697194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,6 +1450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff95845cd84b7a4d88c5ef66f319021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireMode: 
+  rotate45: 0
 --- !u!4 &1162775393
 Transform:
   m_ObjectHideFlags: 0

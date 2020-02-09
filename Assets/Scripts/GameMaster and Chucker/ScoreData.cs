@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ScoreData : MonoBehaviour{
 
     private float height;
-    public float hiScore;
+    [HideInInspector] public float hiScore;
 
     public Text gameplayScore;
     public Text gameOverScore;
