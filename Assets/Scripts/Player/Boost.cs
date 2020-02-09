@@ -66,8 +66,8 @@ public class Boost : MonoBehaviour {
         //just setting the velocity feels much better for falling players                         
         playerRB.velocity = (new Vector3(playerRB.velocity.x, boostVelocity ,playerRB.velocity.x));
 
-        player.onGround = false;
-        player.jumpHeldDown = true;     
+        player.onGroundCanJump = false;
+        player.jumpNotReleased = true;     
 	}
 
     private void SpawnBoostConfetti() {

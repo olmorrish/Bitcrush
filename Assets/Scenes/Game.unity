@@ -4639,14 +4639,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputMemoryLength: 0.075
-  onGround: 1
-  jumpHeldDown: 0
+  onGroundCanJump: 0
+  jumpNotReleased: 0
   jumpForce: 50
   continuousJumpForce: 350
   continuousJumpDecay: 25
   airControlMultiplier: 0
   airControlDecay: 0.001
-  jumpResetDeadZoneTime: 1
+  jumpResetDeadZoneTime: 0.35
+  jumpResetBlockedUntil: 0
   horizontalForce: 900
   maxHorizontalVelocity: 4
   groundDecelerationMultiplier: 0.7

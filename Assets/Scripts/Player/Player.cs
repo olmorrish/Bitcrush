@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/* Allows the object to be controlled via (1) Horziontal Axis input and (2) "Jump" button.  
+/* @author Oliver Morrish
+ * Allows the object to be controlled via (1) Horziontal Axis input and (2) "Jump" button.  
  * Setup:
  *  After attaching the script to a player-controlled object, 
  *  (1) Create an empty object as a child of the player, and drag it to the "groundChecker" reference. Ensure it is below the player.
  *  (2) Define the LayerMask "whatIsGround" to decide what should reset a player jump when touched by the checker.
  *  (3) Set "jumpFX" as an audio clip to play on jump.
+ *  (4) Tweak values.
  */
 public class Player : MonoBehaviour {
 
@@ -17,19 +19,19 @@ public class Player : MonoBehaviour {
     private float horizontalIn;                  // the horizontal input; updates each frame
 
     //state booleans
-    public bool onGround = false;
-    public bool jumpHeldDown = false;
+    public bool onGroundCanJump = false;
+    public bool jumpNotReleased = false;
 
     //jump values
     public float jumpForce = 15f;
 	public float continuousJumpForce = 250f;	    //force added by holding down the button
 	public float continuousJumpDecay = 15f;     //amount by which the upwards force of holding "jump" decreases each frame
     private float maxContJumpForce;
-    [Range(0, 1)] public float airControlMultiplier;
+    [HideInInspector] [Range(0, 1)] public float airControlMultiplier;
     public float airControlDecay = 0.001f;
 
     public float jumpResetDeadZoneTime = 0.75f;  //the time after jumping before a jump reset is permitted
-    private float jumpResetBlockedUntil;         //marks the time at which a jump reset is now okay 
+    public float jumpResetBlockedUntil;         //marks the time at which a jump reset is now okay 
 
     //walk values
     public float horizontalForce = 900f;
@@ -50,8 +52,8 @@ public class Player : MonoBehaviour {
 	
 	// Use this for initialization
 	void Awake () {
-        onGround = false;
-        jumpHeldDown = false;
+        onGroundCanJump = false;
+        jumpNotReleased = false;
         jumpResetBlockedUntil = Time.time;
 
         maxContJumpForce = continuousJumpForce;
@@ -63,12 +65,21 @@ public class Player : MonoBehaviour {
         if (Input.GetButton("Jump")) {
             jumpDownTrueUntil = Time.time + inputMemoryLength;   //set the time until we forget the player pressed the button
         }
+        else
+            jumpNotReleased = false;
+
+        horizontalIn = Input.GetAxis("Horizontal");
+        Debug.Log("Current Horizontal Input: " + horizontalIn);
     }
 
     void FixedUpdate () {
-        JumpResetCheck();
+        //jump reset check is only permitted if:
+        //  (a) reset cooldown is done (b) reset is not already active (c) player is veritcally stationary
+        if ((Time.time > jumpResetBlockedUntil) && !onGroundCanJump && !(Mathf.Abs(playerRB.velocity.y) > 0.1f)) 
+            JumpResetCheck();
+
         ApplyVerticalPhysics();
-        horizontalIn = Input.GetAxis("Horizontal");             //TODO, move to Update somehow
+        
         ApplyHorizontalPhysics(horizontalIn);
 	}
 
@@ -76,13 +87,13 @@ public class Player : MonoBehaviour {
 
         Collider2D[] groundCollisions = Physics2D.OverlapCircleAll (groundChecker.position, groundCheckerRadius, whatIsGround);
 
-        if (Time.time > jumpResetBlockedUntil) {
-            foreach (Collider2D col in groundCollisions) {
-                //Debug.Log("Ground collision detected.");
-                if (whatIsGround.Contains(col.gameObject.layer)) {  //utilizes extension method!
-                    onGround = true;
-                    jumpResetBlockedUntil = Time.time + jumpResetDeadZoneTime; //set the point at which a jump reset may occur again
-                }
+        foreach (Collider2D col in groundCollisions) {
+            //Debug.Log("Ground collision detected.");
+            if (whatIsGround.Contains(col.gameObject.layer)) {  //utilizes extension method!
+                onGroundCanJump = true;
+                continuousJumpForce = maxContJumpForce;
+                Debug.Log("Jump has been reset.");
+                jumpResetBlockedUntil = Time.time + jumpResetDeadZoneTime; //set the point at which a jump reset may occur again
             }
         }
     }
@@ -91,29 +102,30 @@ public class Player : MonoBehaviour {
 
         if (Time.time > jumpDownTrueUntil) {  //Check if the jump button cooldown has expired. If so, reset it.
             jumpDownTrueUntil = -1f;
-            jumpHeldDown = false;
+            jumpNotReleased = false;
         }
 
         //process the jump input
         else {
             //begin to jump condition
-            if (onGround && !jumpHeldDown) {
-                onGround = false;
-                jumpHeldDown = true;
+            if (onGroundCanJump /*&& !jumpHeldDown*/) {
+                Debug.Log("Beginning a new jump.");
+                onGroundCanJump = false;
+                jumpNotReleased = true;
                 playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
+                jumpResetBlockedUntil = Time.time + jumpResetDeadZoneTime;      //stop a jump reset for a while after jumping
 
-                playerAnim.SetBool("isBeginningJump", true);
+                playerAnim.SetBool("isBeginningJump", true); //bitcrush-specific
                 jumpFX.Play();
             }
 
             //hold to jump higher
-            else if (!onGround && jumpHeldDown) {
+            else if (!onGroundCanJump && jumpNotReleased) {
                 playerRB.AddForce(new Vector3(0, 1.0f, 0) * continuousJumpForce, ForceMode2D.Force);
-                playerAnim.SetBool("isBeginningJump", false);
+                playerAnim.SetBool("isBeginningJump", false); //bitcrush-specific
 
-                if (continuousJumpForce < 0) {
-                    continuousJumpForce = 0;
-                    jumpHeldDown = false;   
+                if (continuousJumpForce <= 0) {
+                    continuousJumpForce = 0;  
                 }
                 else if (continuousJumpForce > 0) {
                     continuousJumpForce -= continuousJumpDecay;
@@ -122,7 +134,7 @@ public class Player : MonoBehaviour {
 
             //otherwise the player is not on ground and jump is not held down
             else {
-                jumpHeldDown = false;
+                playerAnim.SetBool("isBeginningJump", false); //bitcrush-specific
             }
         }
     }
@@ -130,7 +142,7 @@ public class Player : MonoBehaviour {
     private void ApplyHorizontalPhysics(float horizontalIn) {
         
         //apply physics
-        if (!onGround)
+        if (!onGroundCanJump)
             playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce * horizontalIn * airControlMultiplier, ForceMode2D.Force);
         else
             playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce * horizontalIn, ForceMode2D.Force);
@@ -138,18 +150,18 @@ public class Player : MonoBehaviour {
         //slow the player if they are giving no input
         //  makes movement "snappier"
         if(horizontalIn == 0) {
-            if (onGround)
+            if (onGroundCanJump)
                  playerRB.velocity = new Vector2(groundDecelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
             else
                 playerRB.velocity = new Vector2(airDecelerationMultiplier * playerRB.velocity.x, playerRB.velocity.y);
         }
 
         //update or reset airControlMultiplier
-        if (onGround) {
+        if (onGroundCanJump) {
             airControlMultiplier = 1;
             continuousJumpForce = maxContJumpForce;
         }
-        if (!onGround && airControlMultiplier > 0) {
+        if (!onGroundCanJump && airControlMultiplier > 0) {
             airControlMultiplier -= airControlDecay;
         }
 
