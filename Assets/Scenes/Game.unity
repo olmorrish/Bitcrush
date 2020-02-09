@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280381, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7038331fbe7b590459645a30e292ea16, type: 3}
@@ -953,7 +953,7 @@ MonoBehaviour:
   - {fileID: 449379942}
   - {fileID: 263438351}
   pause: {fileID: 1004985259}
-  fireMode: tetromino
+  fireMode: all
   rotateBy45Degrees: 0
   minWaitTime: 0.4
   maxWaitTime: 2.5
@@ -1291,7 +1291,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280381, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7038331fbe7b590459645a30e292ea16, type: 3}
@@ -4426,7 +4426,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280381, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7038331fbe7b590459645a30e292ea16, type: 3}
@@ -5227,7 +5227,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280381, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7038331fbe7b590459645a30e292ea16, type: 3}
