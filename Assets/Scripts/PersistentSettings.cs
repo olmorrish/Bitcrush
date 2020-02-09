@@ -8,9 +8,8 @@ public enum FireMode { tromino, tetromino, pentomino, all };
 public class PersistentSettings : MonoBehaviour {
 
     public string fireMode;
-
-    //TODO APPLY THESE ON LOAD
     public bool rotate45;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -28,20 +27,18 @@ public class PersistentSettings : MonoBehaviour {
     }
 
     /* This function is called once upon game scene loading.
-     * 
+     *  It's not efficient and is pretty bulky, but it's only called once per game load
+     *  Note: "GameObject.Find" calls are necessary since scene references can't be set before scene exists
      */
     void ApplyGameModeSettings(Scene scene, LoadSceneMode mode) {
         Debug.Log("Loaded Scene: \"" + scene.name + "\" in mode: \"" + mode + "\"");
 
         if (scene.name.Equals("Game")) {
             Debug.Log("Beginning application of game scene settings.");
-
             GamePattern gamePattern = GameObject.Find("GameMaster").GetComponent<GamePattern>();
-            gamePattern.fireMode = fireMode;
-            Debug.Log(">> Firemode set to \"" + fireMode + "\"");
 
-            gamePattern.rotateBy45Degrees = rotate45;
-            Debug.Log(">> 45 degree skew set to: " + rotate45);
+            gamePattern.fireMode = fireMode;                // firemode
+            gamePattern.rotateBy45Degrees = rotate45;       // roation 
 
         }
     }
