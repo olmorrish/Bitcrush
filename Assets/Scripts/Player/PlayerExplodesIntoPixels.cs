@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerExplodesIntoPixels : MonoBehaviour {
 
-	public float collisionSpeedtoExplode = 1f;
+	public float collisionSpeedToExplode = 1f;
 	public int numPixels= 25;
 	public GameObject pixel;
 	public bool exploded;
 	
-	private Collider2D col;
-	private SpriteRenderer rend; 
-	private Rigidbody2D rb;
+	private Collider2D playerCollider;
+	private SpriteRenderer playerRenderer; 
+	private Rigidbody2D playerRB;
 	public AudioSource explodeFX;
 
     public GameObject killLine;
@@ -19,9 +19,9 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		col = GetComponent<Collider2D>();
-		rend = GetComponent<SpriteRenderer>();
-		rb = GetComponent<Rigidbody2D>();
+		playerCollider = GetComponent<Collider2D>();
+		playerRenderer = GetComponent<SpriteRenderer>();
+		playerRB = GetComponent<Rigidbody2D>();
 
         killLineCollider = killLine.GetComponent<Collider2D>();
 
@@ -29,7 +29,7 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
-		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedtoExplode){
+		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedToExplode){
 			Explode();
 		}
         else if (collision.gameObject.Equals(killLine)) {
@@ -37,7 +37,7 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
         }
 	}
 	void OnCollisionStay2D(Collision2D collision){
-		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedtoExplode){
+		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedToExplode){
 			Explode();
 		}
         else if (collision.gameObject.Equals(killLine)) {
@@ -54,14 +54,14 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 			for(int i = 0; i<numPixels; i++){
 				GameObject pixelClone = (GameObject) Instantiate(pixel, transform.position, transform.rotation);
 				pixelClone.GetComponent<PixelBurstBehavior>().Fling();
-				pixelClone.GetComponent<Rigidbody2D>().AddForce(rb.velocity * -0.2f, ForceMode2D.Impulse);	//adds an impulse based on player velocity at time of death
+				pixelClone.GetComponent<Rigidbody2D>().AddForce(playerRB.velocity * -0.2f, ForceMode2D.Impulse);	//adds an impulse based on player velocity at time of death
 			}
 			
-			col.enabled = false;
-			rend.enabled = false;
-			rb.velocity = Vector3.zero;
-			rb.gravityScale = 0f;
-			rb.mass = 999999999;
+			playerCollider.enabled = false;
+			playerRenderer.enabled = false;
+			playerRB.velocity = Vector3.zero;
+			playerRB.gravityScale = 0f;
+			playerRB.mass = 999999999;
 		}
 	}
 }

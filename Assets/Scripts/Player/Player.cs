@@ -12,9 +12,9 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     //timing variables for button inputs
-    private float jumpDownTrueUntil = -1f;
-    public float inputMemoryLength = 0.075f;     //time until a button input is forgotten
-    private float horizontalIn; //the horizontal input; updates each frame
+    private float jumpDownTrueUntil = -1f;       
+    public float inputMemoryLength = 0.075f;     // time until a button input is forgotten
+    private float horizontalIn;                  // the horizontal input; updates each frame
 
     //state booleans
     public bool onGround = false;
@@ -22,14 +22,14 @@ public class Player : MonoBehaviour {
 
     //jump values
     public float jumpForce = 15f;
-	public float continuousJumpForce = 250f;	   //force added by holding down the button
-	public float continuousJumpDecay = 15f;   //amount by which the upwards force of holding "jump" decreases each frame
+	public float continuousJumpForce = 250f;	    //force added by holding down the button
+	public float continuousJumpDecay = 15f;     //amount by which the upwards force of holding "jump" decreases each frame
     private float maxContJumpForce;
     [Range(0, 1)] public float airControlMultiplier;
     public float airControlDecay = 0.001f;
 
     public float jumpResetDeadZoneTime = 0.75f;  //the time after jumping before a jump reset is permitted
-    private float jumpResetBlockedUntil;        //marks the time at which a jump reset is now okay 
+    private float jumpResetBlockedUntil;         //marks the time at which a jump reset is now okay 
 
     //walk values
     public float horizontalForce = 900f;
@@ -45,6 +45,8 @@ public class Player : MonoBehaviour {
     public LayerMask whatIsGround;
     public Transform groundChecker;
     public float groundCheckerRadius = 0.05f;
+
+    private Animator playerAnim;
 	
 	// Use this for initialization
 	void Awake () {
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour {
 
         maxContJumpForce = continuousJumpForce;
 		playerRB = GetComponent<Rigidbody2D>();
+        playerAnim = GetComponent<Animator>();
     }
 
     void Update() {
@@ -65,7 +68,7 @@ public class Player : MonoBehaviour {
     void FixedUpdate () {
         JumpResetCheck();
         ApplyVerticalPhysics();
-        horizontalIn = Input.GetAxis("Horizontal"); //TODO, move to Update somehow
+        horizontalIn = Input.GetAxis("Horizontal");             //TODO, move to Update somehow
         ApplyHorizontalPhysics(horizontalIn);
 	}
 
@@ -98,12 +101,15 @@ public class Player : MonoBehaviour {
                 onGround = false;
                 jumpHeldDown = true;
                 playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
+
+                playerAnim.SetBool("isBeginningJump", true);
                 jumpFX.Play();
             }
 
             //hold to jump higher
             else if (!onGround && jumpHeldDown) {
                 playerRB.AddForce(new Vector3(0, 1.0f, 0) * continuousJumpForce, ForceMode2D.Force);
+                playerAnim.SetBool("isBeginningJump", false);
 
                 if (continuousJumpForce < 0) {
                     continuousJumpForce = 0;

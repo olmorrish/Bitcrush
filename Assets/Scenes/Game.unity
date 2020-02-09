@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -228,6 +228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chucker 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284276950567280381, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7038331fbe7b590459645a30e292ea16, type: 3}
@@ -756,7 +761,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1827037384}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &349941374
 GameObject:
@@ -1261,7 +1266,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -1282,6 +1287,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chucker 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284276950567280381, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7038331fbe7b590459645a30e292ea16, type: 3}
@@ -4391,7 +4401,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -4413,6 +4423,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chucker 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5284276950567280381, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7038331fbe7b590459645a30e292ea16, type: 3}
 --- !u!1 &1827037376
@@ -4430,6 +4445,7 @@ GameObject:
   - component: {fileID: 1827037385}
   - component: {fileID: 1827037377}
   - component: {fileID: 1827037379}
+  - component: {fileID: 1827037378}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -4456,6 +4472,25 @@ MonoBehaviour:
   boostReady: 0
   pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   boostFX: {fileID: 1481427070}
+--- !u!95 &1827037378
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827037376}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4de91b140d586464980d1ac1c140d5f6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &1827037379
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4494,8 +4529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84cf95ebd4d5ecb4db5a7445c1a46366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionSpeedtoExplode: 1
-  numPixels: 125
+  collisionSpeedToExplode: 1
+  numPixels: 200
   pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   exploded: 0
   explodeFX: {fileID: 215242075}
@@ -4582,12 +4617,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
-  - {fileID: 2029432109}
   - {fileID: 266255851}
   - {fileID: 1716036339}
   - {fileID: 1276974476}
   - {fileID: 449379943}
   - {fileID: 263438354}
+  - {fileID: 2029432109}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5033,7 +5068,7 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1827037384}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &2029432110
 AudioListener:
@@ -5167,7 +5202,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -5188,6 +5223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chucker 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284276950567280381, guid: 7038331fbe7b590459645a30e292ea16,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7038331fbe7b590459645a30e292ea16, type: 3}
