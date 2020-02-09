@@ -9,7 +9,8 @@ public class PersistentSettings : MonoBehaviour {
 
     public string fireMode;
     public bool rotate45;
-
+    public float minWaitTime;
+    public float maxWaitTime;
 
     // Start is called before the first frame update
     void Start() {
@@ -39,7 +40,8 @@ public class PersistentSettings : MonoBehaviour {
 
             gamePattern.fireMode = fireMode;                // firemode
             gamePattern.rotateBy45Degrees = rotate45;       // roation 
-
+            gamePattern.minWaitTime = minWaitTime;          // min time between block throws
+            gamePattern.maxWaitTime = maxWaitTime;          // max time between block throws
         }
     }
 }
