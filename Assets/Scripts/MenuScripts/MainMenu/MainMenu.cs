@@ -55,6 +55,7 @@ public class MainMenu : MonoBehaviour {
     ///////////////////
     /// Mode Launchers
     ///////////////////
+
     public void StartGame(){
         //apply the relevant settings to store in the persistent object - prior to loading
         SetDefaultSettings();
@@ -85,7 +86,25 @@ public class MainMenu : MonoBehaviour {
         LoadGame();
     }
 
-        public void QuitGame(){
+    public void StartUniversitySimGame() {
+        SetDefaultSettings();   //default - overwrite any others below
+        settings.fireMode = "university";
+        settings.minWaitTime = 1f;
+        settings.maxWaitTime = 3f;  //let's go easy on 'em
+        LoadGame();
+    }
+
+    public void StartSlipperySlopesGame() {
+        SetDefaultSettings();   //default - overwrite any others below
+        settings.rotate45 = true;
+        LoadGame();
+    }
+
+    ///////////////////
+    /// Support Methods
+    ///////////////////
+
+    public void QuitGame(){
 		Application.Quit();
 	}
 
