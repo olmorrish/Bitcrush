@@ -167,7 +167,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: trajectoryRandomFactor
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -1221,7 +1221,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: trajectoryRandomFactor
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -1312,7 +1312,7 @@ Transform:
   m_GameObject: {fileID: 729166476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -17, z: -1.484375}
-  m_LocalScale: {x: 5000, y: 10, z: 1}
+  m_LocalScale: {x: 2500, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -1714,7 +1714,7 @@ Transform:
   m_GameObject: {fileID: 855904492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.05904787, y: 0.99, z: 0.21557617}
-  m_LocalScale: {x: 100, y: 0.1, z: 1}
+  m_LocalScale: {x: 100, y: 0.1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1766,7 +1766,7 @@ SpriteRenderer:
   m_Size: {x: 36, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &870318952
@@ -2469,14 +2469,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 36, y: 1}
-    newSize: {x: 36, y: 1}
+    oldSize: {x: 10, y: 1}
+    newSize: {x: 10, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 36, y: 1}
+  m_Size: {x: 10, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &1153450026
 Rigidbody2D:
@@ -2508,7 +2508,7 @@ Transform:
   m_GameObject: {fileID: 1153450024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: -1.1367188}
-  m_LocalScale: {x: 0.3, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -2552,12 +2552,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 97a4bbdeaa200e54e9f447f7c249495e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e5a32cf9760a8694c8112b0a54b73216, type: 3}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 36, y: 1}
+  m_Size: {x: 10, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2769,7 +2769,7 @@ SpriteRenderer:
   m_Size: {x: 36, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1213384757
@@ -4036,12 +4036,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 97a4bbdeaa200e54e9f447f7c249495e, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.39215687}
+  m_Sprite: {fileID: 21300000, guid: 7e7bf31f8a4a40b45a7718bca09b4928, type: 3}
+  m_Color: {r: 1, g: 0.20293203, b: 0, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 36, y: 1}
+  m_Size: {x: 10, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4055,8 +4055,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644050581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -7, z: -5}
-  m_LocalScale: {x: 100, y: 9, z: 1}
+  m_LocalPosition: {x: 0, y: -8, z: -5}
+  m_LocalScale: {x: 20, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -4078,14 +4078,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 36, y: 1}
-    newSize: {x: 36, y: 1}
+    oldSize: {x: 100, y: 10}
+    newSize: {x: 10, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 36, y: 1}
+  m_Size: {x: 1000, y: 10}
   m_EdgeRadius: 0
 --- !u!50 &1644050586
 Rigidbody2D:
@@ -4351,7 +4351,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: trajectoryRandomFactor
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
@@ -5127,7 +5127,7 @@ PrefabInstance:
     - target: {fileID: 5284276950567280379, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
       propertyPath: trajectoryRandomFactor
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5284276950567280380, guid: 7038331fbe7b590459645a30e292ea16,
         type: 3}
