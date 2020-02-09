@@ -9,29 +9,29 @@ public class ChuckerBehavior : MonoBehaviour {
 	public Vector3 baseTrajectory;
 	public float trajectoryRandomFactor = 0.0f;
 
-    public GameObject[] trominoObjects;
     public GameObject[] tetrominoObjects;
+    public GameObject[] trominoObjects;
     public GameObject[] pentominoObjects;
     public GameObject octominoF;
 
     //game mode modifiers
 	
 	private GameObject toSpawn;
-	
-	public void Throw(string fireMode, bool rotate45){
 
-        if (fireMode.Equals("tetromino")) {
-            int pick = Random.Range(0, 7);
-            toSpawn = tetrominoObjects[pick];
-        }
-        else if (fireMode.Equals("tromino")) {
-            int pick = Random.Range(0, 2);
-            toSpawn = trominoObjects[pick];
-        }
-        else if (fireMode.Equals("pentomino")) {
-            int pick = Random.Range(0, 18);
-            toSpawn = pentominoObjects[pick];
-        }
+    public void Throw(string fireMode, bool rotate45){
+
+        if (fireMode.Equals("tetromino")) 
+            toSpawn = tetrominoObjects[Random.Range(0, 7)];
+        else if (fireMode.Equals("tromino")) 
+            toSpawn = trominoObjects[Random.Range(0, 2)];
+        else if (fireMode.Equals("pentomino"))
+            toSpawn = pentominoObjects[Random.Range(0, 18)];
+        else if (fireMode.Equals("all")) {
+            int set = Random.Range(0,3);
+            if (set == 0) toSpawn = tetrominoObjects[Random.Range(0, 7)];
+            else if (set == 1) toSpawn = trominoObjects[Random.Range(0, 2)];
+            else if (set == 2) toSpawn = pentominoObjects[Random.Range(0, 18)];
+         }
         else if (fireMode.Equals("university"))
             toSpawn = octominoF;
 		  

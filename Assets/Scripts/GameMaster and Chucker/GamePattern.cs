@@ -13,11 +13,11 @@ public class GamePattern : MonoBehaviour {
 
     //game mode variables
     public string fireMode;
-    public bool rotateBy45Degrees;
+    [HideInInspector] public bool rotateBy45Degrees;
 
     //chucker firing pattern variables
-    public float minWaitTime;
-    public float maxWaitTime;
+    [HideInInspector] public float minWaitTime;
+    [HideInInspector] public float maxWaitTime;
     private float maxWaitTimeStage2;
     private float maxWaitTimeStage3;
     private float timeOfNextFire;
