@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//https://answers.unity.com/questions/1174255/since-onlevelwasloaded-is-deprecated-in-540b15-wha.html
+public enum FireMode { tromino, tetromino, pentomino, all };
+
 public class PersistentSettings : MonoBehaviour {
 
-    public enum BlockMode {tromino, tetromino, pentomino, all};
+    public string fireMode;
+
+    //TODO APPLY THESE ON LOAD
+    public bool rotate45;
 
     // Start is called before the first frame update
     void Start() {
@@ -23,9 +27,22 @@ public class PersistentSettings : MonoBehaviour {
         SceneManager.sceneLoaded -= ApplyGameModeSettings;
     }
 
+    /* This function is called once upon game scene loading.
+     * 
+     */
     void ApplyGameModeSettings(Scene scene, LoadSceneMode mode) {
         Debug.Log("Loaded Scene: \"" + scene.name + "\" in mode: \"" + mode + "\"");
 
+        if (scene.name.Equals("Game")) {
+            Debug.Log("Beginning application of game scene settings.");
 
+            GamePattern gamePattern = GameObject.Find("GameMaster").GetComponent<GamePattern>();
+            gamePattern.fireMode = fireMode;
+            Debug.Log(">> Firemode set to \"" + fireMode + "\"");
+
+            gamePattern.rotateBy45Degrees = rotate45;
+            Debug.Log(">> 45 degree skew set to: " + rotate45);
+
+        }
     }
 }
