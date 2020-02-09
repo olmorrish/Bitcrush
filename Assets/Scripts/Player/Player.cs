@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
     //jump reset variables
     public LayerMask whatIsGround;
     public Transform groundChecker;
-    public float groundCheckerRadius = 0.05f;   //radius around ground marker to collision-check
+    public float groundCheckerRadius = 0.05f;
 	
 	// Use this for initialization
 	void Awake () {
@@ -116,11 +116,6 @@ public class Player : MonoBehaviour {
 
             //otherwise the player is not on ground and jump is not held down
             else {
-                jumpHeldDown = false;
-            }
-
-            //ensures falling players cannot jump
-            if (playerRB.velocity.y < 0) {
                 jumpHeldDown = false;
             }
         }
