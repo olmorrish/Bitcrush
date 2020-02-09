@@ -757,7 +757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266255850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1827037384}
@@ -4529,7 +4529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84cf95ebd4d5ecb4db5a7445c1a46366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionSpeedToExplode: 1
+  collisionSpeedToExplode: 0.5
   numPixels: 200
   pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   exploded: 0
@@ -4656,7 +4656,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   groundChecker: {fileID: 266255851}
-  groundCheckerRadius: 0.05
+  groundCheckerRadius: 0.15
 --- !u!1 &1868645201
 GameObject:
   m_ObjectHideFlags: 0

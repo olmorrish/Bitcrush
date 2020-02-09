@@ -161,4 +161,8 @@ public class Player : MonoBehaviour {
             playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce, ForceMode2D.Force);
         }
     }
+
+    private void OnDrawGizmos() {
+        Gizmos.DrawSphere(groundChecker.position, groundCheckerRadius);
+    }
 }
