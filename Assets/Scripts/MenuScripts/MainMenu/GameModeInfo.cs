@@ -14,6 +14,7 @@ public class GameModeInfo : MonoBehaviour {
 
     public GameObject universitySimButton;
     public GameObject slipperySlopesButton;
+    public GameObject upsideDownButton;
 
     public GameObject backButton;
 
@@ -38,6 +39,8 @@ public class GameModeInfo : MonoBehaviour {
             infoText.text = "THiS GAMEMODE iS A POiGNANT CRiTiQUE OF THE EDUCATiON SYSTEM.";
         else if (currentButton.Equals(slipperySlopesButton))
             infoText.text = "BLOCKS ARE ROTATED BY 45 DEGREES... WATCH YOUR STEP!";
+        else if (currentButton.Equals(upsideDownButton))
+            infoText.text = "THE ONLY WAY TO GET LESS THAN ZERO POiNTS. LUCKY YOU!";
         else if (currentButton.Equals(backButton))
             infoText.text = "RETURN TO MAiN MENU.";
         else

@@ -7,6 +7,7 @@ public class ScoreData : MonoBehaviour{
 
     private float height;
     [HideInInspector] public float hiScore;
+    [HideInInspector] public bool makeScoreNegative = false;
 
     public Text gameplayScore;
     public Text gameOverScore;
@@ -30,8 +31,15 @@ public class ScoreData : MonoBehaviour{
     }
 
     void PushNewHiScore(float score) {
-        gameplayScore.text = "SCORE: " + Mathf.Ceil(score).ToString();
-        gameOverScore.text = "FiNAL SCORE: " + Mathf.Ceil(score).ToString();
-        scoreLine.transform.position = new Vector3(0, score, 0);
+        if (makeScoreNegative) {
+            gameplayScore.text = "SCORE: -" + Mathf.Ceil(score).ToString();
+            gameOverScore.text = "FiNAL SCORE: -" + Mathf.Ceil(score).ToString();
+        }
+        else {
+            gameplayScore.text = "SCORE: " + Mathf.Ceil(score).ToString();
+            gameOverScore.text = "FiNAL SCORE: " + Mathf.Ceil(score).ToString();
+        }
+
+        scoreLine.transform.position = new Vector3(0, score, 0);    //don't need to change this; the game itself isn't different; the camera is just flipped!
     }
 }

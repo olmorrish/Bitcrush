@@ -69,7 +69,6 @@ public class Player : MonoBehaviour {
             jumpNotReleased = false;
 
         horizontalIn = Input.GetAxis("Horizontal");
-        Debug.Log("Current Horizontal Input: " + horizontalIn);
     }
 
     void FixedUpdate () {

@@ -100,6 +100,13 @@ public class MainMenu : MonoBehaviour {
         LoadGame();
     }
 
+    public void StartUpsideDownGame() {
+        SetDefaultSettings();   //default - overwrite any others below
+        settings.flipCamera = true;
+        settings.makeScoreNegative = true;
+        LoadGame();
+    }
+
     ///////////////////
     /// Support Methods
     ///////////////////
@@ -113,6 +120,8 @@ public class MainMenu : MonoBehaviour {
         settings.rotate45 = false;
         settings.minWaitTime = 0.4f;
         settings.maxWaitTime = 2.5f;
+        settings.flipCamera = false;
+        settings.makeScoreNegative = true;
     }
 
     private void LoadGame() {

@@ -7,10 +7,12 @@ public enum FireMode { tromino, tetromino, pentomino, all };
 
 public class PersistentSettings : MonoBehaviour {
 
-    public string fireMode;
-    public bool rotate45;
-    public float minWaitTime;
-    public float maxWaitTime;
+    [HideInInspector] public string fireMode;
+    [HideInInspector] public bool rotate45;
+    [HideInInspector] public float minWaitTime;
+    [HideInInspector] public float maxWaitTime;
+    [HideInInspector] public bool flipCamera;
+    [HideInInspector] public bool makeScoreNegative;
 
     // Start is called before the first frame update
     void Start() {
@@ -36,12 +38,24 @@ public class PersistentSettings : MonoBehaviour {
 
         if (scene.name.Equals("Game")) {
             Debug.Log("Beginning application of game scene settings.");
-            GamePattern gamePattern = GameObject.Find("GameMaster").GetComponent<GamePattern>();
 
-            gamePattern.fireMode = fireMode;                // firemode
-            gamePattern.rotateBy45Degrees = rotate45;       // roation 
-            gamePattern.minWaitTime = minWaitTime;          // min time between block throws
-            gamePattern.maxWaitTime = maxWaitTime;          // max time between block throws
+            GameObject gameMaster = GameObject.Find("GameMaster");
+
+            GamePattern gamePattern = gameMaster.GetComponent<GamePattern>();
+
+            gamePattern.fireMode = fireMode;                    // firemode
+            gamePattern.rotateBy45Degrees = rotate45;           // roation 
+            gamePattern.minWaitTime = minWaitTime;              // min time between block throws
+            gamePattern.maxWaitTime = maxWaitTime;              // max time between block throws
+
+            ScoreData scoreData = gameMaster.GetComponent<ScoreData>();
+            scoreData.makeScoreNegative = makeScoreNegative;
+
+            GameObject camera = GameObject.Find("Main Camera");
+            if (flipCamera)
+                camera.transform.eulerAngles = new Vector3(0, 0, 180);// = Quaternion.Euler(0, 0, 180f); ;
+            
+            
         }
     }
 }
