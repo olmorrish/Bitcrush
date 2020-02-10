@@ -2363,6 +2363,7 @@ MonoBehaviour:
   bitcrusherModeButton: {fileID: 1886043394}
   universitySimButton: {fileID: 1838852804}
   slipperySlopesButton: {fileID: 1810833004}
+  upsideDownButton: {fileID: 664036043}
   backButton: {fileID: 552141961}
 --- !u!114 &992356888
 MonoBehaviour:
@@ -2846,6 +2847,7 @@ MonoBehaviour:
   minWaitTime: 0
   maxWaitTime: 0
   flipCamera: 0
+  makeScoreNegative: 0
 --- !u!4 &1162775393
 Transform:
   m_ObjectHideFlags: 0

@@ -34,13 +34,16 @@ public class GameModeInfo : MonoBehaviour {
         else if (currentButton.Equals(pentominoModeButton))
             infoText.text = "PENTOMiNOS ONLY. CLiMBiNG iS MORE DiFFiCULT.";
         else if (currentButton.Equals(bitcrusherModeButton))
-            infoText.text = "HARD MODE. DODGE TROMiNOS, TETROMiNOS, AND PENTOMiNOS. BLOCKS APPEAR QUiCKLY.";
+            infoText.text = "HARD MODE. " +
+                "\n\nDODGE TROMiNOS, TETROMiNOS, AND PENTOMiNOS. BLOCKS APPEAR QUiCKLY.";
         else if (currentButton.Equals(universitySimButton))
             infoText.text = "THiS GAMEMODE iS A POiGNANT CRiTiQUE OF THE EDUCATiON SYSTEM.";
         else if (currentButton.Equals(slipperySlopesButton))
-            infoText.text = "BLOCKS ARE ROTATED BY 45 DEGREES... WATCH YOUR STEP!";
+            infoText.text = "BLOCKS ARE ROTATED BY 45 DEGREES. " +
+                "\n\nWATCH YOUR STEP!";
         else if (currentButton.Equals(upsideDownButton))
-            infoText.text = "THE ONLY WAY TO GET LESS THAN ZERO POiNTS. LUCKY YOU!";
+            infoText.text = "THE ONLY WAY TO GET LESS THAN ZERO POiNTS. " +
+                "\n\nLEFT/RiGHT CONTROLS ARE iNVERTED (Y'KNOW, FOR FUN, DEFiNiTELY NOT BECAUSE it WAS EASIER TO PROGRAM).";
         else if (currentButton.Equals(backButton))
             infoText.text = "RETURN TO MAiN MENU.";
         else

@@ -68,6 +68,7 @@ public class MainMenu : MonoBehaviour {
         SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "tromino";
         settings.maxWaitTime = 1.5f;
+        //settings.settingPalette = new BlockPalette("pastel");
         LoadGame();
     }
 	
@@ -78,7 +79,7 @@ public class MainMenu : MonoBehaviour {
         LoadGame();
     }
 
-    public void StartBiTCHRUSHERGame() {
+    public void StartBiTCRUSHERGame() {
         SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "all";
         settings.minWaitTime = 0.2f;
@@ -121,7 +122,8 @@ public class MainMenu : MonoBehaviour {
         settings.minWaitTime = 0.4f;
         settings.maxWaitTime = 2.5f;
         settings.flipCamera = false;
-        settings.makeScoreNegative = true;
+        settings.makeScoreNegative = false;
+        settings.settingPalette = new BlockPalette();   //default constructor
     }
 
     private void LoadGame() {

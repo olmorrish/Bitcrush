@@ -14,6 +14,7 @@ public class GamePattern : MonoBehaviour {
     //game mode variables
     public string fireMode;
     [HideInInspector] public bool rotateBy45Degrees;
+    [HideInInspector] public BlockPalette currentPalette;
 
     //chucker firing pattern variables
     [HideInInspector] public float minWaitTime;
@@ -44,7 +45,7 @@ public class GamePattern : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(!pause.isPaused && (timeOfNextFire < Time.time)) {   //time to fire!
-            chuckerFireScripts[Random.Range(0, chuckers.Length)].Throw(fireMode, rotateBy45Degrees);
+            chuckerFireScripts[Random.Range(0, chuckers.Length)].Throw(fireMode, rotateBy45Degrees, currentPalette);
 
             //reset timer based on progress
             if(scoreData.hiScore < 30)

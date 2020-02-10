@@ -18,7 +18,7 @@ public class ChuckerBehavior : MonoBehaviour {
 	
 	private GameObject toSpawn;
 
-    public void Throw(string fireMode, bool rotate45){
+    public void Throw(string fireMode, bool rotate45, BlockPalette blockPalette){
 
         if (fireMode.Equals("tetromino")) 
             toSpawn = tetrominoObjects[Random.Range(0, 7)];
@@ -41,28 +41,7 @@ public class ChuckerBehavior : MonoBehaviour {
         Vector3 trajectory = new Vector3(baseTrajectory.x + xtraj, baseTrajectory.y + ytraj, 0);
 
         //what color?
-        Color colour = new Color(0,0,0); 		
-		int tint = Random.Range(0, 8);
-		switch (tint) {
-			case 0: 
-				colour = new Color(0,1,0); break;
-			case 1: 
-				colour = new Color(1,0,1); break;
-			case 2: 
-				colour = new Color(1,0,0); break;
-			case 3: 
-				colour = new Color(0,0,1); break;
-			case 4: 
-				colour = new Color(1,1,0); break;
-			case 5: 
-				colour = new Color(1,150f/255f, 0); break;
-			case 6: 
-				colour = new Color(0, 1,150f/255f); break;
-			case 7: 
-				colour = new Color(150f/255f, 0, 1); break;
-			default:
-				colour = new Color(0,0,0); break;
-		  }
+        Color colour = blockPalette.palette[Random.Range(0, 8)]; 		
 
         //how much rotation?
         float rotation;
