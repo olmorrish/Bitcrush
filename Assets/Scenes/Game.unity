@@ -972,6 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hiScore: 0
+  makeScoreNegative: 0
   gameplayScore: {fileID: 674593841}
   gameOverScore: {fileID: 977535746}
   player: {fileID: 1827037376}
@@ -4641,8 +4642,8 @@ MonoBehaviour:
   inputMemoryLength: 0.075
   onGroundCanJump: 0
   jumpNotReleased: 0
-  jumpForce: 50
-  continuousJumpForce: 350
+  jumpForce: 55
+  continuousJumpForce: 360
   continuousJumpDecay: 25
   airControlMultiplier: 0
   airControlDecay: 0.001

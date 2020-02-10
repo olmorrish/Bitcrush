@@ -8,14 +8,14 @@ public class BlockPalette {
 
     //default constructor
     public BlockPalette() {
-        palette[0] = new Color(0, 1, 0, 255);
-        palette[1] = new Color(1, 0, 1, 255);
-        palette[2] = new Color(1, 0, 0, 255);
-        palette[3] = new Color(0, 0, 1, 255);
-        palette[4] = new Color(1, 1, 0, 255);
-        palette[5] = new Color(1, 128f/255f, 0, 255);
-        palette[6] = new Color(0, 1, 128f/255f, 255);
-        palette[7] = new Color(150f/255f, 0, 1, 255);
+        palette[0] = new Color(0, 1, 0, 255);           //green
+        palette[1] = new Color(1, 0, 1, 255);           //pink
+        palette[2] = new Color(1, 16f/255f, 0, 255);    //red
+        palette[3] = new Color(0, 128f/255f, 1, 255);   //blue
+        palette[4] = new Color(1, 1, 0, 255);           //yellow
+        palette[5] = new Color(1, 102f/255f, 0, 255);   //orange
+        palette[6] = new Color(0, 1, 191f/255f, 255);   //teal
+        palette[7] = new Color(191f/255f, 0, 1, 255);   //purple
     }
 
     //string arg constructor
