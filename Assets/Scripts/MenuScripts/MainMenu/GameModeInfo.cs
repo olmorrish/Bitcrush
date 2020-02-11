@@ -48,6 +48,6 @@ public class GameModeInfo : MonoBehaviour {
         else if (currentButton.Equals(backButton))
             infoText.text = "RETURN TO MAiN MENU.";
         else
-            infoText.text = "ERROR: Selection does not have a description. See GameModeInfo.cs";
+            infoText.text = "HEY DON'T CLiCK THiS ONE YET! OR DO, i'M HARD-CODED TEXT, NOT A COP.";
     }
 }
