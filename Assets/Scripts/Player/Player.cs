@@ -13,6 +13,8 @@ using UnityEngine;
  */
 public class Player : MonoBehaviour {
 
+    public bool slipperyJumpAllowed;    //bitcrush specific, assigned to bypass the low velocity requirement for slippery slopes mode
+
     //timing variables for button inputs
     private float jumpDownTrueUntil = -1f;       
     public float inputMemoryLength = 0.075f;     // time until a button input is forgotten
@@ -74,7 +76,8 @@ public class Player : MonoBehaviour {
     void FixedUpdate () {
         //jump reset check is only permitted if:
         //  (a) reset cooldown is done (b) reset is not already active (c) player is veritcally stationary
-        if ((Time.time > jumpResetBlockedUntil) && !onGroundCanJump && !(Mathf.Abs(playerRB.velocity.y) > 0.1f)) 
+        if ((Time.time > jumpResetBlockedUntil) && !onGroundCanJump && 
+            (   (!(Mathf.Abs(playerRB.velocity.y) > 0.1f)) || slipperyJumpAllowed)  )
             JumpResetCheck();
 
         ApplyVerticalPhysics();
@@ -102,6 +105,7 @@ public class Player : MonoBehaviour {
         if (Time.time > jumpDownTrueUntil) {  //Check if the jump button cooldown has expired. If so, reset it.
             jumpDownTrueUntil = -1f;
             jumpNotReleased = false;
+            playerAnim.SetBool("isBeginningJump", false); //bitcrush-specific
         }
 
         //process the jump input

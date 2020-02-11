@@ -9,11 +9,13 @@ public class PersistentSettings : MonoBehaviour {
 
     [HideInInspector] public string fireMode;
     [HideInInspector] public bool rotate45;
+    [HideInInspector] public bool slipperyJumpAllowed;
     [HideInInspector] public float minWaitTime;
     [HideInInspector] public float maxWaitTime;
     [HideInInspector] public bool flipCamera;
     [HideInInspector] public bool makeScoreNegative;
     [HideInInspector] public BlockPalette settingPalette;
+    
 
     // Start is called before the first frame update
     void Start() {
@@ -64,7 +66,8 @@ public class PersistentSettings : MonoBehaviour {
             else
                 cameraKillLine.transform.eulerAngles = new Vector3(0, 0, 0);    //need this line to reset when changing between gamemodes in same session
 
-
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+            player.slipperyJumpAllowed = slipperyJumpAllowed;
         }
     }
 }

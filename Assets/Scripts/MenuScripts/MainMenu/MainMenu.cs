@@ -98,6 +98,7 @@ public class MainMenu : MonoBehaviour {
     public void StartSlipperySlopesGame() {
         SetDefaultSettings();   //default - overwrite any others below
         settings.rotate45 = true;
+        settings.slipperyJumpAllowed = true;
         LoadGame();
     }
 
@@ -124,6 +125,7 @@ public class MainMenu : MonoBehaviour {
         settings.flipCamera = false;
         settings.makeScoreNegative = false;
         settings.settingPalette = new BlockPalette();   //default constructor
+        settings.slipperyJumpAllowed = false;           //TODO maybe remove?
     }
 
     private void LoadGame() {
