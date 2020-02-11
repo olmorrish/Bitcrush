@@ -53,11 +53,16 @@ public class PersistentSettings : MonoBehaviour {
             ScoreData scoreData = gameMaster.GetComponent<ScoreData>();
             scoreData.makeScoreNegative = makeScoreNegative;
 
-            GameObject camera = GameObject.Find("Main Camera");
+            GameObject cameraMain = GameObject.Find("Main Camera");
+            GameObject cameraKillLine = GameObject.Find("KillLine Camera");
             if (flipCamera)
-                camera.transform.eulerAngles = new Vector3(0, 0, 180);
+                cameraMain.transform.eulerAngles = new Vector3(0, 0, 180);
             else
-                camera.transform.eulerAngles = new Vector3(0, 0, 0);
+                cameraMain.transform.eulerAngles = new Vector3(0, 0, 0);    //need this line to reset when changing between gamemodes in same session
+            if (flipCamera)
+                cameraKillLine.transform.eulerAngles = new Vector3(0, 0, 180);
+            else
+                cameraKillLine.transform.eulerAngles = new Vector3(0, 0, 0);    //need this line to reset when changing between gamemodes in same session
 
 
         }
