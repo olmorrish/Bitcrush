@@ -28,22 +28,23 @@ public class GameModeInfo : MonoBehaviour {
         GameObject currentButton = EventSystem.current.currentSelectedGameObject;
 
         if (currentButton.Equals(normalModeButton))
-            infoText.text = "REGULAR BiTCRUSH! TETROMiNOS ONLY. YOU COULD HAVE CLiCKED THiS ON THE MAiN MENU!";
+            infoText.text = "REGULAR BiTCRUSH! TETROMiNOS ONLY. YOU COULD HAVE SELECTED THiS ON THE MAiN MENU!";
         else if (currentButton.Equals(trominoModeButton))
             infoText.text = "TROMiNOS ONLY. BLOCKS ARE SMALLER, BUT APPEAR MORE OFTEN.";
         else if (currentButton.Equals(pentominoModeButton))
-            infoText.text = "PENTOMiNOS ONLY. CLiMBiNG iS MORE DiFFiCULT.";
+            infoText.text = "PENTOMiNOS ONLY. BLOCKS ARE BiGGER AND CLiMBiNG iS MORE DiFFiCULT.";
         else if (currentButton.Equals(bitcrusherModeButton))
-            infoText.text = "HARD MODE. " +
-                "\n\nDODGE TROMiNOS, TETROMiNOS, AND PENTOMiNOS. BLOCKS APPEAR QUiCKLY.";
+            infoText.text = "HARD MODE! " +
+                "\n\nDODGE ALL THREE MAiN BLOCK TYPES: TROMiNOS, TETROMiNOS, AND PENTOMiNOS. " +
+                "\n\nBLOCKS APPEAR QUiCKLY.";
         else if (currentButton.Equals(universitySimButton))
             infoText.text = "THiS GAMEMODE iS A POiGNANT CRiTiQUE OF THE EDUCATiON SYSTEM.";
         else if (currentButton.Equals(slipperySlopesButton))
-            infoText.text = "BLOCKS ARE ROTATED BY 45 DEGREES. " +
+            infoText.text = "[EXPERiMENTAL!] BLOCKS ARE ROTATED BY 45 DEGREES. " +
                 "\n\nWATCH YOUR STEP!";
         else if (currentButton.Equals(upsideDownButton))
-            infoText.text = "THE ONLY WAY TO GET LESS THAN ZERO POiNTS. " +
-                "\n\nLEFT/RiGHT CONTROLS ARE iNVERTED \n(Y'KNOW, FOR FUN... DEFiNiTELY NOT BECAUSE iT WAS EASIER TO PROGRAM).";
+            infoText.text = "THE ONLY WAY TO GET LESS THAN ZERO POiNTS." +
+                "\n\nLEFT/RiGHT CONTROLS ARE iNVERTED \n(Y'KNOW, FOR FUN. DEFiNiTELY NOT BECAUSE iT WAS EASiER TO PROGRAM).";
         else if (currentButton.Equals(backButton))
             infoText.text = "RETURN TO MAiN MENU.";
         else
