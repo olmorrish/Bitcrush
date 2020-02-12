@@ -1082,6 +1082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2caacfddc4ea649bd16178066c3555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverMenu: {fileID: 1231062536}
   chuckers:
   - {fileID: 1716036338}
   - {fileID: 1276974475}
@@ -2357,6 +2358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   thePauseMenu: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1004985260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4619,6 +4621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1632a30b4e8dae74994b6cb41ce739dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boostEnabled: 1
   boostVelocity: 15
   cooldownLength: 10
   numPixels: 15
@@ -4793,17 +4796,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cbf0b2e87b3fe4994c685f00c48e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slipperyJumpAllowed: 0
-  inputMemoryLength: 0.075
   onGroundCanJump: 0
   jumpNotReleased: 0
+  slipperyJumpAllowed: 0
   jumpForce: 55
   continuousJumpForce: 360
   continuousJumpDecay: 25
-  airControlMultiplier: 0
   airControlDecay: 0.001
+  airControlMultiplier: 0
   jumpResetDeadZoneTime: 0.35
-  jumpResetBlockedUntil: 0
   fastFallEnabled: 0
   fastFallForce: 0
   horizontalForce: 900
