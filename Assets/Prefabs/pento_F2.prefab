@@ -146,7 +146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frozen: 0
-  frozenPos: {x: 0, y: 0, z: 0}
+  hitFX:
+  - {fileID: 0}
+  - {fileID: 0}
+  dullHueTolerance: 0.52
+  dullPercentageOnFreeze: 0.4
 --- !u!61 &61030485498330156
 BoxCollider2D:
   m_ObjectHideFlags: 0

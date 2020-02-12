@@ -201,3 +201,5 @@ MonoBehaviour:
   hitFX:
   - {fileID: 0}
   - {fileID: 0}
+  dullHueTolerance: 0.52
+  dullPercentageOnFreeze: 0.4

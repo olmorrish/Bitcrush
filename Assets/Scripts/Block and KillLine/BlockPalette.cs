@@ -38,7 +38,7 @@ public class BlockPalette {
             }
         }
 
-        else if (paletteMode.Equals("pseudorandom")) {     //oh no
+        else if (paletteMode.Equals("pseudorandom")) {
             for (int i = 0; i < 8; i++) {
                 palette[i] = new Color((Random.Range(20, 255) / 255f), (Random.Range(20, 255) / 255f), (Random.Range(20, 255) / 255f), 255);
             }
@@ -57,23 +57,23 @@ public class BlockPalette {
 
         else if (paletteMode.Equals("hot")) {
             palette[0] = new Color(252f / 255f, 252f / 255f, 12f / 255f, 255);     //yellow
-            palette[1] = new Color(252f / 255f, 200f, 12f / 255f, 255);
+            palette[1] = new Color(252f / 255f, 200f / 255f, 12f / 255f, 255);
             palette[2] = new Color(252f / 255f, 156f / 255f, 12f / 255f, 255);
             palette[3] = new Color(252f / 255f, 124f / 255f, 12f / 255f, 255);     //orange
             palette[4] = new Color(252f / 255f, 104f / 255f, 12f / 255f, 255);
             palette[5] = new Color(252f / 255f, 84f / 255f, 12f / 255f, 255);
-            palette[6] = new Color(252f / 255f, 60f, 12f / 255f, 255);
+            palette[6] = new Color(252f / 255f, 60f / 255f, 12f / 255f, 255);
             palette[7] = new Color(252f / 255f, 12f / 255f, 12f / 255f, 255);      //red
         }
 
         else if (paletteMode.Equals("cool")) {
             palette[0] = new Color(92f / 255f, 252f / 255f, 12f / 255f, 255);     //green
             palette[1] = new Color(12f / 255f, 252f / 255f, 32f / 255f, 255);
-            palette[2] = new Color(12f / 255f, 252f / 255f, 160f, 255);
+            palette[2] = new Color(12f / 255f, 252f / 255f, 160f / 255f, 255);
             palette[3] = new Color(12f / 255f, 244f / 255f, 252f / 255f, 255);     //blue
             palette[4] = new Color(12f / 255f, 184f / 255f, 252f / 255f, 255);
             palette[5] = new Color(12f / 255f, 136f / 255f, 252f / 255f, 255);
-            palette[6] = new Color(57f / 255f, 80f, 229f / 255f, 255);      //dark blue
+            palette[6] = new Color(57f / 255f, 80f / 255f, 229f / 255f, 255);      //dark blue
             palette[7] = new Color(117f / 255f, 57f / 255f, 229f / 255f, 255);     //purple      
         }
 

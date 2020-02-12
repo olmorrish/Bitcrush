@@ -28,9 +28,9 @@ public class Freezer : MonoBehaviour {
 			Freeze();
 		}
 	}
-	
-	
-	public void Freeze(){
+
+
+    public void Freeze(){
         frozen = true;
 
         hitFX[Random.Range(0, hitFX.Length - 1)].Play();
