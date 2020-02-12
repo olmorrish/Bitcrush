@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GamePattern : MonoBehaviour {
 
+    //gamestate references
+    public GameOverMenu gameOverMenu;
+
     //chucker variables
     private int framesToNextFire;
     public GameObject[] chuckers = new GameObject[4];
@@ -44,7 +47,7 @@ public class GamePattern : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!pause.isPaused && (timeOfNextFire < Time.time)) {   //time to fire!
+		if(!pause.isPaused && (timeOfNextFire < Time.time) /*&& !gameOverMenu.isGameOver*/) {   //time to fire!
             chuckerFireScripts[Random.Range(0, chuckers.Length)].Throw(fireMode, rotateBy45Degrees, currentPalette);
 
             //reset timer based on progress

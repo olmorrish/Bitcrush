@@ -13,33 +13,33 @@ using UnityEngine;
  */
 public class Player : MonoBehaviour {
 
-    public bool slipperyJumpAllowed;    //bitcrush specific, assigned to bypass the low velocity requirement for slippery slopes mode
-
     //timing variables for button inputs
     private float jumpDownTrueUntil = -1f;       
-    public float inputMemoryLength = 0.075f;     // time until a button input is forgotten
-    private float horizontalIn;                  // the horizontal input; updates each frame
+    private const float inputMemoryLength = 0.075f;     // time until a button input is forgotten
 
     //state booleans
-    public bool onGroundCanJump = false;
-    public bool jumpNotReleased = false;
+    [HideInInspector] public bool onGroundCanJump = false;
+    [HideInInspector] public bool jumpNotReleased = false;
+    [HideInInspector] public bool slipperyJumpAllowed;    //bitcrush-specific, assigned to bypass the low velocity requirement for slippery slopes mode
 
     //jump values
-    public float jumpForce = 15f;
-	public float continuousJumpForce = 250f;	    //force added by holding down the button
-	public float continuousJumpDecay = 15f;     //amount by which continuous force decreases each frame that jump is held
+    public float jumpForce = 55f;
+	public float continuousJumpForce = 360f;	    //force added by holding down the button
+	public float continuousJumpDecay = 25f;     //amount by which continuous force decreases each frame that jump is held
     private float maxContJumpForce;             //saves the initial value of the jumpForce so we can reset it
-    [HideInInspector] [Range(0, 1)] public float airControlMultiplier;
     public float airControlDecay = 0.001f;
+    [HideInInspector] [Range(0, 1)] public float airControlMultiplier;
 
     public float jumpResetDeadZoneTime = 0.75f;  //the time after jumping before a jump reset is permitted
-    public float jumpResetBlockedUntil;          //marks the time at which a jump reset is now okay 
+    private float jumpResetBlockedUntil;          //marks the time at which a jump reset is now okay 
 
     //fastfall mechanic variables
+    private float verticalIn;
     public bool fastFallEnabled = false;         //TODO allows player to increase fall-speed with "down" input
     public float fastFallForce;
 
     //horizontal movement variables
+    private float horizontalIn;                         // the horizontal input; updates each frame
     public float horizontalForce = 900f;
     public float maxHorizontalVelocity = 4f;
     [Range(0, 1)] public float groundDecelerationMultiplier = 0.7f;   //horizontal velocity is multiplied by this on each frame where no horiz input is given

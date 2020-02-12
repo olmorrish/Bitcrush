@@ -14,6 +14,17 @@ public static class UnityExtensions {
         return new Color(col32.r, col32.g, col32.b);    //rgb components are 0 to 1    
     }
 
+
+    //TODO setting constraints library?
+    //blockRB.constraints = RigidbodyConstraints2D.None;
+
+
+
+
+
+
+
+
     /*
      * tolerance is how near a hue must be to the highest RGB hue to be reduced (from 0 to 1)
      * dullStrength is the percentage by which relevant hues will be reduced

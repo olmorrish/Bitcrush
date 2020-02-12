@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Freezer : MonoBehaviour {
 
-	public bool frozen; //used to check when player collides - player explodes if not frozen
+	public bool hasntBeenFrozenYet;    
 
-    public AudioSource[] hitFX = new AudioSource[2];
+    private AudioSource[] hitFX = new AudioSource[2];
     private Rigidbody2D blockRB;
 
     private SpriteRenderer blockRend;
@@ -14,24 +14,24 @@ public class Freezer : MonoBehaviour {
     [Range(0, 1)] public float dullPercentageOnFreeze = 0.4f;
 
     void Awake () {
-        frozen = false;
+        hasntBeenFrozenYet = true;
 
 		blockRB = GetComponent<Rigidbody2D>();
         blockRend = GetComponent<SpriteRenderer>();
-        hitFX[0] = GameObject.Find("HitFX1").GetComponent<AudioSource>();
+        hitFX[0] = GameObject.Find("HitFX1").GetComponent<AudioSource>();   //find is required since objects are spawned dynamically
         hitFX[1] = GameObject.Find("HitFX2").GetComponent<AudioSource>();
     }
 	
 	void Update(){
         //if not moving, freeze
-		if(blockRB.velocity.magnitude < 0.01f && !frozen){
+		if(blockRB.velocity.magnitude < 0.01f && hasntBeenFrozenYet){
 			Freeze();
+            hasntBeenFrozenYet = false;
 		}
 	}
 
 
     public void Freeze(){
-        frozen = true;
 
         hitFX[Random.Range(0, hitFX.Length - 1)].Play();
 		blockRB.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -39,6 +39,10 @@ public class Freezer : MonoBehaviour {
 
         blockRend.color = GreyOut(blockRend.color, dullHueTolerance, dullPercentageOnFreeze);    //reduces hues within 52% of the highest hue to 40% of their value
     }	
+
+    public void UnFreeze() {
+        blockRB.constraints = RigidbodyConstraints2D.None;
+    }
 
     /*
      * tolerance is how near a hue must be to the highest RGB hue to be reduced (from 0 to 1)

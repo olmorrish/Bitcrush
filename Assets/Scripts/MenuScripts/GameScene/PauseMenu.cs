@@ -6,14 +6,19 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
 	public bool isPaused = false; 
-	public GameObject thePauseMenu; 
+	public GameObject thePauseMenu;
+
+    public GameObject player;
+    private Boost playerBoost;
 
 	// Use this for initialization
 	void Awake () {
 		thePauseMenu = GameObject.Find("PauseMenu");
 		thePauseMenu.SetActive(false);
 		Resume();
-	}
+
+        playerBoost = player.GetComponent<Boost>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,11 +37,13 @@ public class PauseMenu : MonoBehaviour {
 		thePauseMenu.SetActive(false);
 		Time.timeScale = 1f;
 		isPaused = false;
-	}
+        playerBoost.boostEnabled = true;
+    }
 
     public void Retry() {
         Resume();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        //playerBoost.boostEnabled = true;
     }
 
     public void Pause(){
@@ -44,7 +51,9 @@ public class PauseMenu : MonoBehaviour {
 		thePauseMenu.SetActive(true);
 		Time.timeScale = 0f;
 		isPaused = true;
-	}
+        playerBoost.boostEnabled = false;
+
+    }
 
 	
 	public void Exit(){

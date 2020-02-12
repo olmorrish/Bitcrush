@@ -4620,7 +4620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostVelocity: 15
-  cooldownLength: 15
+  cooldownLength: 10
   numPixels: 15
   inputMemoryLength: 0.075
   boostReady: 0
@@ -4804,6 +4804,8 @@ MonoBehaviour:
   airControlDecay: 0.001
   jumpResetDeadZoneTime: 0.35
   jumpResetBlockedUntil: 0
+  fastFallEnabled: 0
+  fastFallForce: 0
   horizontalForce: 900
   maxHorizontalVelocity: 4
   groundDecelerationMultiplier: 0.7

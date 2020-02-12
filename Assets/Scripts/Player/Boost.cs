@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boost : MonoBehaviour {
 
-
+    public bool boostEnabled = true; //disabled by pause and gameover menus
 
     //behaviour values
     public float boostVelocity = 15f;
@@ -27,10 +27,12 @@ public class Boost : MonoBehaviour {
 	
 	// Use this for initialization
 	void Awake () {
+        boostEnabled = true;
+
 		playerRB = GetComponent<Rigidbody2D>();
 		player = GetComponent<Player>();
 		
-		cooldownDoneTime = Time.time + cooldownLength;    //set the point where the cooldown will be done
+		cooldownDoneTime = Time.time;    //player immediately has boost
         boostReady = false;
 	}
 	
@@ -52,7 +54,7 @@ public class Boost : MonoBehaviour {
     private void FixedUpdate() {
         if (Time.time > boostDownTrueUntil)  //Check if the boost button cooldown has expired. If so, reset it.
             boostDownTrueUntil = -1f;
-        else if (boostReady) {
+        else if (boostReady && boostEnabled) {
             ApplyBoost();
             SpawnBoostConfetti();
         }

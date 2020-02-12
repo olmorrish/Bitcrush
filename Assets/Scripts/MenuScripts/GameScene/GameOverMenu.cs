@@ -14,15 +14,17 @@ public class GameOverMenu : MonoBehaviour {
 	private PlayerExplodesIntoPixels exploder;
     public GameObject musicObject;
 	private AudioSource musicTrack;
+    private Boost playerBoost;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		theGameOverMenu = GameObject.Find("GameOverMenu");                      //thanks, past me - don't know how this works but it does
 		thePauseMenu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
 		theGameOverMenu.SetActive(false);
 
 		exploder = player.GetComponent<PlayerExplodesIntoPixels>();
-		musicTrack = musicObject.GetComponent<AudioSource>();
+        playerBoost = player.GetComponent<Boost>();
+        musicTrack = musicObject.GetComponent<AudioSource>();
 		
 		isGameOver = false;
 	}
@@ -46,7 +48,16 @@ public class GameOverMenu : MonoBehaviour {
 	public void GameOver(){
 		theGameOverMenu.SetActive(true);
 		musicTrack.volume = (0.5f) * musicTrack.volume;
-		//Time.timeScale = 0f;
+        //Time.timeScale = 0f;
+
+        playerBoost.boostEnabled = false;
+
+        GameObject[] allBlocksInScene = GameObject.FindGameObjectsWithTag("Block");
+
+        Debug.Log("GameOver sequence started. " + allBlocksInScene.Length + " blocks gathered.");
+        foreach (GameObject block in allBlocksInScene) {
+            block.GetComponent<Freezer>().UnFreeze();
+        }
 	}
 	
 	/*
@@ -54,8 +65,10 @@ public class GameOverMenu : MonoBehaviour {
 	 */
 	public void Retry(){
 		theGameOverMenu.SetActive(false);
-		//Time.timeScale = 1f;
-		isGameOver = false;
+        //Time.timeScale = 1f;
+
+        //playerBoost.boostEnabled = true;
+        isGameOver = false;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
 	}
 	
@@ -64,6 +77,6 @@ public class GameOverMenu : MonoBehaviour {
 	 */
 	public void Exit(){
 		isGameOver = false;
-		SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 	}
 }
