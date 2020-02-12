@@ -4793,6 +4793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cbf0b2e87b3fe4994c685f00c48e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slipperyJumpAllowed: 0
   inputMemoryLength: 0.075
   onGroundCanJump: 0
   jumpNotReleased: 0

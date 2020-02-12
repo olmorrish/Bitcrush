@@ -124,7 +124,7 @@ public class MainMenu : MonoBehaviour {
         settings.maxWaitTime = 2.5f;
         settings.flipCamera = false;
         settings.makeScoreNegative = false;
-        settings.settingPalette = new BlockPalette("pastel");   //default constructor
+        settings.settingPalette = new BlockPalette();   //default constructor
         settings.slipperyJumpAllowed = false;           //TODO maybe remove?
     }
 
