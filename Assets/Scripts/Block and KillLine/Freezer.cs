@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Freezer : MonoBehaviour {
 
-	public bool hasntBeenFrozenYet;    
+	public bool hasntBeenFrozenYet;
 
-    private AudioSource[] hitFX = new AudioSource[2];
+    private AudioSource hitFX;
     private Rigidbody2D blockRB;
 
     private SpriteRenderer blockRend;
@@ -18,8 +18,7 @@ public class Freezer : MonoBehaviour {
 
 		blockRB = GetComponent<Rigidbody2D>();
         blockRend = GetComponent<SpriteRenderer>();
-        hitFX[0] = GameObject.Find("HitFX1").GetComponent<AudioSource>();   //find is required since objects are spawned dynamically
-        hitFX[1] = GameObject.Find("HitFX2").GetComponent<AudioSource>();
+        hitFX = GameObject.Find("HitFX").GetComponent<AudioSource>();   //find is required since objects are spawned dynamically
     }
 	
 	void Update(){
@@ -33,7 +32,7 @@ public class Freezer : MonoBehaviour {
 
     public void Freeze(){
 
-        hitFX[Random.Range(0, hitFX.Length - 1)].Play();
+        hitFX.Play();
 		blockRB.constraints = RigidbodyConstraints2D.FreezeAll;
 		blockRB.velocity = Vector3.zero;
 

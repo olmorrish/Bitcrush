@@ -56,6 +56,7 @@ public class GameOverMenu : MonoBehaviour {
 
         foreach (GameObject block in allBlocksInScene) {
             block.GetComponent<Freezer>().UnFreeze();
+            block.GetComponent<Freezer>().hasntBeenFrozenYet = false;    //stops them from freezing for a first time after gameover
         }
 	}
 	
