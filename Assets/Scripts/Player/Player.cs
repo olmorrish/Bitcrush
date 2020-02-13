@@ -74,6 +74,7 @@ public class Player : MonoBehaviour {
             jumpNotReleased = false;
 
         horizontalIn = Input.GetAxis("Horizontal");
+        verticalIn = Input.GetAxis("Vertical");
     }
 
     void FixedUpdate () {
@@ -81,7 +82,8 @@ public class Player : MonoBehaviour {
             ((!(Mathf.Abs(playerRB.velocity.y) > 0.1f)) || slipperyJumpAllowed))        //  (a) reset cooldown is done (b) reset is not already active (c) player is veritcally stationary
             JumpResetCheck();
 
-        ApplyVerticalPhysics();
+        ApplyJumpPhysics();
+        ApplyVerticalPhysics(verticalIn);
         ApplyHorizontalPhysics(horizontalIn);
 	}
 
@@ -99,7 +101,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void ApplyVerticalPhysics() {
+    private void ApplyJumpPhysics() {
 
         if (Time.time > jumpDownTrueUntil) {  //Check if the jump button cooldown has expired. If so, reset it.
             jumpDownTrueUntil = -1f;
@@ -114,7 +116,7 @@ public class Player : MonoBehaviour {
                 Debug.Log("Beginning a new jump.");
                 onGroundCanJump = false;
                 jumpNotReleased = true;
-                playerRB.AddForce(new Vector3(0, 1.0f, 0) * jumpForce, ForceMode2D.Impulse);
+                playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 jumpResetBlockedUntil = Time.time + jumpResetDeadZoneTime;      //stop a jump reset for a while after jumping
 
                 playerAnim.SetBool("isBeginningJump", true); //bitcrush-specific
@@ -123,7 +125,7 @@ public class Player : MonoBehaviour {
 
             //hold to jump higher
             else if (!onGroundCanJump && jumpNotReleased) {
-                playerRB.AddForce(new Vector3(0, 1.0f, 0) * continuousJumpForce, ForceMode2D.Force);
+                playerRB.AddForce(Vector2.up * continuousJumpForce, ForceMode2D.Force);
                 playerAnim.SetBool("isBeginningJump", false); //bitcrush-specific
 
                 if (continuousJumpForce <= 0) {
@@ -141,13 +143,18 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private void ApplyVerticalPhysics(float verticalIn) {
+        //if (!onGroundCanJump)
+        //    playerRB.AddForce(Vector2.down)
+    }
+
     private void ApplyHorizontalPhysics(float horizontalIn) {
         
         //apply physics
         if (!onGroundCanJump)
-            playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce * horizontalIn * airControlMultiplier, ForceMode2D.Force);
+            playerRB.AddForce(Vector2.right * horizontalForce * horizontalIn * airControlMultiplier, ForceMode2D.Force);
         else
-            playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce * horizontalIn, ForceMode2D.Force);
+            playerRB.AddForce(Vector2.right * horizontalForce * horizontalIn, ForceMode2D.Force);
 
         //slow the player if they are giving no input
         //  makes movement "snappier"
@@ -169,10 +176,10 @@ public class Player : MonoBehaviour {
 
         // Restrict Horizontal Velocity
         if (playerRB.velocity.x > maxHorizontalVelocity) {
-            playerRB.AddForce((new Vector3(-1, 0, 0)) * horizontalForce, ForceMode2D.Force);
+            playerRB.AddForce(Vector2.left * horizontalForce, ForceMode2D.Force);
         }
         else if (playerRB.velocity.x < -maxHorizontalVelocity) {
-            playerRB.AddForce((new Vector3(1, 0, 0)) * horizontalForce, ForceMode2D.Force);
+            playerRB.AddForce(Vector2.right * horizontalForce, ForceMode2D.Force);
         }
     }
 

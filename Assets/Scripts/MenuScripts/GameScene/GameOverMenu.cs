@@ -48,13 +48,12 @@ public class GameOverMenu : MonoBehaviour {
 	public void GameOver(){
 		theGameOverMenu.SetActive(true);
 		musicTrack.volume = (0.5f) * musicTrack.volume;
-        //Time.timeScale = 0f;
+        //Time.timeScale = 0.5f;
 
         playerBoost.boostEnabled = false;
 
         GameObject[] allBlocksInScene = GameObject.FindGameObjectsWithTag("Block");
 
-        Debug.Log("GameOver sequence started. " + allBlocksInScene.Length + " blocks gathered.");
         foreach (GameObject block in allBlocksInScene) {
             block.GetComponent<Freezer>().UnFreeze();
         }
