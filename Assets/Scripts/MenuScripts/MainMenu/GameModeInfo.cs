@@ -44,10 +44,10 @@ public class GameModeInfo : MonoBehaviour {
                 "\n\nWATCH YOUR STEP!";
         else if (currentButton.Equals(upsideDownButton))
             infoText.text = "THE ONLY WAY TO GET LESS THAN ZERO POiNTS." +
-                "\n\nLEFT/RiGHT CONTROLS ARE iNVERTED \n(Y'KNOW, FOR FUN. DEFiNiTELY NOT BECAUSE iT WAS EASiER TO PROGRAM).";
+                "\n\nLEFT/RiGHT CONTROLS ARE iNVERTED.";
         else if (currentButton.Equals(backButton))
             infoText.text = "RETURN TO MAiN MENU.";
         else
-            infoText.text = "HEY DON'T CLiCK THiS ONE YET! OR DO, i'M HARD-CODED TEXT, NOT A COP.";
+            infoText.text = "Gamemode info text is not available.";
     }
 }

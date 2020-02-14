@@ -55,7 +55,6 @@ public class Player : MonoBehaviour {
     public Transform groundChecker;
     public float groundCheckerRadius = 0.05f;
 
-
 	// Use this for initialization
 	void Awake () {
         onGroundCanJump = false;

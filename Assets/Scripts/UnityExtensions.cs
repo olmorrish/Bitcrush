@@ -25,26 +25,26 @@ public static class UnityExtensions {
 
 
 
-    /*
+    /* IS BROKE
      * tolerance is how near a hue must be to the highest RGB hue to be reduced (from 0 to 1)
      * dullStrength is the percentage by which relevant hues will be reduced
      */
-    //private static Color GreyOut(Color c, float tolerance, float dullStrength) {
+    private static Color DullHue(this SpriteRenderer initial, float tolerance, float dullStrength) {
 
-    //    float[] hueValues = new float[3];   //colour mod is done in-place in this array
-    //    hueValues[0] = c.r;
-    //    hueValues[1] = c.g;
-    //    hueValues[2] = c.b;
+        float[] hueValues = new float[3];   //colour mod is done in-place in this array
+        hueValues[0] = initial.color.r;
+        hueValues[1] = initial.color.g;
+        hueValues[2] = initial.color.b;
 
-    //    float maxHue = Mathf.Max(hueValues);
+        float maxHue = Mathf.Max(hueValues);
 
-    //    for (int i = 0; i < 3; i++) {
-    //        float offsetFromMaxHue = Mathf.Abs(maxHue - hueValues[i]);
-    //        if (offsetFromMaxHue <= tolerance) {
-    //            hueValues[i] = (hueValues[i] * (1 - dullStrength));     //if the hue is within a certain range of the highest hue, dull it
-    //        }
-    //    }
+        for (int i = 0; i < 3; i++) {
+            float offsetFromMaxHue = Mathf.Abs(maxHue - hueValues[i]);
+            if (offsetFromMaxHue <= tolerance) {
+                hueValues[i] = (hueValues[i] * (1 - dullStrength));     //if the hue is within a certain range of the highest hue, dull it
+            }
+        }
 
-    //    return new Color(hueValues[0], hueValues[1], hueValues[2]);
-    //}
+        return new Color(hueValues[0], hueValues[1], hueValues[2]);
+    }
 }
