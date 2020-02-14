@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerExplodesIntoPixels : MonoBehaviour {
 
 	public float collisionSpeedToExplode = 1f;
-	public int numPixels= 25;
 	public GameObject pixel;
 	public bool exploded;
 	
@@ -17,8 +16,11 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
     public GameObject killLine;
     private Collider2D killLineCollider;
 
-	// Use this for initialization
-	void Awake () {
+    public GameObject gameMaster;
+    private GamePattern gameMasterPattern;
+
+    // Use this for initialization
+    void Awake () {
 		playerCollider = GetComponent<Collider2D>();
 		playerRenderer = GetComponent<SpriteRenderer>();
 		playerRB = GetComponent<Rigidbody2D>();
@@ -26,9 +28,11 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
         killLineCollider = killLine.GetComponent<Collider2D>();
 
 		exploded = false;
-	}
 
-	void OnCollisionEnter2D(Collision2D collision){
+        gameMasterPattern = gameMaster.GetComponent<GamePattern>();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
 		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedToExplode){
 			Explode();
 		}
@@ -50,12 +54,9 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 		if(!exploded){
 			exploded = true;
             explodeFX.Play();
-			
-			for(int i = 0; i<numPixels; i++){
-				GameObject pixelClone = (GameObject) Instantiate(pixel, transform.position, transform.rotation);
-				pixelClone.GetComponent<PixelBurstBehavior>().Fling();
-				pixelClone.GetComponent<Rigidbody2D>().AddForce(playerRB.velocity * -0.2f, ForceMode2D.Impulse);	//adds an impulse based on player velocity at time of death
-			}
+
+
+            gameMasterPattern.SpawnPixels(playerRB.position, Vector2.up, 10f, 35);
 			
 			playerCollider.enabled = false;
 			playerRenderer.enabled = false;

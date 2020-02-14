@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour {
 		thePauseMenu.SetActive(false);
 		Time.timeScale = 1f;
 		isPaused = false;
-        playerBoost.boostEnabled = true;
+        //playerBoost.boostEnabled = true;
     }
 
     public void Retry() {

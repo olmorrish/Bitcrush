@@ -6,6 +6,7 @@ public class GamePattern : MonoBehaviour {
 
     //gamestate references
     public GameOverMenu gameOverMenu;
+    public GameObject pixelObj;
 
     //chucker variables
     private int framesToNextFire;
@@ -74,4 +75,21 @@ public class GamePattern : MonoBehaviour {
         }
         
     }
+
+    public void SpawnPixels(Vector2 where, Vector2 whichDirection, float randomFactor, int howMany) {
+        for (int i = 0; i < howMany; i++) {
+            GameObject pixelClone = (GameObject)Instantiate(pixelObj, where, transform.rotation);
+
+            //decide colour of pixel
+            Color pixColor = currentPalette.palette[Random.Range(0,7)];
+            pixelClone.GetComponent<SpriteRenderer>().color = pixColor;
+
+            //decide where the pixel is flying
+            float xtraj = whichDirection.x + Random.Range(-randomFactor, randomFactor);
+            float ytraj = whichDirection.y + Random.Range(-randomFactor, randomFactor);
+            Vector3 trajectory = new Vector2(xtraj, ytraj);
+            pixelClone.GetComponent<Rigidbody2D>().AddForce(trajectory, ForceMode2D.Impulse);
+        }
+    }
 }
+

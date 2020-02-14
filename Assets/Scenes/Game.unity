@@ -957,6 +957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverMenu: {fileID: 1231062536}
+  pixelObj: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   chuckers:
   - {fileID: 1716036338}
   - {fileID: 1276974475}
@@ -4183,6 +4184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1632a30b4e8dae74994b6cb41ce739dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMaster: {fileID: 572780244}
   boostEnabled: 1
   boostVelocity: 15
   cooldownLength: 10
@@ -4249,11 +4251,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionSpeedToExplode: 0.5
-  numPixels: 200
   pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   exploded: 0
   explodeFX: {fileID: 215242075}
   killLine: {fileID: 1644050581}
+  gameMaster: {fileID: 572780244}
 --- !u!50 &1827037381
 Rigidbody2D:
   serializedVersion: 4
@@ -4358,6 +4360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cbf0b2e87b3fe4994c685f00c48e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMaster: {fileID: 572780244}
   onGroundCanJump: 0
   jumpNotReleased: 0
   slipperyJumpAllowed: 0
@@ -4369,7 +4372,6 @@ MonoBehaviour:
   jumpResetDeadZoneTime: 0.35
   fastFallEnabled: 1
   fastFallForce: 9999
-  pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   horizontalForce: 900
   maxHorizontalVelocity: 4.5
   groundDecelerationMultiplier: 0.7

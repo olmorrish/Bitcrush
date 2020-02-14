@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Boost : MonoBehaviour {
 
+    public GameObject gameMaster;          
+    private GamePattern gameMasterPattern;  
+
     public bool boostEnabled = true; //disabled by pause and gameover menus
 
     //behaviour values
@@ -34,7 +37,9 @@ public class Boost : MonoBehaviour {
 		
 		cooldownDoneTime = Time.time;    //player immediately has boost
         boostReady = false;
-	}
+
+        gameMasterPattern = gameMaster.GetComponent<GamePattern>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -56,7 +61,7 @@ public class Boost : MonoBehaviour {
             boostDownTrueUntil = -1f;
         else if (boostReady && boostEnabled) {
             ApplyBoost();
-            SpawnBoostConfetti();
+            gameMasterPattern.SpawnPixels(playerRB.position, Vector2.down, 2f, 15);
         }
     }
 
@@ -71,12 +76,4 @@ public class Boost : MonoBehaviour {
         player.onGroundCanJump = false;
         player.jumpNotReleased = true;     
 	}
-
-    private void SpawnBoostConfetti() {
-        for (int i = 0; i < numPixels; i++) {
-            GameObject pixelClone = (GameObject)Instantiate(pixel, transform.position, transform.rotation);
-            pixelClone.GetComponent<PixelBurstBehavior>().Fling();
-            pixelClone.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, -1f, 0), ForceMode2D.Impulse);   //adds an impulse
-        }
-    }
 }

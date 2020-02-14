@@ -13,6 +13,9 @@ using UnityEngine;
  */
 public class Player : MonoBehaviour {
 
+    public GameObject gameMaster;          //bitcrush-specific
+    private GamePattern gameMasterPattern;  //bitcrush-specific
+
     //timing variables for button inputs
     private float jumpDownTrueUntil = -1f;       
     private const float inputMemoryLength = 0.075f;     // time until a button input is forgotten
@@ -37,7 +40,6 @@ public class Player : MonoBehaviour {
     private float verticalIn;
     public bool fastFallEnabled = false;         //TODO allows player to increase fall-speed with "down" input
     public float fastFallForce;
-    public GameObject pixel;
 
     //horizontal movement variables
     private float horizontalIn;                         // the horizontal input; updates each frame
@@ -65,6 +67,8 @@ public class Player : MonoBehaviour {
         maxContJumpForce = continuousJumpForce;
 		playerRB = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
+
+        gameMasterPattern = gameMaster.GetComponent<GamePattern>();
     }
 
     void Update() {
@@ -96,7 +100,6 @@ public class Player : MonoBehaviour {
         if (groundCollisions.Length > 0) {
             onGroundCanJump = true;
             continuousJumpForce = maxContJumpForce;
-            Debug.Log("Jump has been reset.");
             jumpResetBlockedUntil = Time.time + jumpResetDeadZoneTime; //set the point at which a jump reset may occur again
         }
     }
@@ -113,7 +116,6 @@ public class Player : MonoBehaviour {
         else {
             //begin to jump condition
             if (onGroundCanJump /*&& !jumpHeldDown*/) {
-                Debug.Log("Beginning a new jump.");
                 onGroundCanJump = false;
                 jumpNotReleased = true;
                 playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -147,7 +149,7 @@ public class Player : MonoBehaviour {
         //to fastfall, player must be in the air and not holding "Jump"
         if (fastFallEnabled && (verticalIn < 0) && !onGroundCanJump && jumpDownTrueUntil < Time.time) {
             playerRB.AddForce(Vector2.down * fastFallForce * (-verticalIn), ForceMode2D.Force);
-            SpawnBoostConfetti();
+            gameMasterPattern.SpawnPixels(playerRB.position, Vector2.up, 2f, 2);
         }
     }
 
@@ -190,11 +192,4 @@ public class Player : MonoBehaviour {
         Gizmos.DrawSphere(groundChecker.position, groundCheckerRadius);
     }
 
-    private void SpawnBoostConfetti() {
-        for (int i = 0; i < 5; i++) {
-            GameObject pixelClone = (GameObject)Instantiate(pixel, transform.position, transform.rotation);
-            pixelClone.GetComponent<PixelBurstBehavior>().Fling();
-            pixelClone.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, 1f, 0), ForceMode2D.Impulse);   //adds an impulse
-        }
-    }
 }
