@@ -13,14 +13,17 @@ public class MainMenu : MonoBehaviour {
     public Button mainMenuDefaultButton;
     public GameObject gameModesCanvas;
     public Button gameModesDefaultButton;
-    public GameObject customGamesCanvas;
-    public Button customGamesDefaultButton;
+    public GameObject optionsCanvas;
+    public Button optionsDefaultButton;
+    public GameObject paletteSelectionCanvas;
+    public Button paletteSelectionDefaultButton;
 
     private void Start() {
         settings = settingsObject.GetComponent<PersistentSettings>();
         mainMenuCanvas.SetActive(true);
         gameModesCanvas.SetActive(false);
-        customGamesCanvas.SetActive(false);
+        optionsCanvas.SetActive(false);
+        paletteSelectionCanvas.SetActive(false);
         mainMenuDefaultButton.Select();
     }
 
@@ -32,7 +35,7 @@ public class MainMenu : MonoBehaviour {
         Debug.Log("Going to main menu.");
         mainMenuCanvas.SetActive(true);
         gameModesCanvas.SetActive(false);
-        customGamesCanvas.SetActive(false);
+        optionsCanvas.SetActive(false);
         mainMenuDefaultButton.Select();
     }
 
@@ -40,16 +43,27 @@ public class MainMenu : MonoBehaviour {
         Debug.Log("Going to game modes menu.");
         gameModesCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
-        customGamesCanvas.SetActive(false);
+        //optionsCanvas.SetActive(false);
+        //paletteSelectionCanvas.SetActive(false);
         gameModesDefaultButton.Select();
     }
 
-    public void ToCustomGamesCanvas() {
-        Debug.Log("Going to custom games menu.");
+    public void ToOptionsCanvas() {
+        Debug.Log("Going to options menu.");
+        mainMenuCanvas.SetActive(false);
+        //gameModesCanvas.SetActive(false);
+        optionsCanvas.SetActive(true);
+        paletteSelectionCanvas.SetActive(false);
+        optionsDefaultButton.Select();
+    }
+
+    public void ToPaletteSelectionCanvas() {
+        Debug.Log("Going to palette selection menu.");
         mainMenuCanvas.SetActive(false);
         gameModesCanvas.SetActive(false);
-        customGamesCanvas.SetActive(true);
-        customGamesDefaultButton.Select();
+        optionsCanvas.SetActive(false);
+        paletteSelectionCanvas.SetActive(true);
+        paletteSelectionDefaultButton.Select();
     }
 
     ///////////////////
