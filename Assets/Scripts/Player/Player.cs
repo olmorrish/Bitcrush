@@ -37,6 +37,7 @@ public class Player : MonoBehaviour {
     private float verticalIn;
     public bool fastFallEnabled = false;         //TODO allows player to increase fall-speed with "down" input
     public float fastFallForce;
+    public GameObject pixel;
 
     //horizontal movement variables
     private float horizontalIn;                         // the horizontal input; updates each frame
@@ -143,8 +144,11 @@ public class Player : MonoBehaviour {
     }
 
     private void ApplyVerticalPhysics(float verticalIn) {
-        //if (!onGroundCanJump)
-        //    playerRB.AddForce(Vector2.down)
+        //to fastfall, player must be in the air and not holding "Jump"
+        if (fastFallEnabled && (verticalIn < 0) && !onGroundCanJump && jumpDownTrueUntil < Time.time) {
+            playerRB.AddForce(Vector2.down * fastFallForce * (-verticalIn), ForceMode2D.Force);
+            SpawnBoostConfetti();
+        }
     }
 
     private void ApplyHorizontalPhysics(float horizontalIn) {
@@ -184,5 +188,13 @@ public class Player : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.DrawSphere(groundChecker.position, groundCheckerRadius);
+    }
+
+    private void SpawnBoostConfetti() {
+        for (int i = 0; i < 5; i++) {
+            GameObject pixelClone = (GameObject)Instantiate(pixel, transform.position, transform.rotation);
+            pixelClone.GetComponent<PixelBurstBehavior>().Fling();
+            pixelClone.GetComponent<Rigidbody2D>().AddForce(new Vector3(0, 1f, 0), ForceMode2D.Impulse);   //adds an impulse
+        }
     }
 }

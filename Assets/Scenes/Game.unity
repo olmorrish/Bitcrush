@@ -4367,8 +4367,9 @@ MonoBehaviour:
   airControlDecay: 0.001
   airControlMultiplier: 0
   jumpResetDeadZoneTime: 0.35
-  fastFallEnabled: 0
-  fastFallForce: 0
+  fastFallEnabled: 1
+  fastFallForce: 9999
+  pixel: {fileID: 1153986546684000, guid: b44a07c9a726ef646bbdd664b7aedea9, type: 3}
   horizontalForce: 900
   maxHorizontalVelocity: 4.5
   groundDecelerationMultiplier: 0.7
