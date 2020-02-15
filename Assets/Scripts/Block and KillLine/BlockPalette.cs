@@ -20,7 +20,12 @@ public class BlockPalette {
 
     //string arg constructor
     public BlockPalette(string paletteMode) {
-        if (paletteMode.Equals("white")) {
+
+        if (paletteMode.Equals("default")) {
+            palette = new BlockPalette().palette;
+        }
+
+        else if (paletteMode.Equals("white")) {
             for (int i = 0; i < 8; i++) {
                 palette[i] = new Color(1, 1, 1, 255);
             }
@@ -83,7 +88,7 @@ public class BlockPalette {
         }
 
         else if (paletteMode.Equals("retrowave")) {
-            palette[0] = new Color(249f / 255f, 200f / 14f, 230f / 255f, 255);  //yellow
+            palette[0] = new Color(252f / 255f, 200f / 252f, 12f / 255f, 255);  //yellow
             palette[1] = new Color(255f / 255f, 67f / 255f, 101f / 255f, 255);  //off-red
             palette[2] = new Color(84f / 255f, 13f / 255f, 110f / 255f, 255);   //deep purple
             palette[3] = new Color(121f / 255f, 30f / 255f, 148f / 255f, 255);  //purple
@@ -138,6 +143,6 @@ public class BlockPalette {
         }
 
         else
-            Debug.LogError("Attempted to designate invalid BlockPalette palette.");
+            Debug.LogError("Attempted to designate invalid BlockPalette palette: \"" + paletteMode + "\".");
     }
 }

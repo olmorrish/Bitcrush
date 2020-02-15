@@ -18,8 +18,13 @@ public class MainMenu : MonoBehaviour {
     public GameObject paletteSelectionCanvas;
     public Button paletteSelectionDefaultButton;
 
+    public GameObject palettePreviewHandler;
+    private PalettePreview palettePreview;
+
     private void Start() {
         settings = settingsObject.GetComponent<PersistentSettings>();
+        palettePreview = palettePreviewHandler.GetComponent<PalettePreview>();
+
         mainMenuCanvas.SetActive(true);
         gameModesCanvas.SetActive(false);
         optionsCanvas.SetActive(false);
@@ -132,33 +137,43 @@ public class MainMenu : MonoBehaviour {
 
     public void PaletteOverrideDefault() {
         settings.optionOverridePalette = null;  //will use the default for the gamemode instead
+        palettePreview.SetPreviewPalette("default");
     }
     public void PaletteOverridePastel() {
         settings.optionOverridePalette = new BlockPalette("pastel");
+        palettePreview.SetPreviewPalette("pastel");
     }
     public void PaletteOverrideWarm() {
         settings.optionOverridePalette = new BlockPalette("warm");
+        palettePreview.SetPreviewPalette("warm");
     }
     public void PaletteOverrideCool() {
         settings.optionOverridePalette = new BlockPalette("cool");
+        palettePreview.SetPreviewPalette("cool");
     }
     public void PaletteOverrideMonochrome() {
         settings.optionOverridePalette = new BlockPalette("monochrome");
+        palettePreview.SetPreviewPalette("monochrome");
     }
     public void PaletteOverrideWhite() {
         settings.optionOverridePalette = new BlockPalette("white");
+        palettePreview.SetPreviewPalette("white");
     }
     public void PaletteOverrideRetrowave() {
         settings.optionOverridePalette = new BlockPalette("retrowave");
+        palettePreview.SetPreviewPalette("retrowave");
     }
     public void PaletteOverride73rfbg0n() {
         settings.optionOverridePalette = new BlockPalette("73rfbg0n");
+        palettePreview.SetPreviewPalette("73rfbg0n");
     }
     public void PaletteOverrideMountain() {
         settings.optionOverridePalette = new BlockPalette("mountain");
+        palettePreview.SetPreviewPalette("mountain");
     }
     public void PaletteOverrideBeach() {
         settings.optionOverridePalette = new BlockPalette("beach");
+        palettePreview.SetPreviewPalette("beach");
     }
 
     ///////////////////
