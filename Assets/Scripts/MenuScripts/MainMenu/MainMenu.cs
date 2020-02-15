@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -21,9 +22,15 @@ public class MainMenu : MonoBehaviour {
     public GameObject palettePreviewHandler;
     private PalettePreview palettePreview;
 
+    public GameObject postProcessing;
+    private PostProcessVolume postProcessVolume;
+    private bool postProcessingCurrentlyEnabled;
+
     private void Start() {
         settings = settingsObject.GetComponent<PersistentSettings>();
         palettePreview = palettePreviewHandler.GetComponent<PalettePreview>();
+        postProcessVolume = postProcessing.GetComponent<PostProcessVolume>();
+        postProcessingCurrentlyEnabled = true;
 
         mainMenuCanvas.SetActive(true);
         gameModesCanvas.SetActive(false);
@@ -140,11 +147,19 @@ public class MainMenu : MonoBehaviour {
         LoadGame();
     }
 
-
-
-    ///////////////////
+    //////////////////
     /// Option Methods
-    ///////////////////
+    //////////////////
+    
+    public void TogglePostProcessing() {
+        postProcessVolume.enabled = !postProcessingCurrentlyEnabled;
+        postProcessingCurrentlyEnabled = !postProcessingCurrentlyEnabled;
+    }
+
+
+    /////////////////////////////
+    /// Option Methods - Palettes
+    /////////////////////////////
 
     public void PaletteOverrideDefault() {
         settings.optionOverridePalette = null;  //will use the default for the gamemode instead
