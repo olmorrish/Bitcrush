@@ -166,10 +166,14 @@ public class MainMenu : MonoBehaviour {
         settings.optionOverridePalette = new BlockPalette("monochrome");
         palettePreview.SetPreviewPalette("monochrome");
     }
-    public void PaletteOverrideWhite() {
-        settings.optionOverridePalette = new BlockPalette("white");
-        palettePreview.SetPreviewPalette("white");
+    public void PaletteOverridePalewave() {
+        settings.optionOverridePalette = new BlockPalette("palewave");
+        palettePreview.SetPreviewPalette("palewave");
     }
+    //public void PaletteOverrideWhite() {
+    //    settings.optionOverridePalette = new BlockPalette("white");
+    //    palettePreview.SetPreviewPalette("white");
+    //}
     public void PaletteOverrideRetrowave() {
         settings.optionOverridePalette = new BlockPalette("retrowave");
         palettePreview.SetPreviewPalette("retrowave");
@@ -185,6 +189,14 @@ public class MainMenu : MonoBehaviour {
     public void PaletteOverrideBeach() {
         settings.optionOverridePalette = new BlockPalette("beach");
         palettePreview.SetPreviewPalette("beach");
+    }
+    public void PaletteOverrideForest() {
+        settings.optionOverridePalette = new BlockPalette("forest");
+        palettePreview.SetPreviewPalette("forest");
+    }
+    public void PaletteOverrideRandom() {
+        settings.optionOverridePalette = new BlockPalette("random");
+        palettePreview.SetPreviewPalette("random");
     }
 
     ///////////////////
