@@ -15,7 +15,7 @@ public class PersistentSettings : MonoBehaviour {
     [HideInInspector] public bool flipCamera;
     [HideInInspector] public bool makeScoreNegative;
     [HideInInspector] public BlockPalette settingPalette;
-    
+    [HideInInspector] public BlockPalette optionOverridePalette;
 
     // Start is called before the first frame update
     void Start() {
@@ -50,7 +50,12 @@ public class PersistentSettings : MonoBehaviour {
             gamePattern.rotateBy45Degrees = rotate45;           // roation 
             gamePattern.minWaitTime = minWaitTime;              // min time between block throws
             gamePattern.maxWaitTime = maxWaitTime;              // max time between block throws
-            gamePattern.currentPalette = settingPalette;        // the colour palette object to pull from - passes through Pattern into throw() 
+
+            //apply a palette - based on player options or gamemode
+            if (optionOverridePalette != null)
+                gamePattern.currentPalette = optionOverridePalette; //use player selection instead if there is one
+            else
+                gamePattern.currentPalette = settingPalette;        // the colour palette object to pull from - passes through Pattern into throw() 
 
             ScoreData scoreData = gameMaster.GetComponent<ScoreData>();
             scoreData.makeScoreNegative = makeScoreNegative;

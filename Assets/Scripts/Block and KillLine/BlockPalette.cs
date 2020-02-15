@@ -44,7 +44,7 @@ public class BlockPalette {
             }
         }
 
-        else if (paletteMode.Equals("greyscale")) {
+        else if (paletteMode.Equals("monochrome")) {
             palette[0] = new Color(229f / 255f, 229f / 255f, 229f / 255f, 255);    //greys
             palette[1] = new Color(191f / 255f, 191f / 255f, 191f / 255f, 255);
             palette[2] = new Color(153f / 255f, 153f / 255f, 153f / 255f, 255);
@@ -55,7 +55,7 @@ public class BlockPalette {
             palette[7] = new Color(1, 1, 1, 255);
         }
 
-        else if (paletteMode.Equals("hot")) {
+        else if (paletteMode.Equals("warm")) {
             palette[0] = new Color(252f / 255f, 252f / 255f, 12f / 255f, 255);     //yellow
             palette[1] = new Color(252f / 255f, 200f / 255f, 12f / 255f, 255);
             palette[2] = new Color(252f / 255f, 156f / 255f, 12f / 255f, 255);

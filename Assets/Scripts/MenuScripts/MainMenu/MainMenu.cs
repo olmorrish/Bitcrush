@@ -124,6 +124,31 @@ public class MainMenu : MonoBehaviour {
         LoadGame();
     }
 
+
+
+    ///////////////////
+    /// Option Methods
+    ///////////////////
+
+    public void PaletteOverrideDefault() {
+        settings.optionOverridePalette = null;  //will use the default for the gamemode instead
+    }
+    public void PaletteOverridePastel() {
+        settings.optionOverridePalette = new BlockPalette("pastel");
+    }
+    public void PaletteOverrideWarm() {
+        settings.optionOverridePalette = new BlockPalette("warm");
+    }
+    public void PaletteOverrideCool() {
+        settings.optionOverridePalette = new BlockPalette("cool");
+    }
+    public void PaletteOverrideMonochrome() {
+        settings.optionOverridePalette = new BlockPalette("monochrome");
+    }
+    public void PaletteOverrideWhite() {
+        settings.optionOverridePalette = new BlockPalette("white");
+    }
+
     ///////////////////
     /// Support Methods
     ///////////////////
