@@ -32,6 +32,17 @@ public class MainMenu : MonoBehaviour {
         mainMenuDefaultButton.Select();
     }
 
+    //buttons can handle most navigation; this is just so that "B" allows the player to go back
+    private void Update() {
+        if (Input.GetButtonDown("Cancel")) {
+            if (gameModesCanvas.activeInHierarchy || optionsCanvas.activeInHierarchy)
+                ToMainMenuCanvas();
+            else if (paletteSelectionCanvas.activeInHierarchy)
+                ToOptionsCanvas();
+            
+        }
+    }
+
     ///////////////////
     /// Menu Navigation
     ///////////////////
