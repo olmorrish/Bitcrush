@@ -148,6 +148,18 @@ public class MainMenu : MonoBehaviour {
     public void PaletteOverrideWhite() {
         settings.optionOverridePalette = new BlockPalette("white");
     }
+    public void PaletteOverrideRetrowave() {
+        settings.optionOverridePalette = new BlockPalette("retrowave");
+    }
+    public void PaletteOverride73rfbg0n() {
+        settings.optionOverridePalette = new BlockPalette("73rfbg0n");
+    }
+    public void PaletteOverrideMountain() {
+        settings.optionOverridePalette = new BlockPalette("mountain");
+    }
+    public void PaletteOverrideBeach() {
+        settings.optionOverridePalette = new BlockPalette("beach");
+    }
 
     ///////////////////
     /// Support Methods
@@ -164,7 +176,7 @@ public class MainMenu : MonoBehaviour {
         settings.maxWaitTime = 2.5f;
         settings.flipCamera = false;
         settings.makeScoreNegative = false;
-        settings.settingPalette = new BlockPalette("pastel");   //default constructor
+        settings.settingPalette = new BlockPalette();   //default constructor
         settings.slipperyJumpAllowed = false;           //TODO maybe remove?
     }
 
