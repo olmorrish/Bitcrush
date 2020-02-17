@@ -37,11 +37,8 @@ public class PersistentSettings : MonoBehaviour {
      *  Note: "GameObject.Find" calls are necessary since scene references can't be set before scene exists
      */
     void ApplyGameModeSettings(Scene scene, LoadSceneMode mode) {
-        Debug.Log("Loaded Scene: \"" + scene.name + "\" in mode: \"" + mode + "\"");
 
         if (scene.name.Equals("Game")) {
-            Debug.Log("Beginning application of game scene settings.");
-
             GameObject gameMaster = GameObject.Find("GameMaster");
 
             GamePattern gamePattern = gameMaster.GetComponent<GamePattern>();

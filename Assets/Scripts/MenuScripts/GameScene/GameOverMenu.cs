@@ -18,7 +18,7 @@ public class GameOverMenu : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		theGameOverMenu = GameObject.Find("GameOverMenu");                      //thanks, past me - don't know how this works but it does
+		theGameOverMenu = GameObject.Find("GameOverMenu");                      // Thanks, 2018-me - don't know how this works but it does. Sincerely, 2020-me.
 		theGameOverMenu.SetActive(false);
 
 		exploder = player.GetComponent<PlayerExplodesIntoPixels>();
@@ -47,7 +47,6 @@ public class GameOverMenu : MonoBehaviour {
 	public void GameOver(){
 		theGameOverMenu.SetActive(true);
 		musicTrack.volume = (0.5f) * musicTrack.volume;
-        //Time.timeScale = 0.5f;
 
         playerBoost.boostEnabled = false;
 
@@ -63,11 +62,6 @@ public class GameOverMenu : MonoBehaviour {
 	 * Loads scene again
 	 */
 	public void Retry(){
-		theGameOverMenu.SetActive(false);
-        //Time.timeScale = 1f;
-
-        //playerBoost.boostEnabled = true;
-        isGameOver = false;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
 	}
 	
@@ -75,7 +69,6 @@ public class GameOverMenu : MonoBehaviour {
 	 * returns to main menu
 	 */
 	public void Exit(){
-		isGameOver = false;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 	}
 }

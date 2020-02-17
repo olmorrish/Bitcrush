@@ -22,15 +22,15 @@ public class MainMenu : MonoBehaviour {
     public GameObject palettePreviewHandler;
     private PalettePreview palettePreview;
 
-    public GameObject postProcessing;
-    private PostProcessVolume postProcessVolume;
-    private bool postProcessingCurrentlyEnabled;
+    //public GameObject postProcessing;
+    //private PostProcessVolume postProcessVolume;
+    //private bool postProcessingCurrentlyEnabled;
 
     private void Start() {
         settings = settingsObject.GetComponent<PersistentSettings>();
         palettePreview = palettePreviewHandler.GetComponent<PalettePreview>();
-        postProcessVolume = postProcessing.GetComponent<PostProcessVolume>();
-        postProcessingCurrentlyEnabled = true;
+        //postProcessVolume = postProcessing.GetComponent<PostProcessVolume>();
+        //postProcessingCurrentlyEnabled = true;
 
         mainMenuCanvas.SetActive(true);
         gameModesCanvas.SetActive(false);
@@ -151,10 +151,10 @@ public class MainMenu : MonoBehaviour {
     /// Option Methods
     //////////////////
     
-    public void TogglePostProcessing() {
-        postProcessVolume.enabled = !postProcessingCurrentlyEnabled;
-        postProcessingCurrentlyEnabled = !postProcessingCurrentlyEnabled;
-    }
+    //public void TogglePostProcessing() {
+    //    postProcessVolume.enabled = !postProcessingCurrentlyEnabled;
+    //    postProcessingCurrentlyEnabled = !postProcessingCurrentlyEnabled;
+    //}
 
 
     /////////////////////////////

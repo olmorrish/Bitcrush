@@ -34,7 +34,7 @@ public class GamePattern : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        for(int i =0; i < chuckers.Length; i++) {
+        for (int i =0; i < chuckers.Length; i++) {
             chuckerFireScripts[i] = chuckers[i].GetComponent<ChuckerBehavior>();
         }
 
@@ -44,6 +44,9 @@ public class GamePattern : MonoBehaviour {
 
         scoreData = GetComponent<ScoreData>();
         killLineController = killLine.GetComponent<KillLineController>();
+
+        if (currentPalette == null)             //this will only every be null when debugging - when the menu was not launched before the game scene
+            currentPalette = new BlockPalette();   
     }
 	
 	// Update is called once per frame

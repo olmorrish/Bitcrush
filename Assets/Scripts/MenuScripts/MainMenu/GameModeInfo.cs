@@ -28,19 +28,19 @@ public class GameModeInfo : MonoBehaviour {
         GameObject currentButton = EventSystem.current.currentSelectedGameObject;
 
         if (currentButton.Equals(normalModeButton))
-            infoText.text = "REGULAR BiTCRUSH! TETROMiNOS ONLY. YOU COULD HAVE SELECTED THiS ON THE MAiN MENU!";
+            infoText.text = "REGULAR BiTCRUSH! TETROMiNOES ONLY. YOU COULD HAVE SELECTED THiS ON THE MAiN MENU!";
         else if (currentButton.Equals(trominoModeButton))
-            infoText.text = "TROMiNOS ONLY. BLOCKS ARE SMALLER, BUT APPEAR MORE OFTEN.";
+            infoText.text = "TROMiNOES ONLY. BLOCKS ARE SMALLER, BUT APPEAR MORE OFTEN.";
         else if (currentButton.Equals(pentominoModeButton))
-            infoText.text = "PENTOMiNOS ONLY. BLOCKS ARE BiGGER AND CLiMBiNG iS MORE DiFFiCULT.";
+            infoText.text = "PENTOMiNOES ONLY. BLOCKS ARE LARGER AND CLiMBiNG iS MORE DiFFiCULT.";
         else if (currentButton.Equals(bitcrusherModeButton))
             infoText.text = "HARD MODE! " +
-                "\n\nDODGE ALL THREE MAiN BLOCK TYPES: TROMiNOS, TETROMiNOS, AND PENTOMiNOS. " +
+                "\n\nDODGE ALL THREE MAiN BLOCK TYPES: TROMiNOES, TETROMiNOES, AND PENTOMiNOES. " +
                 "\n\nBLOCKS APPEAR QUiCKLY.";
         else if (currentButton.Equals(universitySimButton))
             infoText.text = "THiS GAMEMODE iS A POiGNANT CRiTiQUE OF THE EDUCATiON SYSTEM.";
         else if (currentButton.Equals(slipperySlopesButton))
-            infoText.text = "[EXPERiMENTAL!] BLOCKS ARE ROTATED BY 45 DEGREES. " +
+            infoText.text = "BLOCKS ARE ROTATED BY 45 DEGREES." +
                 "\n\nWATCH YOUR STEP!";
         else if (currentButton.Equals(upsideDownButton))
             infoText.text = "THE ONLY WAY TO GET LESS THAN ZERO POiNTS." +
