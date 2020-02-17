@@ -9,14 +9,15 @@ public class ChuckerBehavior : MonoBehaviour {
 	public Vector3 baseTrajectory;
 	public float trajectoryRandomFactor = 0.0f;
 
+    //block prefab references
     public GameObject[] tetrominoObjects;
     public GameObject[] trominoObjects;
     public GameObject[] pentominoObjects;
     public GameObject octominoF;
-
-    //game mode modifiers
 	
 	private GameObject toSpawn;
+    private bool chuckerBlocked; //prevents the chucker from actually throwing if there is block nearby
+    public float chuckerBlockedRadius;
 
     public void Throw(string fireMode, bool rotate45, BlockPalette blockPalette){
 
@@ -44,20 +45,38 @@ public class ChuckerBehavior : MonoBehaviour {
         Color colour = blockPalette.palette[Random.Range(0, 8)]; 		
 
         //how much rotation?
-        float rotation;
-        rotation = 90f * (Mathf.Floor(Random.Range(0, 4)));
+        float rotation = 90f * (Mathf.Floor(Random.Range(0, 4)));
 
-        //mode modifier
+        // optional mode modifier
         if (rotate45)
             rotation += 45f;
 
-		GameObject tetrominoClone = (GameObject) Instantiate(toSpawn, transform.position, transform.rotation);
-		tetrominoClone.GetComponent<Rigidbody2D>().AddForce(trajectory, ForceMode2D.Impulse);
-		//tetrominoClone.GetComponent<Rigidbody2D>().AddTorque(rot);
-		tetrominoClone.GetComponent<SpriteRenderer>().color = colour;
-		
-		Quaternion finalRotation = Quaternion.Euler(0,0,rotation);
-		//finalRotation.z = rotation; 
-		tetrominoClone.transform.rotation = finalRotation;
+        chuckerBlocked = AmIBlocked();  //check the surroundings to ensure you can fire without overlapping somethign else
+
+        if (!chuckerBlocked) {
+            GameObject tetrominoClone = (GameObject)Instantiate(toSpawn, transform.position, transform.rotation);
+            tetrominoClone.GetComponent<Rigidbody2D>().AddForce(trajectory, ForceMode2D.Impulse);
+            //tetrominoClone.GetComponent<Rigidbody2D>().AddTorque(rot);
+            tetrominoClone.GetComponent<SpriteRenderer>().color = colour;
+
+            Quaternion finalRotation = Quaternion.Euler(0, 0, rotation);
+            //finalRotation.z = rotation; 
+            tetrominoClone.transform.rotation = finalRotation;
+        }
+        else
+            Debug.Log(gameObject.name + " was blocked from throwing.");
 	}
+
+
+    private bool AmIBlocked() {
+        Collider2D[] nearby = Physics2D.OverlapCircleAll(transform.position, chuckerBlockedRadius);
+        if (nearby.Length > 0)
+            return true;
+        else
+            return false;
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.DrawSphere(transform.position, chuckerBlockedRadius);
+    }
 }
