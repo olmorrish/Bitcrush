@@ -8,7 +8,7 @@ public class GameOverMenu : MonoBehaviour {
 
 	public bool isGameOver = false; 
 	private GameObject theGameOverMenu;
-	private PauseMenu thePauseMenu;
+	public PauseMenu thePauseMenu;
 
     public GameObject player;
 	private PlayerExplodesIntoPixels exploder;
@@ -19,7 +19,6 @@ public class GameOverMenu : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		theGameOverMenu = GameObject.Find("GameOverMenu");                      //thanks, past me - don't know how this works but it does
-		thePauseMenu = GameObject.Find("PauseCanvas").GetComponent<PauseMenu>();
 		theGameOverMenu.SetActive(false);
 
 		exploder = player.GetComponent<PlayerExplodesIntoPixels>();

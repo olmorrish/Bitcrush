@@ -136,7 +136,7 @@ public class MainMenu : MonoBehaviour {
         SetDefaultSettings();   //default - overwrite any others below
         settings.rotate45 = true;
         settings.slipperyJumpAllowed = true;
-        settings.settingPalette = new BlockPalette("cool");
+        settings.settingPalette = new BlockPalette("mountain");
         LoadGame();
     }
 

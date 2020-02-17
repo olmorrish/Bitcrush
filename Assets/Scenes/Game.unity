@@ -2304,7 +2304,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   thePauseMenu: {fileID: 1004985258}
-  player: {fileID: 1827037376}
 --- !u!114 &1004985260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2914,6 +2913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameOver: 0
+  thePauseMenu: {fileID: 1004985259}
   player: {fileID: 1827037376}
   musicObject: {fileID: 733425185}
 --- !u!114 &1231062537

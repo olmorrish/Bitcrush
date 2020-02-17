@@ -13,11 +13,11 @@ public class FlickerTextAlpha : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		Color alpha = text.color;
 		
 		if (alpha.a>0.7f){
-			alpha.a -= 0.01f;
+			alpha.a -= 0.0125f;
 		}
 		else{
 			alpha.a = 1f;
