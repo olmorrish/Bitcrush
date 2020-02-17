@@ -14,7 +14,7 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 	public AudioSource explodeFX;
 
     public GameObject killLine;
-    private Collider2D killLineCollider;
+    //private Collider2D killLineCollider;
 
     public GameObject gameMaster;
     private GamePattern gameMasterPattern;
@@ -25,7 +25,7 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 		playerRenderer = GetComponent<SpriteRenderer>();
 		playerRB = GetComponent<Rigidbody2D>();
 
-        killLineCollider = killLine.GetComponent<Collider2D>();
+        //killLineCollider = killLine.GetComponent<Collider2D>(); // killLine has multiple colliders; don't use this.
 
 		exploded = false;
 

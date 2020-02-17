@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroyBlockOnTouch : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
-		Destroy(col.gameObject);
+        if(col.gameObject.CompareTag("Block"))
+		    Destroy(col.gameObject);
 	}
 }
