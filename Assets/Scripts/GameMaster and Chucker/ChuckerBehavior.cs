@@ -10,12 +10,14 @@ public class ChuckerBehavior : MonoBehaviour {
 	public float trajectoryRandomFactor = 0.0f;
 
     //block prefab references
+    public GameObject[] tinyBlockObjects;
     public GameObject[] tetrominoObjects;
     public GameObject[] trominoObjects;
     public GameObject[] pentominoObjects;
     public GameObject octominoF;
-	
-	private GameObject toSpawn;
+    public GameObject[] warpedObjects;
+
+    private GameObject toSpawn;
     private bool chuckerBlocked; //prevents the chucker from actually throwing if there is block nearby
     public float chuckerBlockedRadius;
 
@@ -27,12 +29,16 @@ public class ChuckerBehavior : MonoBehaviour {
             toSpawn = trominoObjects[Random.Range(0, 2)];
         else if (fireMode.Equals("pentomino"))
             toSpawn = pentominoObjects[Random.Range(0, 18)];
+        else if (fireMode.Equals("tiny"))
+            toSpawn = tinyBlockObjects[Random.Range(0, 2)];
         else if (fireMode.Equals("all")) {
             int set = Random.Range(0,3);
             if (set == 0) toSpawn = tetrominoObjects[Random.Range(0, 7)];
             else if (set == 1) toSpawn = trominoObjects[Random.Range(0, 2)];
             else if (set == 2) toSpawn = pentominoObjects[Random.Range(0, 18)];
          }
+        else if (fireMode.Equals("warped"))
+            toSpawn = warpedObjects[Random.Range(0, 17)];
         else if (fireMode.Equals("university"))
             toSpawn = octominoF;
 		  
