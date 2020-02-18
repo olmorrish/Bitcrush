@@ -10,12 +10,17 @@ public class PersistentSettings : MonoBehaviour {
     [HideInInspector] public string fireMode;
     [HideInInspector] public bool rotate45;
     [HideInInspector] public bool slipperyJumpAllowed;
+    [HideInInspector] public float boostCooldown;
+    [HideInInspector] public bool immuneToCrush;
     [HideInInspector] public float minWaitTime;
     [HideInInspector] public float maxWaitTime;
     [HideInInspector] public bool flipCamera;
     [HideInInspector] public bool makeScoreNegative;
     [HideInInspector] public BlockPalette settingPalette;
     [HideInInspector] public BlockPalette optionOverridePalette;
+    [HideInInspector] public bool impossibleMode;
+
+
 
     // Start is called before the first frame update
     void Start() {
@@ -49,8 +54,8 @@ public class PersistentSettings : MonoBehaviour {
             gamePattern.maxWaitTime = maxWaitTime;              // max time between block throws
 
             //apply a palette - based on player options or gamemode
-            if (optionOverridePalette != null)
-                gamePattern.currentPalette = optionOverridePalette; //use player selection instead if there is one
+            if (optionOverridePalette != null && !impossibleMode)
+                gamePattern.currentPalette = optionOverridePalette; //use player selection instead if there is one (only exception is impossible mode!)
             else
                 gamePattern.currentPalette = settingPalette;        // the colour palette object to pull from - passes through Pattern into throw() 
 
@@ -70,6 +75,10 @@ public class PersistentSettings : MonoBehaviour {
 
             Player player = GameObject.Find("Player").GetComponent<Player>();
             player.slipperyJumpAllowed = slipperyJumpAllowed;
+            Boost boost = GameObject.Find("Player").GetComponent<Boost>();
+            boost.cooldownLength = boostCooldown;
+            PlayerExplodesIntoPixels exploder = GameObject.Find("Player").GetComponent<PlayerExplodesIntoPixels>();
+            exploder.immuneToCrush = immuneToCrush;
         }
     }
 }

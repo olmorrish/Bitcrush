@@ -14,8 +14,8 @@ public class MainMenu : MonoBehaviour {
     public Button mainMenuDefaultButton;
     public GameObject gameModesCanvas;
     public Button gameModesDefaultButton;
-    public GameObject optionsCanvas;
-    public Button optionsDefaultButton;
+    //public GameObject optionsCanvas;
+    //public Button optionsDefaultButton;
     public GameObject paletteSelectionCanvas;
     public Button paletteSelectionDefaultButton;
 
@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour {
 
         mainMenuCanvas.SetActive(true);
         gameModesCanvas.SetActive(false);
-        optionsCanvas.SetActive(false);
+        //optionsCanvas.SetActive(false);
         paletteSelectionCanvas.SetActive(false);
         mainMenuDefaultButton.Select();
     }
@@ -42,11 +42,8 @@ public class MainMenu : MonoBehaviour {
     //buttons can handle most navigation; this is just so that "B" allows the player to go back
     private void Update() {
         if (Input.GetButtonDown("Cancel")) {
-            if (gameModesCanvas.activeInHierarchy || optionsCanvas.activeInHierarchy)
+            if (gameModesCanvas.activeInHierarchy || paletteSelectionCanvas.activeInHierarchy)
                 ToMainMenuCanvas();
-            else if (paletteSelectionCanvas.activeInHierarchy)
-                ToOptionsCanvas();
-            
         }
     }
 
@@ -58,7 +55,8 @@ public class MainMenu : MonoBehaviour {
         Debug.Log("Going to main menu.");
         mainMenuCanvas.SetActive(true);
         gameModesCanvas.SetActive(false);
-        optionsCanvas.SetActive(false);
+        //optionsCanvas.SetActive(false);
+        paletteSelectionCanvas.SetActive(false);
         mainMenuDefaultButton.Select();
     }
 
@@ -71,20 +69,20 @@ public class MainMenu : MonoBehaviour {
         gameModesDefaultButton.Select();
     }
 
-    public void ToOptionsCanvas() {
-        Debug.Log("Going to options menu.");
-        mainMenuCanvas.SetActive(false);
-        //gameModesCanvas.SetActive(false);
-        optionsCanvas.SetActive(true);
-        paletteSelectionCanvas.SetActive(false);
-        optionsDefaultButton.Select();
-    }
+    //public void ToOptionsCanvas() {
+    //    Debug.Log("Going to options menu.");
+    //    mainMenuCanvas.SetActive(false);
+    //    //gameModesCanvas.SetActive(false);
+    //    optionsCanvas.SetActive(true);
+    //    paletteSelectionCanvas.SetActive(false);
+    //    optionsDefaultButton.Select();
+    //}
 
     public void ToPaletteSelectionCanvas() {
         Debug.Log("Going to palette selection menu.");
         mainMenuCanvas.SetActive(false);
         gameModesCanvas.SetActive(false);
-        optionsCanvas.SetActive(false);
+        //optionsCanvas.SetActive(false);
         paletteSelectionCanvas.SetActive(true);
         paletteSelectionDefaultButton.Select();
     }
@@ -99,20 +97,36 @@ public class MainMenu : MonoBehaviour {
             //no setting overrides should occur here!
         LoadGame();
     }
-	
-	public void StartTrominoGame(){
+
+    public void StartCasualGame() {
+        //apply the relevant settings to store in the persistent object - prior to loading
+        SetDefaultSettings();
+        settings.immuneToCrush = true;
+        settings.boostCooldown = 4.5f;
+        LoadGame();
+    }
+
+    public void StartTrominoGame(){
         //apply the relevant settings to store in the persistent object - prior to loading
         SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "tromino";
         settings.maxWaitTime = 1.5f;
-        //settings.settingPalette = new BlockPalette("pastel");
         LoadGame();
     }
-	
-	public void StartPentominoGame(){
+
+
+    public void StartPentominoGame(){
         //apply the relevant settings to store in the persistent object - prior to loading
         SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "pentomino";
+        LoadGame();
+    }
+
+    public void StartTinyBlockGame() {
+        //apply the relevant settings to store in the persistent object - prior to loading
+        SetDefaultSettings();   //default - overwrite any others below
+        settings.fireMode = "tiny";
+        settings.maxWaitTime = 1.2f;
         LoadGame();
     }
 
@@ -147,15 +161,28 @@ public class MainMenu : MonoBehaviour {
         LoadGame();
     }
 
-    //////////////////
-    /// Option Methods
-    //////////////////
-    
-    //public void TogglePostProcessing() {
-    //    postProcessVolume.enabled = !postProcessingCurrentlyEnabled;
-    //    postProcessingCurrentlyEnabled = !postProcessingCurrentlyEnabled;
-    //}
+    public void StartBiTWARPEDGame() {
+        //apply the relevant settings to store in the persistent object - prior to loading
+        SetDefaultSettings();   //default - overwrite any others below
+        settings.fireMode = "warped";
+        LoadGame();
+    }
 
+    public void StartBiTCRUSHER2Game() {
+        //apply the relevant settings to store in the persistent object - prior to loading
+        SetDefaultSettings();   //default - overwrite any others below
+        settings.minWaitTime = 0.1f;
+        settings.maxWaitTime = 1.3f;
+        settings.boostCooldown = 15.0f;
+        LoadGame();
+    }
+
+    public void StartImpossibleGame() {
+        SetDefaultSettings();   //default - overwrite any others below
+        settings.settingPalette = new BlockPalette("black");
+        settings.impossibleMode = true; //prevents the player palette from overriding
+        LoadGame();
+    }
 
     /////////////////////////////
     /// Option Methods - Palettes
@@ -185,10 +212,7 @@ public class MainMenu : MonoBehaviour {
         settings.optionOverridePalette = new BlockPalette("palewave");
         palettePreview.SetPreviewPalette("palewave");
     }
-    //public void PaletteOverrideWhite() {
-    //    settings.optionOverridePalette = new BlockPalette("white");
-    //    palettePreview.SetPreviewPalette("white");
-    //}
+
     public void PaletteOverrideRetrowave() {
         settings.optionOverridePalette = new BlockPalette("retrowave");
         palettePreview.SetPreviewPalette("retrowave");
@@ -214,6 +238,9 @@ public class MainMenu : MonoBehaviour {
         palettePreview.SetPreviewPalette("random");
     }
 
+    //there is no palette override for black since it's only used for a gag in the "impossible mode"
+
+
     ///////////////////
     /// Support Methods
     ///////////////////
@@ -231,6 +258,9 @@ public class MainMenu : MonoBehaviour {
         settings.makeScoreNegative = false;
         settings.settingPalette = new BlockPalette();   //default constructor
         settings.slipperyJumpAllowed = false;           //TODO maybe remove?
+        settings.boostCooldown = 10.0f;
+        settings.impossibleMode = false;
+        settings.immuneToCrush = false;
     }
 
     private void LoadGame() {

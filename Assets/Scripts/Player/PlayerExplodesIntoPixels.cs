@@ -6,7 +6,8 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
 
 	public float collisionSpeedToExplode = 1f;
 	public GameObject pixel;
-	public bool exploded;
+    public bool immuneToCrush;
+    public bool exploded;
 	
 	private Collider2D playerCollider;
 	private SpriteRenderer playerRenderer; 
@@ -33,19 +34,24 @@ public class PlayerExplodesIntoPixels : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedToExplode){
-			Explode();
-		}
-        else if (collision.gameObject.Equals(killLine)) {
-            Explode();
+        if (!immuneToCrush) {
+            if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedToExplode) {
+                Explode();
+            }
+            else if (collision.gameObject.Equals(killLine)) {
+                Explode();
+            }
         }
+		
 	}
 	void OnCollisionStay2D(Collision2D collision){
-		if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedToExplode){
-			Explode();
-		}
-        else if (collision.gameObject.Equals(killLine)) {
-            Explode();
+        if (!immuneToCrush) {
+            if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedToExplode) {
+                Explode();
+            }
+            else if (collision.gameObject.Equals(killLine)) {
+                Explode();
+            }
         }
     }
 	

@@ -25,12 +25,6 @@ public class BlockPalette {
             palette = new BlockPalette().palette;
         }
 
-        //else if (paletteMode.Equals("black")) {     //lmao
-        //    for (int i = 0; i < 8; i++) {
-        //        palette[i] = new Color(0, 0, 0, 255);
-        //    }
-        //}
-
         else if (paletteMode.Equals("pastel")) {
             palette[0] = new Color(1, 127f / 255f, 127f / 255f, 255); //roy
             palette[1] = new Color(1, 207f / 255f, 127f / 255f, 255);
@@ -150,6 +144,13 @@ public class BlockPalette {
         else if (paletteMode.Equals("random")) {
             for (int i = 0; i < 8; i++) {
                 palette[i] = new Color((Random.Range(20, 255) / 255f), (Random.Range(20, 255) / 255f), (Random.Range(20, 255) / 255f), 255);
+            }
+        }
+
+        //this is the only one that isn't player selectable!
+        else if (paletteMode.Equals("black")) {     //lmao
+            for (int i = 0; i < 8; i++) {
+                palette[i] = new Color(0, 0, 0, 255);
             }
         }
 
