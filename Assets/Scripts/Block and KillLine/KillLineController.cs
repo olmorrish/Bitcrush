@@ -14,14 +14,14 @@ public class KillLineController : MonoBehaviour {
 
     public GameObject player;
     private Collider2D playerCollider;
-    private PlayerExplodesIntoPixels exploder;
+    private Exploder exploder;
     private Collider2D myCol;
 
     // Use this for initialization
     void Start () {
 		scoreData = gameMaster.GetComponent<ScoreData>();
         playerCollider = player.GetComponent<Collider2D>();
-        exploder = player.GetComponent<PlayerExplodesIntoPixels>();
+        exploder = player.GetComponent<Exploder>();
     }
 	
 	// Update is called once per frame

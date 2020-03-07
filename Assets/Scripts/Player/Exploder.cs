@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerExplodesIntoPixels : MonoBehaviour {
+public class Exploder : MonoBehaviour {
 
 	public float collisionSpeedToExplode = 1f;
 	public GameObject pixel;

@@ -77,7 +77,7 @@ public class PersistentSettings : MonoBehaviour {
             player.slipperyJumpAllowed = slipperyJumpAllowed;
             Boost boost = GameObject.Find("Player").GetComponent<Boost>();
             boost.cooldownLength = boostCooldown;
-            PlayerExplodesIntoPixels exploder = GameObject.Find("Player").GetComponent<PlayerExplodesIntoPixels>();
+            Exploder exploder = GameObject.Find("Player").GetComponent<Exploder>();
             exploder.immuneToCrush = immuneToCrush;
         }
     }

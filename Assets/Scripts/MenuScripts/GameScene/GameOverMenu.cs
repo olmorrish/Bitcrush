@@ -11,7 +11,7 @@ public class GameOverMenu : MonoBehaviour {
 	public PauseMenu thePauseMenu;
 
     public GameObject player;
-	private PlayerExplodesIntoPixels exploder;
+	private Exploder exploder;
     public GameObject musicObject;
 	private AudioSource musicTrack;
     private Boost playerBoost;
@@ -21,7 +21,7 @@ public class GameOverMenu : MonoBehaviour {
 		theGameOverMenu = GameObject.Find("GameOverMenu");                      // Thanks, 2018-me - don't know how this works but it does. Sincerely, 2020-me.
 		theGameOverMenu.SetActive(false);
 
-		exploder = player.GetComponent<PlayerExplodesIntoPixels>();
+		exploder = player.GetComponent<Exploder>();
         playerBoost = player.GetComponent<Boost>();
         musicTrack = musicObject.GetComponent<AudioSource>();
 		
