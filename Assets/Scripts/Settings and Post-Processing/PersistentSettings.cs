@@ -21,7 +21,6 @@ public class PersistentSettings : MonoBehaviour {
     [HideInInspector] public bool impossibleMode;
 
 
-
     // Start is called before the first frame update
     void Start() {
         DontDestroyOnLoad(this.gameObject); //ensures the objects always persists
