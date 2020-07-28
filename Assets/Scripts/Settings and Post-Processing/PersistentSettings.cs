@@ -20,6 +20,17 @@ public class PersistentSettings : MonoBehaviour {
     [HideInInspector] public BlockPalette optionOverridePalette;
     [HideInInspector] public bool impossibleMode;
 
+    //Singleton
+    static PersistentSettings instance;
+
+    void Awake() {
+        if (instance != null)
+            Destroy(gameObject);
+        else {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start() {
