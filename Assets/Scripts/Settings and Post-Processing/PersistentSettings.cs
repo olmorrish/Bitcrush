@@ -47,13 +47,21 @@ public class PersistentSettings : MonoBehaviour {
         SceneManager.sceneLoaded -= ApplyGameModeSettings;
     }
 
+    void OnSceneLoaded() {
+
+        Debug.Log("Persistent settings detected that a new scene was loaded.");
+    }
+
     /* This function is called once upon game scene loading.
      *  It's not efficient and is pretty bulky, but it's only called once per game load
      *  Note: "GameObject.Find" calls are necessary since scene references can't be set before scene exists
      */
     void ApplyGameModeSettings(Scene scene, LoadSceneMode mode) {
 
+
         if (scene.name.Equals("Game")) {
+            Debug.Log("Persistent settings are applying to the current scene...");
+
             GameObject gameMaster = GameObject.Find("GameMaster");
 
             GamePattern gamePattern = gameMaster.GetComponent<GamePattern>();
@@ -89,6 +97,8 @@ public class PersistentSettings : MonoBehaviour {
             boost.cooldownLength = boostCooldown;
             Exploder exploder = GameObject.Find("Player").GetComponent<Exploder>();
             exploder.immuneToCrush = immuneToCrush;
+
+            Debug.Log("Persistent settings application complete.");
         }
     }
 }

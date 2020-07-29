@@ -187,59 +187,21 @@ public class MainMenu : MonoBehaviour {
     /////////////////////////////
     /// Option Methods - Palettes
     /////////////////////////////
+    
+    
+    public void PaletteOverride(string paletteName) {
 
-    public void PaletteOverrideDefault() {
-        settings.optionOverridePalette = null;  //will use the default for the gamemode instead
-        palettePreview.SetPreviewPalette("default");
+        Debug.Log("Setting block palette to: " + paletteName + ".");
+        if(paletteName.Equals("default")){
+            settings.optionOverridePalette = null;
+            palettePreview.SetPreviewPalette("default");
+        }
+        else{
+            settings.optionOverridePalette = new BlockPalette(paletteName);
+            palettePreview.SetPreviewPalette(paletteName);
+        }
+        //there is no palette override for black since it's only used for a gag in the "impossible mode"
     }
-    public void PaletteOverridePastel() {
-        settings.optionOverridePalette = new BlockPalette("pastel");
-        palettePreview.SetPreviewPalette("pastel");
-    }
-    public void PaletteOverrideWarm() {
-        settings.optionOverridePalette = new BlockPalette("warm");
-        palettePreview.SetPreviewPalette("warm");
-    }
-    public void PaletteOverrideCool() {
-        settings.optionOverridePalette = new BlockPalette("cool");
-        palettePreview.SetPreviewPalette("cool");
-    }
-    public void PaletteOverrideMonochrome() {
-        settings.optionOverridePalette = new BlockPalette("monochrome");
-        palettePreview.SetPreviewPalette("monochrome");
-    }
-    public void PaletteOverridePalewave() {
-        settings.optionOverridePalette = new BlockPalette("palewave");
-        palettePreview.SetPreviewPalette("palewave");
-    }
-
-    public void PaletteOverrideRetrowave() {
-        settings.optionOverridePalette = new BlockPalette("retrowave");
-        palettePreview.SetPreviewPalette("retrowave");
-    }
-    public void PaletteOverride73rfbg0n() {
-        settings.optionOverridePalette = new BlockPalette("73rfbg0n");
-        palettePreview.SetPreviewPalette("73rfbg0n");
-    }
-    public void PaletteOverrideMountain() {
-        settings.optionOverridePalette = new BlockPalette("mountain");
-        palettePreview.SetPreviewPalette("mountain");
-    }
-    public void PaletteOverrideBeach() {
-        settings.optionOverridePalette = new BlockPalette("beach");
-        palettePreview.SetPreviewPalette("beach");
-    }
-    public void PaletteOverrideForest() {
-        settings.optionOverridePalette = new BlockPalette("forest");
-        palettePreview.SetPreviewPalette("forest");
-    }
-    public void PaletteOverrideRandom() {
-        settings.optionOverridePalette = new BlockPalette("random");
-        palettePreview.SetPreviewPalette("random");
-    }
-
-    //there is no palette override for black since it's only used for a gag in the "impossible mode"
-
 
     ///////////////////
     /// Support Methods

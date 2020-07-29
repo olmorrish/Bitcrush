@@ -204,14 +204,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverrideForest
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: forest
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &13505817
@@ -701,14 +701,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverrideRandom
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: random
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &48564928
@@ -961,14 +961,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverrideCool
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: cool
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &122259114
@@ -1780,14 +1780,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverrideMonochrome
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: monochrome
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &492748950
@@ -1910,14 +1910,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverride73rfbg0n
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 73rfbg0n
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &493874558
@@ -2228,14 +2228,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverrideDefault
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: default
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &498579967
@@ -4249,14 +4249,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverrideWarm
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: warm
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &994115395
@@ -7086,14 +7086,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverrideBeach
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: beach
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1707977326
@@ -7346,14 +7346,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverridePastel
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: pastel
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1723831287
@@ -7554,14 +7554,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverrideMountain
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: mountain
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1757762691
@@ -7814,14 +7814,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverridePalewave
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: palewave
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1822289637
@@ -8550,14 +8550,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: PaletteOverrideRetrowave
-        m_Mode: 1
+        m_MethodName: PaletteOverride
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: retrowave
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2036528326
