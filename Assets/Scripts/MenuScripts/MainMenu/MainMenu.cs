@@ -27,6 +27,8 @@ public class MainMenu : MonoBehaviour {
     //private bool postProcessingCurrentlyEnabled;
 
     private void Start() {
+
+        settingsObject = GameObject.Find("PersistentSettingsObject");                 //because it may be from a previous main menu load
         settings = settingsObject.GetComponent<PersistentSettings>();
         palettePreview = palettePreviewHandler.GetComponent<PalettePreview>();
         //postProcessVolume = postProcessing.GetComponent<PostProcessVolume>();
@@ -93,14 +95,14 @@ public class MainMenu : MonoBehaviour {
 
     public void StartGame(){
         //apply the relevant settings to store in the persistent object - prior to loading
-        SetDefaultSettings();
+        settings.SetDefaultSettings();
             //no setting overrides should occur here!
         LoadGame();
     }
 
     public void StartCasualGame() {
         //apply the relevant settings to store in the persistent object - prior to loading
-        SetDefaultSettings();
+        settings.SetDefaultSettings();
         settings.immuneToCrush = true;
         settings.boostCooldown = 4.5f;
         LoadGame();
@@ -108,7 +110,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StartTrominoGame(){
         //apply the relevant settings to store in the persistent object - prior to loading
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "tromino";
         settings.maxWaitTime = 1.5f;
         LoadGame();
@@ -117,21 +119,21 @@ public class MainMenu : MonoBehaviour {
 
     public void StartPentominoGame(){
         //apply the relevant settings to store in the persistent object - prior to loading
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "pentomino";
         LoadGame();
     }
 
     public void StartTinyBlockGame() {
         //apply the relevant settings to store in the persistent object - prior to loading
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "tiny";
         settings.maxWaitTime = 1.2f;
         LoadGame();
     }
 
     public void StartBiTCRUSHERGame() {
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "all";
         settings.minWaitTime = 0.2f;
         settings.maxWaitTime = 1.75f;
@@ -139,7 +141,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void StartUniversitySimGame() {
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "university";
         settings.minWaitTime = 1f;
         settings.maxWaitTime = 3f;  //let's go easy on 'em
@@ -147,7 +149,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void StartSlipperySlopesGame() {
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.rotate45 = true;
         settings.slipperyJumpAllowed = true;
         settings.settingPalette = new BlockPalette("mountain");
@@ -155,7 +157,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void StartUpsideDownGame() {
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.flipCamera = true;
         settings.makeScoreNegative = true;
         LoadGame();
@@ -163,14 +165,14 @@ public class MainMenu : MonoBehaviour {
 
     public void StartBiTWARPEDGame() {
         //apply the relevant settings to store in the persistent object - prior to loading
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.fireMode = "warped";
         LoadGame();
     }
 
     public void StartBiTCRUSHER2Game() {
         //apply the relevant settings to store in the persistent object - prior to loading
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.minWaitTime = 0.1f;
         settings.maxWaitTime = 1.3f;
         settings.boostCooldown = 15.0f;
@@ -178,7 +180,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void StartImpossibleGame() {
-        SetDefaultSettings();   //default - overwrite any others below
+        settings.SetDefaultSettings();   //default - overwrite any others below
         settings.settingPalette = new BlockPalette("black");
         settings.impossibleMode = true; //prevents the player palette from overriding
         LoadGame();
@@ -211,19 +213,19 @@ public class MainMenu : MonoBehaviour {
 		Application.Quit();
 	}
 
-    private void SetDefaultSettings() {
-        settings.fireMode = "tetromino";
-        settings.rotate45 = false;
-        settings.minWaitTime = 0.4f;
-        settings.maxWaitTime = 2.5f;
-        settings.flipCamera = false;
-        settings.makeScoreNegative = false;
-        settings.settingPalette = new BlockPalette();   //default constructor
-        settings.slipperyJumpAllowed = false;           //TODO maybe remove?
-        settings.boostCooldown = 10.0f;
-        settings.impossibleMode = false;
-        settings.immuneToCrush = false;
-    }
+    //private void settings.SetDefaultSettings() {
+    //    settings.fireMode = "tetromino";
+    //    settings.rotate45 = false;
+    //    settings.minWaitTime = 0.4f;
+    //    settings.maxWaitTime = 2.5f;
+    //    settings.flipCamera = false;
+    //    settings.makeScoreNegative = false;
+    //    settings.settingPalette = new BlockPalette();   //default constructor
+    //    settings.slipperyJumpAllowed = false;           //TODO maybe remove?
+    //    settings.boostCooldown = 10.0f;
+    //    settings.impossibleMode = false;
+    //    settings.immuneToCrush = false;
+    //}
 
     private void LoadGame() {
         SceneManager.LoadScene("Game", LoadSceneMode.Single);

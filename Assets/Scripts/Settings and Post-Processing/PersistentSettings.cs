@@ -7,18 +7,18 @@ public enum FireMode { tromino, tetromino, pentomino, all };
 
 public class PersistentSettings : MonoBehaviour {
 
-    [HideInInspector] public string fireMode;
-    [HideInInspector] public bool rotate45;
-    [HideInInspector] public bool slipperyJumpAllowed;
-    [HideInInspector] public float boostCooldown;
-    [HideInInspector] public bool immuneToCrush;
-    [HideInInspector] public float minWaitTime;
-    [HideInInspector] public float maxWaitTime;
-    [HideInInspector] public bool flipCamera;
-    [HideInInspector] public bool makeScoreNegative;
-    [HideInInspector] public BlockPalette settingPalette;
-    [HideInInspector] public BlockPalette optionOverridePalette;
-    [HideInInspector] public bool impossibleMode;
+    public string fireMode;
+    public bool rotate45;
+    public bool slipperyJumpAllowed;
+    public float boostCooldown;
+    public bool immuneToCrush;
+    public float minWaitTime;
+    public float maxWaitTime;
+    public bool flipCamera;
+    public bool makeScoreNegative;
+    public BlockPalette settingPalette;
+    public BlockPalette optionOverridePalette;
+    public bool impossibleMode;
 
     //Singleton
     static PersistentSettings instance;
@@ -50,6 +50,24 @@ public class PersistentSettings : MonoBehaviour {
     void OnSceneLoaded() {
 
         Debug.Log("Persistent settings detected that a new scene was loaded.");
+    }
+
+    /* Set Default Settings
+     * Returns all settings to their defaults for the normal gamemode. 
+     * Called my MainMenu before applying other modifiers here and loading the game
+     */
+    public void SetDefaultSettings() {
+        fireMode = "tetromino";
+        rotate45 = false;
+        minWaitTime = 0.4f;
+        maxWaitTime = 2.5f;
+        flipCamera = false;
+        makeScoreNegative = false;
+        settingPalette = new BlockPalette();   //default constructor
+        slipperyJumpAllowed = false;           //TODO maybe remove?
+        boostCooldown = 10.0f;
+        impossibleMode = false;
+        immuneToCrush = false;
     }
 
     /* This function is called once upon game scene loading.
