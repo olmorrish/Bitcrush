@@ -22,6 +22,10 @@ public class MainMenu : MonoBehaviour {
     public GameObject palettePreviewHandler;
     private PalettePreview palettePreview;
 
+    public GameObject musicObj;
+    private AudioSource music;
+    private float musicInitialVolume;
+
     //public GameObject postProcessing;
     //private PostProcessVolume postProcessVolume;
     //private bool postProcessingCurrentlyEnabled;
@@ -39,6 +43,9 @@ public class MainMenu : MonoBehaviour {
         //optionsCanvas.SetActive(false);
         paletteSelectionCanvas.SetActive(false);
         mainMenuDefaultButton.Select();
+
+        music = musicObj.GetComponent<AudioSource>();
+        musicInitialVolume = music.volume;
     }
 
     //buttons can handle most navigation; this is just so that "B" allows the player to go back
@@ -213,21 +220,14 @@ public class MainMenu : MonoBehaviour {
 		Application.Quit();
 	}
 
-    //private void settings.SetDefaultSettings() {
-    //    settings.fireMode = "tetromino";
-    //    settings.rotate45 = false;
-    //    settings.minWaitTime = 0.4f;
-    //    settings.maxWaitTime = 2.5f;
-    //    settings.flipCamera = false;
-    //    settings.makeScoreNegative = false;
-    //    settings.settingPalette = new BlockPalette();   //default constructor
-    //    settings.slipperyJumpAllowed = false;           //TODO maybe remove?
-    //    settings.boostCooldown = 10.0f;
-    //    settings.impossibleMode = false;
-    //    settings.immuneToCrush = false;
-    //}
-
     private void LoadGame() {
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
+    }
+
+    public void ToggleMusic() {
+        if (music.volume == 0f)
+            music.volume = musicInitialVolume;
+        else
+            music.volume = 0f;
     }
 }
