@@ -4282,7 +4282,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: ToggleMusic
+        m_MethodName: ToggleSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6786,7 +6786,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873795401}
-        m_MethodName: ToggleMusic
+        m_MethodName: TogglePostProcessing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9041,6 +9041,9 @@ MonoBehaviour:
   paletteSelectionDefaultButton: {fileID: 498579966}
   palettePreviewHandler: {fileID: 616064793}
   musicObj: {fileID: 1570707706}
+  musicToggleBackdropObj: {fileID: 157152234}
+  sfxToggleBackdropObj: {fileID: 1715384502}
+  ppToggleBackdropObj: {fileID: 846731186}
 --- !u!4 &1873795402
 Transform:
   m_ObjectHideFlags: 0

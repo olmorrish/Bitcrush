@@ -22,9 +22,23 @@ public class MainMenu : MonoBehaviour {
     public GameObject palettePreviewHandler;
     private PalettePreview palettePreview;
 
+    [Header("Options Menu References")]
     public GameObject musicObj;
     private AudioSource music;
     private float musicInitialVolume;
+    private GameObject postProcessingObj;
+    private PostProcessVolume ppVolume;
+
+    [Header("Option Backdrop Colour-Change Vars")]
+    private Color green;
+    private Color red;
+    public GameObject musicToggleBackdropObj;
+    private SpriteRenderer musicToggleBackdrop;
+    public GameObject sfxToggleBackdropObj;
+    private SpriteRenderer sfxToggleBackdrop;
+    public GameObject ppToggleBackdropObj;
+    private SpriteRenderer ppToggleBackdrop;
+
 
     //public GameObject postProcessing;
     //private PostProcessVolume postProcessVolume;
@@ -44,8 +58,16 @@ public class MainMenu : MonoBehaviour {
         paletteSelectionCanvas.SetActive(false);
         mainMenuDefaultButton.Select();
 
+        green = new Color(0f, 1f, 0f, 0.5f);
+        red = new Color(1f, 0f, 0f, 0.5f);
+        musicToggleBackdrop = musicToggleBackdropObj.GetComponent<SpriteRenderer>();
+        sfxToggleBackdrop = sfxToggleBackdropObj.GetComponent<SpriteRenderer>();
+        ppToggleBackdrop = ppToggleBackdropObj.GetComponent<SpriteRenderer>();
+
         music = musicObj.GetComponent<AudioSource>();
         musicInitialVolume = music.volume;
+        postProcessingObj = GameObject.Find("PostProcessing");                       //because it may be from a previous main menu load
+        ppVolume = postProcessingObj.GetComponent<PostProcessVolume>();
     }
 
     //buttons can handle most navigation; this is just so that "B" allows the player to go back
@@ -224,10 +246,36 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
 
+    /* Toggle Music
+     * Switches the music on and off, and also changes its backdrop colour accordingly
+     */
     public void ToggleMusic() {
-        if (music.volume == 0f)
+        if (music.volume == 0f) {
             music.volume = musicInitialVolume;
-        else
+            musicToggleBackdrop.color = green;
+        }
+        else {
             music.volume = 0f;
+            musicToggleBackdrop.color = red;
+        }
     }
+
+
+    public void ToggleSFX() {
+        //TODO
+    }
+
+    public void TogglePostProcessing() {
+        //ppVolume.enabled = !ppVolume.isActiveAndEnabled;
+
+        if (ppVolume.isActiveAndEnabled) {
+            ppVolume.enabled = false;
+            ppToggleBackdrop.color = red;
+        }
+        else {
+            ppVolume.enabled = true;
+            ppToggleBackdrop.color = green;
+        }
+    }
+
 }
