@@ -49,12 +49,9 @@ public class MainMenu : MonoBehaviour {
         settingsObject = GameObject.Find("PersistentSettingsObject");                 //because it may be from a previous main menu load
         settings = settingsObject.GetComponent<PersistentSettings>();
         palettePreview = palettePreviewHandler.GetComponent<PalettePreview>();
-        //postProcessVolume = postProcessing.GetComponent<PostProcessVolume>();
-        //postProcessingCurrentlyEnabled = true;
 
         mainMenuCanvas.SetActive(true);
         gameModesCanvas.SetActive(false);
-        //optionsCanvas.SetActive(false);
         paletteSelectionCanvas.SetActive(false);
         mainMenuDefaultButton.Select();
 
@@ -70,57 +67,41 @@ public class MainMenu : MonoBehaviour {
         ppVolume = postProcessingObj.GetComponent<PostProcessVolume>();
     }
 
-    //buttons can handle most navigation; this is just so that "B" allows the player to go back
     private void Update() {
+        //buttons can handle most navigation; this is just so that "B" allows the player to go back
         if (Input.GetButtonDown("Cancel")) {
-            if (gameModesCanvas.activeInHierarchy || paletteSelectionCanvas.activeInHierarchy)
-                ToMainMenuCanvas();
+            if (gameModesCanvas.activeInHierarchy || paletteSelectionCanvas.activeInHierarchy) {
+                SwitchToCanvas("MainMenu");
+            }
         }
     }
 
-    ///////////////////
-    /// Menu Navigation
-    ///////////////////
+    public void SwitchToCanvas(string menuName) {
 
-    public void ToMainMenuCanvas() {
-        Debug.Log("Going to main menu.");
-        mainMenuCanvas.SetActive(true);
+        mainMenuCanvas.SetActive(false);
         gameModesCanvas.SetActive(false);
-        //optionsCanvas.SetActive(false);
         paletteSelectionCanvas.SetActive(false);
-        mainMenuDefaultButton.Select();
+
+        switch (menuName) {
+            case "MainMenu":
+                Debug.Log("Going to main menu.");
+                mainMenuCanvas.SetActive(true);
+                mainMenuDefaultButton.Select();
+                break;
+            case "GameModes":
+                Debug.Log("Going to game modes menu.");
+                gameModesCanvas.SetActive(true);
+                gameModesDefaultButton.Select();
+                break;
+            case "PaletteSelection":
+                Debug.Log("Going to palette selection menu.");
+                paletteSelectionCanvas.SetActive(true);
+                paletteSelectionDefaultButton.Select();
+                break;
+        }
     }
 
-    public void ToGameModeCanvas() {
-        Debug.Log("Going to game modes menu.");
-        gameModesCanvas.SetActive(true);
-        mainMenuCanvas.SetActive(false);
-        //optionsCanvas.SetActive(false);
-        //paletteSelectionCanvas.SetActive(false);
-        gameModesDefaultButton.Select();
-    }
-
-    //public void ToOptionsCanvas() {
-    //    Debug.Log("Going to options menu.");
-    //    mainMenuCanvas.SetActive(false);
-    //    //gameModesCanvas.SetActive(false);
-    //    optionsCanvas.SetActive(true);
-    //    paletteSelectionCanvas.SetActive(false);
-    //    optionsDefaultButton.Select();
-    //}
-
-    public void ToPaletteSelectionCanvas() {
-        Debug.Log("Going to palette selection menu.");
-        mainMenuCanvas.SetActive(false);
-        gameModesCanvas.SetActive(false);
-        //optionsCanvas.SetActive(false);
-        paletteSelectionCanvas.SetActive(true);
-        paletteSelectionDefaultButton.Select();
-    }
-
-    ///////////////////
-    /// Mode Launchers
-    ///////////////////
+    #region Mode Launchers
 
     public void StartGame(){
         //apply the relevant settings to store in the persistent object - prior to loading
@@ -215,11 +196,8 @@ public class MainMenu : MonoBehaviour {
         LoadGame();
     }
 
-    /////////////////////////////
-    /// Option Methods - Palettes
-    /////////////////////////////
-    
-    
+    #endregion
+
     public void PaletteOverride(string paletteName) {
 
         Debug.Log("Setting block palette to: " + paletteName + ".");
@@ -233,10 +211,6 @@ public class MainMenu : MonoBehaviour {
         }
         //there is no palette override for black since it's only used for a gag in the "impossible mode"
     }
-
-    ///////////////////
-    /// Support Methods
-    ///////////////////
 
     public void QuitGame(){
 		Application.Quit();
@@ -259,7 +233,6 @@ public class MainMenu : MonoBehaviour {
             musicToggleBackdrop.color = red;
         }
     }
-
 
     public void ToggleSFX() {
         //TODO
