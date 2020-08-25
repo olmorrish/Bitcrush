@@ -7,6 +7,7 @@ public enum FireMode { tromino, tetromino, pentomino, all };
 
 public class PersistentSettings : MonoBehaviour {
 
+    [Header("Gamemode Settings")]
     public string fireMode;
     public bool rotate45;
     public bool slipperyJumpAllowed;

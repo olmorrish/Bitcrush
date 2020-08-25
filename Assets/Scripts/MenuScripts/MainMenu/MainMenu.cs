@@ -7,20 +7,21 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-    public GameObject settingsObject;
-    private PersistentSettings settings;
-
+    [Header("Canvases and Default Buttons")]
     public GameObject mainMenuCanvas;
     public Button mainMenuDefaultButton;
     public GameObject gameModesCanvas;
     public Button gameModesDefaultButton;
-    //public GameObject optionsCanvas;
-    //public Button optionsDefaultButton;
     public GameObject paletteSelectionCanvas;
     public Button paletteSelectionDefaultButton;
+    public GameObject highscoresCanvas;
+    public Button highscoresDefaultButton;
 
+    [Header("Palette Preview and Settings")]
     public GameObject palettePreviewHandler;
     private PalettePreview palettePreview;
+    public GameObject settingsObject;
+    private PersistentSettings settings;
 
     [Header("Options Menu References")]
     public GameObject musicObj;
@@ -50,10 +51,14 @@ public class MainMenu : MonoBehaviour {
         settings = settingsObject.GetComponent<PersistentSettings>();
         palettePreview = palettePreviewHandler.GetComponent<PalettePreview>();
 
-        mainMenuCanvas.SetActive(true);
-        gameModesCanvas.SetActive(false);
-        paletteSelectionCanvas.SetActive(false);
-        mainMenuDefaultButton.Select();
+        SwitchToCanvas("MainMenu");
+
+        //mainMenuCanvas.SetActive(true);
+        //gameModesCanvas.SetActive(false);
+        //paletteSelectionCanvas.SetActive(false);
+        //highscoresCanvas.SetActive(false);
+
+        //mainMenuDefaultButton.Select();
 
         green = new Color(0f, 1f, 0f, 0.5f);
         red = new Color(1f, 0f, 0f, 0.5f);
@@ -70,7 +75,7 @@ public class MainMenu : MonoBehaviour {
     private void Update() {
         //buttons can handle most navigation; this is just so that "B" allows the player to go back
         if (Input.GetButtonDown("Cancel")) {
-            if (gameModesCanvas.activeInHierarchy || paletteSelectionCanvas.activeInHierarchy) {
+            if (gameModesCanvas.activeInHierarchy || paletteSelectionCanvas.activeInHierarchy || highscoresCanvas.activeInHierarchy) {
                 SwitchToCanvas("MainMenu");
             }
         }
@@ -81,6 +86,7 @@ public class MainMenu : MonoBehaviour {
         mainMenuCanvas.SetActive(false);
         gameModesCanvas.SetActive(false);
         paletteSelectionCanvas.SetActive(false);
+        highscoresCanvas.SetActive(false);
 
         switch (menuName) {
             case "MainMenu":
@@ -97,6 +103,11 @@ public class MainMenu : MonoBehaviour {
                 Debug.Log("Going to palette selection menu.");
                 paletteSelectionCanvas.SetActive(true);
                 paletteSelectionDefaultButton.Select();
+                break;
+            case "Highscores":
+                Debug.Log("Going to highscores menu.");
+                highscoresCanvas.SetActive(true);
+                highscoresDefaultButton.Select();
                 break;
         }
     }
