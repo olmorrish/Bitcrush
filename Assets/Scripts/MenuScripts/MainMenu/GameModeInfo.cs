@@ -32,6 +32,11 @@ public class GameModeInfo : MonoBehaviour {
     void Update() {
         GameObject currentButton = EventSystem.current.currentSelectedGameObject;
 
+        //clicking a non-interactable button gives a null pointer
+        if (!currentButton) { 
+            return;
+        }
+
         if (currentButton.Equals(normalModeButton))
             infoText.text = "REGULAR BiTCRUSH! TETROMiNOES ONLY. YOU COULD HAVE SELECTED THiS ON THE MAiN MENU!";
         else if (currentButton.Equals(casualModeButton))
@@ -72,4 +77,5 @@ public class GameModeInfo : MonoBehaviour {
         else
             infoText.text = "Gamemode info text is not available.";
     }
+
 }
