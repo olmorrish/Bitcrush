@@ -47,8 +47,12 @@ public class ScoreData : MonoBehaviour{
 
     //called by the GameOverMenu when a GameOver is detected
     public void GameOverSaveHighScore() {
-        switch (currentMode) {
-            //TODO NEXT
+        Debug.Log("Game Over: Attempting to update highscores.");
+
+        string prefSaveName = currentMode.ToString();
+
+        if (localHighScore > PlayerPrefs.GetInt(prefSaveName, 0)) {
+            PlayerPrefs.SetInt("HS_" + prefSaveName, (int)Mathf.Ceil(localHighScore));
         }
     }
 }

@@ -10,18 +10,18 @@ public enum FireMode {
     all };
 
 public enum GameMode {
-    normal,
-    casual,
-    tromino,
-    pentomino,
-    tiny,
-    bitcrusher,
-    slipperySlopes,
-    upsideDown,
-    universitySim,
-    bitwarped,
-    bitcrusher2,
-    impossible
+    Normal,
+    Casual,
+    Tromino,
+    Pentomino,
+    Tiny,
+    Bitcrusher,
+    SlipperySlopes,
+    UpsideDown,
+    UniversitySim,
+    Bitwarped,
+    Bitcrusher2,
+    Impossible
 }
 
 public class PersistentSettings : MonoBehaviour {
@@ -78,7 +78,7 @@ public class PersistentSettings : MonoBehaviour {
      * Called my MainMenu before applying other modifiers here and loading the game
      */
     public void SetDefaultSettings() {
-        currentModeName = GameMode.normal;
+        currentModeName = GameMode.Normal;
         fireMode = "tetromino";
         rotate45 = false;
         minWaitTime = 0.4f;

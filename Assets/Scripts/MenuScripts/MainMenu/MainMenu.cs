@@ -124,7 +124,7 @@ public class MainMenu : MonoBehaviour {
     public void StartCasualGame() {
         //apply the relevant settings to store in the persistent object - prior to loading
         settings.SetDefaultSettings();
-        settings.currentModeName = GameMode.casual;
+        settings.currentModeName = GameMode.Casual;
         settings.immuneToCrush = true;
         settings.boostCooldown = 4.5f;
         LoadGame();
@@ -133,7 +133,7 @@ public class MainMenu : MonoBehaviour {
     public void StartTrominoGame(){
         //apply the relevant settings to store in the persistent object - prior to loading
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.tromino;
+        settings.currentModeName = GameMode.Tromino;
         settings.fireMode = "tromino";
         settings.maxWaitTime = 1.5f;
         LoadGame();
@@ -143,7 +143,7 @@ public class MainMenu : MonoBehaviour {
     public void StartPentominoGame(){
         //apply the relevant settings to store in the persistent object - prior to loading
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.pentomino;
+        settings.currentModeName = GameMode.Pentomino;
         settings.fireMode = "pentomino";
         LoadGame();
     }
@@ -151,7 +151,7 @@ public class MainMenu : MonoBehaviour {
     public void StartTinyBlockGame() {
         //apply the relevant settings to store in the persistent object - prior to loading
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.tiny;
+        settings.currentModeName = GameMode.Tiny;
         settings.fireMode = "tiny";
         settings.maxWaitTime = 1.2f;
         LoadGame();
@@ -159,7 +159,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StartBiTCRUSHERGame() {
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.bitcrusher;
+        settings.currentModeName = GameMode.Bitcrusher;
         settings.fireMode = "all";
         settings.minWaitTime = 0.2f;
         settings.maxWaitTime = 1.75f;
@@ -168,7 +168,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StartUniversitySimGame() {
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.universitySim;
+        settings.currentModeName = GameMode.UniversitySim;
         settings.fireMode = "university";
         settings.minWaitTime = 1f;
         settings.maxWaitTime = 3f;  //let's go easy on 'em
@@ -177,7 +177,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StartSlipperySlopesGame() {
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.slipperySlopes;
+        settings.currentModeName = GameMode.SlipperySlopes;
         settings.rotate45 = true;
         settings.slipperyJumpAllowed = true;
         settings.settingPalette = new BlockPalette("mountain");
@@ -186,7 +186,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StartUpsideDownGame() {
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.upsideDown;
+        settings.currentModeName = GameMode.UpsideDown;
         settings.flipCamera = true;
         settings.makeScoreNegative = true;
         LoadGame();
@@ -195,7 +195,7 @@ public class MainMenu : MonoBehaviour {
     public void StartBiTWARPEDGame() {
         //apply the relevant settings to store in the persistent object - prior to loading
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.bitwarped;
+        settings.currentModeName = GameMode.Bitwarped;
         settings.fireMode = "warped";
         LoadGame();
     }
@@ -203,7 +203,7 @@ public class MainMenu : MonoBehaviour {
     public void StartBiTCRUSHER2Game() {
         //apply the relevant settings to store in the persistent object - prior to loading
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.bitcrusher2;
+        settings.currentModeName = GameMode.Bitcrusher2;
         settings.minWaitTime = 0.1f;
         settings.maxWaitTime = 1.3f;
         settings.boostCooldown = 15.0f;
@@ -212,7 +212,7 @@ public class MainMenu : MonoBehaviour {
 
     public void StartImpossibleGame() {
         settings.SetDefaultSettings();   //default - overwrite any others below
-        settings.currentModeName = GameMode.impossible;
+        settings.currentModeName = GameMode.Impossible;
         settings.settingPalette = new BlockPalette("black");
         settings.impossibleMode = true; //prevents the player palette from overriding
         LoadGame();
