@@ -3,11 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum FireMode { tromino, tetromino, pentomino, all };
+public enum FireMode {
+    tromino,
+    tetromino,
+    pentomino,
+    all };
+
+public enum GameMode {
+    normal,
+    casual,
+    tromino,
+    pentomino,
+    tiny,
+    bitcrusher,
+    slipperySlopes,
+    upsideDown,
+    universitySim,
+    bitwarped,
+    bitcrusher2,
+    impossible
+}
 
 public class PersistentSettings : MonoBehaviour {
 
     [Header("Gamemode Settings")]
+    public GameMode currentModeName;
     public string fireMode;
     public bool rotate45;
     public bool slipperyJumpAllowed;
@@ -58,6 +78,7 @@ public class PersistentSettings : MonoBehaviour {
      * Called my MainMenu before applying other modifiers here and loading the game
      */
     public void SetDefaultSettings() {
+        currentModeName = GameMode.normal;
         fireMode = "tetromino";
         rotate45 = false;
         minWaitTime = 0.4f;
@@ -98,6 +119,7 @@ public class PersistentSettings : MonoBehaviour {
 
             ScoreData scoreData = gameMaster.GetComponent<ScoreData>();
             scoreData.makeScoreNegative = makeScoreNegative;
+            scoreData.currentMode = currentModeName;
 
             GameObject cameraMain = GameObject.Find("Main Camera");
             GameObject cameraKillLine = GameObject.Find("KillLine Camera");

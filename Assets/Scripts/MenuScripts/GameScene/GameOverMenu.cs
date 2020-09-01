@@ -10,6 +10,8 @@ public class GameOverMenu : MonoBehaviour {
 	private GameObject theGameOverMenu;
 	public PauseMenu thePauseMenu;
 
+    public GameObject gameMaster;
+    private ScoreData scoreData;
     public GameObject player;
 	private Exploder exploder;
     public GameObject musicObject;
@@ -24,7 +26,9 @@ public class GameOverMenu : MonoBehaviour {
 		exploder = player.GetComponent<Exploder>();
         playerBoost = player.GetComponent<Boost>();
         musicTrack = musicObject.GetComponent<AudioSource>();
-		
+
+        scoreData = gameMaster.GetComponent<ScoreData>();
+
 		isGameOver = false;
 	}
 	
@@ -47,16 +51,18 @@ public class GameOverMenu : MonoBehaviour {
 	public void GameOver(){
 		theGameOverMenu.SetActive(true);
 		musicTrack.volume = (0.5f) * musicTrack.volume;
-
         playerBoost.boostEnabled = false;
 
+        //block unfreeze
         GameObject[] allBlocksInScene = GameObject.FindGameObjectsWithTag("Block");
-
         foreach (GameObject block in allBlocksInScene) {
             block.GetComponent<Freezer>().UnFreeze();
             block.GetComponent<Freezer>().hasntBeenFrozenYet = false;    //stops them from freezing for a first time after gameover
         }
-	}
+
+        //scoredata update saves
+        scoreData.GameOverSaveHighScore();
+    }
 	
 	/*
 	 * Loads scene again
@@ -71,4 +77,5 @@ public class GameOverMenu : MonoBehaviour {
 	public void Exit(){
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 	}
+
 }

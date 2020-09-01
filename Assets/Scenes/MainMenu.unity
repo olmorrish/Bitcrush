@@ -7791,6 +7791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff95845cd84b7a4d88c5ef66f319021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentModeName: 0
   fireMode: 
   rotate45: 0
   slipperyJumpAllowed: 0

@@ -56,9 +56,9 @@ public class GamePattern : MonoBehaviour {
             chuckerFireScripts[Random.Range(0, chuckers.Length)].Throw(fireMode, rotateBy45Degrees, currentPalette);
 
             //reset timer based on progress
-            if(scoreData.hiScore < 30)
+            if(scoreData.localHighScore < 30)
                 timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTime);
-            else if (scoreData.hiScore < 50)
+            else if (scoreData.localHighScore < 50)
                 timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTimeStage2);
             else
                 timeOfNextFire = Time.time + Random.Range(minWaitTime, maxWaitTimeStage3);
@@ -68,7 +68,7 @@ public class GamePattern : MonoBehaviour {
     private void FixedUpdate() {
         //current score decides the speed of the kill line
         if (!gameOverMenu.isGameOver) {
-            float score = scoreData.hiScore;
+            float score = scoreData.localHighScore;
             if (score < 30)
                 killLineController.MoveUp(killLineSpeed);
             else if (score < 50)

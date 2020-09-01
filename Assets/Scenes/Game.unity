@@ -1184,7 +1184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458019cc224d6264bbe49e6dff80dac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hiScore: 0
+  currentMode: 0
+  localHighScore: 0
   makeScoreNegative: 0
   gameplayScore: {fileID: 674593841}
   gameOverScore: {fileID: 977535746}
@@ -3186,6 +3187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameOver: 0
   thePauseMenu: {fileID: 1004985259}
+  gameMaster: {fileID: 572780244}
   player: {fileID: 1827037376}
   musicObject: {fileID: 733425185}
 --- !u!114 &1231062537
