@@ -49,6 +49,7 @@ public class GameOverMenu : MonoBehaviour {
 	 * Activates Gameover
 	 */
 	public void GameOver(){
+        //enable the menu
 		theGameOverMenu.SetActive(true);
 		musicTrack.volume = (0.5f) * musicTrack.volume;
         playerBoost.boostEnabled = false;

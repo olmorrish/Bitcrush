@@ -26,6 +26,8 @@ public enum GameMode {
 
 public class PersistentSettings : MonoBehaviour {
 
+    bool mainMenuVisitedOnGameStartFlag = false;
+
     [Header("Gamemode Settings")]
     public GameMode currentModeName;
     public string fireMode;
@@ -49,6 +51,7 @@ public class PersistentSettings : MonoBehaviour {
             Destroy(gameObject);
         else {
             instance = this;
+            mainMenuVisitedOnGameStartFlag = false;
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -92,12 +95,14 @@ public class PersistentSettings : MonoBehaviour {
         immuneToCrush = false;
     }
 
-    /* This function is called once upon game scene loading.
+    /* This function is called once upon game scene loading, and upon menu scene loading.
      *  It's not efficient and is pretty bulky, but it's only called once per game load
      *  Note: "GameObject.Find" calls are necessary since scene references can't be set before scene exists
+     *  
+     *  Game load sets all settings.
+     *  Menu load tells menu to go to unlocks screen, but only if the menu has been visited once already (game start). 
      */
     void ApplyGameModeSettings(Scene scene, LoadSceneMode mode) {
-
 
         if (scene.name.Equals("Game")) {
             Debug.Log("Persistent settings are applying to the current scene...");
@@ -141,5 +146,17 @@ public class PersistentSettings : MonoBehaviour {
 
             Debug.Log("Persistent settings application complete.");
         }
+
+        //ensures menu loads into the unlocks screen
+        else if (scene.name.Equals("MainMenu") && mainMenuVisitedOnGameStartFlag) {
+            Debug.Log("PersistentSettings is notifying MenuNavigator that a game has been played. Menu should load into unlock screen.");
+
+            MainMenu menuNav = GameObject.Find("MenuNavigator").GetComponent<MainMenu>();
+            menuNav.userHasPlayedARound = true;
+
+            //TODO set unlock messages
+        }
+
+        mainMenuVisitedOnGameStartFlag = true; //flag to mark that the main menu has been visited
     }
 }

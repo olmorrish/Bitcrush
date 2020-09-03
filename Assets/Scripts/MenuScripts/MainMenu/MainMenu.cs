@@ -16,6 +16,8 @@ public class MainMenu : MonoBehaviour {
     public Button paletteSelectionDefaultButton;
     public GameObject highscoresCanvas;
     public Button highscoresDefaultButton;
+    public GameObject unlocksCanvas;
+    public Button unlocksDefaultButton;
 
     [Header("Palette Preview and Settings")]
     public GameObject palettePreviewHandler;
@@ -40,25 +42,26 @@ public class MainMenu : MonoBehaviour {
     public GameObject ppToggleBackdropObj;
     private SpriteRenderer ppToggleBackdrop;
 
+    [Header("Unlock Trigger")]
+    public bool userHasPlayedARound = false;
+
+    private void Awake() {
+        userHasPlayedARound = false; //ensures game always boots to main menu
+    }
 
     //public GameObject postProcessing;
     //private PostProcessVolume postProcessVolume;
     //private bool postProcessingCurrentlyEnabled;
-
     private void Start() {
 
         settingsObject = GameObject.Find("PersistentSettingsObject");                 //because it may be from a previous main menu load
         settings = settingsObject.GetComponent<PersistentSettings>();
         palettePreview = palettePreviewHandler.GetComponent<PalettePreview>();
 
-        SwitchToCanvas("MainMenu");
-
-        //mainMenuCanvas.SetActive(true);
-        //gameModesCanvas.SetActive(false);
-        //paletteSelectionCanvas.SetActive(false);
-        //highscoresCanvas.SetActive(false);
-
-        //mainMenuDefaultButton.Select();
+        if (userHasPlayedARound)
+            SwitchToCanvas("Unlocks");
+        else
+            SwitchToCanvas("MainMenu");
 
         green = new Color(0f, 1f, 0f, 0.5f);
         red = new Color(1f, 0f, 0f, 0.5f);
@@ -87,6 +90,7 @@ public class MainMenu : MonoBehaviour {
         gameModesCanvas.SetActive(false);
         paletteSelectionCanvas.SetActive(false);
         highscoresCanvas.SetActive(false);
+        unlocksCanvas.SetActive(false);
 
         switch (menuName) {
             case "MainMenu":
@@ -108,6 +112,11 @@ public class MainMenu : MonoBehaviour {
                 Debug.Log("Going to highscores menu.");
                 highscoresCanvas.SetActive(true);
                 highscoresDefaultButton.Select();
+                break;
+            case "Unlocks":
+                Debug.Log("Going to unlocks menu.");
+                unlocksCanvas.SetActive(true);
+                unlocksDefaultButton.Select();
                 break;
         }
     }
