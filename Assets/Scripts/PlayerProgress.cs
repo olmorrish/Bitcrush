@@ -35,8 +35,25 @@ public class PlayerProgress : MonoBehaviour {
     public GameObject bitcrusher2HSText;
     //public GameObject impossibleHSText;
 
+    [Header("Palette Menu Buttons")]
+    public Button DefaultButton;
+    public Button PastelButton;
+    public Button WarmButton;
+    public Button CoolButton;
+    public Button MonochromeButton;
+    public Button PalewaveButton;
+    public Button RetrowaveButton;
+    public Button PrideButton;
+    public Button MountainButton;
+    public Button BeachButton;
+    public Button ForestButton;
+    public Button RandomButton;
+
+
     // Start is called before the first frame update
     void Start() {
+
+        #region GameMode Unlocks
         if(PlayerPrefs.GetInt("UL_Casual", 0) == 0) {
             casualButton.interactable = false;
             casualButton.GetComponentInChildren<Text>().text = "???";
@@ -101,6 +118,67 @@ public class PlayerProgress : MonoBehaviour {
             impossibleButton.interactable = false;
             impossibleButton.GetComponentInChildren<Text>().text = "???";
         }
+
+        #endregion
+        #region PaletteUnlocks
+
+        if (PlayerPrefs.GetInt("PAL_Pastel", 0) == 0) {
+            PastelButton.interactable = false;
+            PastelButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Warm", 0) == 0) {
+            WarmButton.interactable = false;
+            WarmButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Cool", 0) == 0) {
+            CoolButton.interactable = false;
+            CoolButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Monochrome", 0) == 0) {
+            MonochromeButton.interactable = false;
+            MonochromeButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Palewave", 0) == 0) {
+            PalewaveButton.interactable = false;
+            PalewaveButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Retrowave", 0) == 0) {
+            RetrowaveButton.interactable = false;
+            RetrowaveButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Pride", 0) == 0) {
+            PrideButton.interactable = false;
+            PrideButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Mountain", 0) == 0) {
+            MountainButton.interactable = false;
+            MountainButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Beach", 0) == 0) {
+            BeachButton.interactable = false;
+            BeachButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Forest", 0) == 0) {
+            ForestButton.interactable = false;
+            ForestButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Random", 0) == 0) {
+            RandomButton.interactable = false;
+            RandomButton.GetComponentInChildren<Text>().text = "???";
+        }
+
+        #endregion
+
     }
 
     // Update is called once per frame

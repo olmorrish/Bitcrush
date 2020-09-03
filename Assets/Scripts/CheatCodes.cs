@@ -25,6 +25,18 @@ public class CheatCodes : MonoBehaviour {
             PlayerPrefs.SetInt("UL_Impossible", 1);
             PlayerPrefs.SetInt("UL_SlipperySlopes", 1);
             PlayerPrefs.SetInt("UL_UpsideDown", 1);
+
+            PlayerPrefs.SetInt("PAL_Pastel", 1);
+            PlayerPrefs.SetInt("PAL_Warm", 1);
+            PlayerPrefs.SetInt("PAL_Cool", 1);
+            PlayerPrefs.SetInt("PAL_Monochrome", 1);
+            PlayerPrefs.SetInt("PAL_Palewave", 1);
+            PlayerPrefs.SetInt("PAL_Retrowave", 1);
+            PlayerPrefs.SetInt("PAL_Pride", 1);
+            PlayerPrefs.SetInt("PAL_Mountain", 1);
+            PlayerPrefs.SetInt("PAL_Beach", 1);
+            PlayerPrefs.SetInt("PAL_Forest", 1);
+            PlayerPrefs.SetInt("PAL_Random", 1);
         }
 
     }
