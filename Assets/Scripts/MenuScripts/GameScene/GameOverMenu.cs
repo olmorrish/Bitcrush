@@ -61,8 +61,22 @@ public class GameOverMenu : MonoBehaviour {
             block.GetComponent<Freezer>().hasntBeenFrozenYet = false;    //stops them from freezing for a first time after gameover
         }
 
-        //scoredata update saves
+        //highscorescore saves update and 
         scoreData.GameOverSaveHighScore();
+        CheckForUnlocksAndQueueMsgs();
+
+    }
+
+    private void CheckForUnlocksAndQueueMsgs() {
+
+        PersistentSettings persistentSettings = GameObject.Find("PersistentSettingsObject").GetComponent<PersistentSettings>();
+
+        //Casual Mode: Unlocks after a single game is played
+        if (PlayerPrefs.GetInt("UL_Casual", 0) == 0) {
+            PlayerPrefs.SetInt("UL_Casual", 1);
+            persistentSettings.unlockMessageQueue.Add("CASUAL MODE UNLOCKED");
+        }
+
     }
 	
 	/*

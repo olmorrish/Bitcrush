@@ -2256,7 +2256,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: UPSiDE DOWN MODE UNLOCKED
+  m_Text: PLACEHOLDER MESSAGE YAY (WiLL BE ALERTS ABOUT UNLOCKED STUFF)
 --- !u!222 &291972423
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4453,7 +4453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetAllProgress: 0
-  unlockEverything: 1
+  unlockEverything: 0
 --- !u!1 &654901380
 GameObject:
   m_ObjectHideFlags: 0
@@ -7992,6 +7992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff95845cd84b7a4d88c5ef66f319021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuVisitedOnGameStartFlag: 0
+  unlockMessageQueue: []
   currentModeName: 0
   fireMode: 
   rotate45: 0
@@ -10332,6 +10334,7 @@ GameObject:
   - component: {fileID: 1612734485}
   - component: {fileID: 1612734484}
   - component: {fileID: 1612734483}
+  - component: {fileID: 1612734487}
   m_Layer: 5
   m_Name: UnlocksCanvas
   m_TagString: Untagged
@@ -10419,6 +10422,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1612734487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612734482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef09212aacdc6641b6be329a38ab1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuNavigatorObj: {fileID: 1873795400}
+  unlockTextObj: {fileID: 291972418}
+  unlockMessageQueue: []
 --- !u!1 &1617638290
 GameObject:
   m_ObjectHideFlags: 0

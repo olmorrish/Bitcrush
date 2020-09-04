@@ -26,9 +26,11 @@ public enum GameMode {
 
 public class PersistentSettings : MonoBehaviour {
 
-    bool mainMenuVisitedOnGameStartFlag = false;
+    [Header("MainMenu Load Settings")]
+    public bool mainMenuVisitedOnGameStartFlag = false;
+    public List<string> unlockMessageQueue;
 
-    [Header("Gamemode Settings")]
+    [Header("Game Load Settings")]
     public GameMode currentModeName;
     public string fireMode;
     public bool rotate45;
@@ -54,6 +56,8 @@ public class PersistentSettings : MonoBehaviour {
             mainMenuVisitedOnGameStartFlag = false;
             DontDestroyOnLoad(gameObject);
         }
+
+        unlockMessageQueue = new List<string>();
     }
 
     // Start is called before the first frame update
@@ -148,13 +152,16 @@ public class PersistentSettings : MonoBehaviour {
         }
 
         //ensures menu loads into the unlocks screen
-        else if (scene.name.Equals("MainMenu") && mainMenuVisitedOnGameStartFlag) {
+        else if (scene.name.Equals("MainMenu") && mainMenuVisitedOnGameStartFlag && unlockMessageQueue.Count > 0) {
             Debug.Log("PersistentSettings is notifying MenuNavigator that a game has been played. Menu should load into unlock screen.");
 
             MainMenu menuNav = GameObject.Find("MenuNavigator").GetComponent<MainMenu>();
             menuNav.userHasPlayedARound = true;
 
             //TODO set unlock messages
+            //GameObject unlocksCanvas = GameObject.Find("UnlocksCanvas");
+            //UnlockNextButtonHandler nextHandler = unlocksCanvas.GetComponent<UnlockNextButtonHandler>();
+            //nextHandler.unlockMessageQueue = this.unlockMessageQueue;
         }
 
         mainMenuVisitedOnGameStartFlag = true; //flag to mark that the main menu has been visited
