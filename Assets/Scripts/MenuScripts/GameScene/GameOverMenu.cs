@@ -67,22 +67,35 @@ public class GameOverMenu : MonoBehaviour {
 
     }
 
+    /* Check for Unlocks, Queue Messages
+     * Runs through all unlock conditions, the unlocks any that the player has met the requirements for. 
+     * If no unlocks were achieved, queues a hint about what to try next instead. 
+     */
     private void CheckForUnlocksAndQueueMsgs() {
 
         PersistentSettings persistentSettings = GameObject.Find("PersistentSettingsObject").GetComponent<PersistentSettings>();
 
+        #region Unlock Checks and Unlock Messages
         //Casual Mode: Unlocks after a single game is played
         if (PlayerPrefs.GetInt("UL_Casual", 0) == 0) {
             PlayerPrefs.SetInt("UL_Casual", 1);
             persistentSettings.unlockMessageQueue.Add("CASUAL MODE UNLOCKED");
         }
 
+        //TODO
+        #endregion
+
+        #region Unlock Hints
+        if (persistentSettings.unlockMessageQueue.Count < 1) {
+            persistentSettings.unlockMessageQueue.Add("GET 200 POiNTS iN NORMAL MODE FOR A NEW GAME MODE");
+        }
+        #endregion
     }
-	
-	/*
+
+    /*
 	 * Loads scene again
 	 */
-	public void Retry(){
+    public void Retry(){
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
 	}
 	
