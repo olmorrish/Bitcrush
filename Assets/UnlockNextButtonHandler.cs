@@ -35,7 +35,7 @@ public class UnlockNextButtonHandler : MonoBehaviour {
      * Called by on scene load if a message is available, then called again when button is hit.
      * Actual unlocks for PlayerPrefs are handled by the GameOverMenu script when a game is completed.
      */ 
-    void ShowNextUnlock() {
+    public void ShowNextUnlock() {
         if(unlockMessageQueue.Count < 1) {
             mainMenu.SwitchToCanvas("MainMenu");
         }

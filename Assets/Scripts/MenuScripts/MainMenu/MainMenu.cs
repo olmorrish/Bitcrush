@@ -42,8 +42,9 @@ public class MainMenu : MonoBehaviour {
     public GameObject ppToggleBackdropObj;
     private SpriteRenderer ppToggleBackdrop;
 
-    [Header("Unlock Trigger")]
+    [Header("Unlocks and Audio Settings")]
     public bool userHasPlayedARound = false;
+    public bool needToApplyPersistentMusicMute = false;
 
     private void Awake() {
         userHasPlayedARound = false; //ensures game always boots to main menu
@@ -81,6 +82,12 @@ public class MainMenu : MonoBehaviour {
             if (gameModesCanvas.activeInHierarchy || paletteSelectionCanvas.activeInHierarchy || highscoresCanvas.activeInHierarchy) {
                 SwitchToCanvas("MainMenu");
             }
+        }
+
+        //this flag can be set by the persistentsettings if the scene needs to be muted; has to wait a frame
+        if (needToApplyPersistentMusicMute) {
+            ToggleMusic();
+            needToApplyPersistentMusicMute = false;
         }
     }
 
@@ -252,14 +259,17 @@ public class MainMenu : MonoBehaviour {
     }
 
     /* Toggle Music
-     * Switches the music on and off, and also changes its backdrop colour accordingly
+     * Switches the music on and off, and changes its backdrop colour accordingly.
+     * Also notifies PersistentSettings
      */
     public void ToggleMusic() {
         if (music.volume == 0f) {
+            settings.musicMuted = false;
             music.volume = musicInitialVolume;
             musicToggleBackdrop.color = green;
         }
         else {
+            settings.musicMuted = true;
             music.volume = 0f;
             musicToggleBackdrop.color = red;
         }

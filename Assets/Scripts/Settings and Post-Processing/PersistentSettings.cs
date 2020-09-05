@@ -30,7 +30,7 @@ public class PersistentSettings : MonoBehaviour {
     public bool mainMenuVisitedOnGameStartFlag = false;
     public List<string> unlockMessageQueue;
 
-    [Header("Game Load Settings")]
+    [Header("Game Load Mode Settings")]
     public GameMode currentModeName;
     public string fireMode;
     public bool rotate45;
@@ -44,6 +44,10 @@ public class PersistentSettings : MonoBehaviour {
     public BlockPalette settingPalette;
     public BlockPalette optionOverridePalette;
     public bool impossibleMode;
+
+    [Header("Audio Settings")]
+    public bool musicMuted = false;
+    public bool sfxMuted = false;
 
     //Singleton
     static PersistentSettings instance;
@@ -108,6 +112,9 @@ public class PersistentSettings : MonoBehaviour {
      */
     void ApplyGameModeSettings(Scene scene, LoadSceneMode mode) {
 
+        //music obj is same in both scenes
+        
+
         if (scene.name.Equals("Game")) {
             Debug.Log("Persistent settings are applying to the current scene...");
 
@@ -148,20 +155,27 @@ public class PersistentSettings : MonoBehaviour {
             Exploder exploder = GameObject.Find("Player").GetComponent<Exploder>();
             exploder.immuneToCrush = immuneToCrush;
 
+            AudioSource sceneMusic = GameObject.Find("Music").GetComponent<AudioSource>();
+            sceneMusic.mute = musicMuted;
+
             Debug.Log("Persistent settings application complete.");
         }
 
         //ensures menu loads into the unlocks screen
-        else if (scene.name.Equals("MainMenu") && mainMenuVisitedOnGameStartFlag && unlockMessageQueue.Count > 0) {
-            Debug.Log("PersistentSettings is notifying MenuNavigator that a game has been played. Menu should load into unlock screen.");
+        else if (scene.name.Equals("MainMenu")) {
 
             MainMenu menuNav = GameObject.Find("MenuNavigator").GetComponent<MainMenu>();
-            menuNav.userHasPlayedARound = true;
 
-            //TODO set unlock messages
-            //GameObject unlocksCanvas = GameObject.Find("UnlocksCanvas");
-            //UnlockNextButtonHandler nextHandler = unlocksCanvas.GetComponent<UnlockNextButtonHandler>();
-            //nextHandler.unlockMessageQueue = this.unlockMessageQueue;
+            if(mainMenuVisitedOnGameStartFlag && unlockMessageQueue.Count > 0) {
+                Debug.Log("PersistentSettings is notifying MenuNavigator that a game has been played. Menu should load into unlock screen.");
+                menuNav.userHasPlayedARound = true;
+                //there's no need to set the unlock messages; they are collected automatically then wiped by the UnlockCanvas
+            }
+
+            if (musicMuted) {
+                Debug.Log("attempting to mute music on main menu");
+                menuNav.needToApplyPersistentMusicMute = true;
+            }
         }
 
         mainMenuVisitedOnGameStartFlag = true; //flag to mark that the main menu has been visited

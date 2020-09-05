@@ -81,6 +81,10 @@ public class GameOverMenu : MonoBehaviour {
             PlayerPrefs.SetInt("UL_Casual", 1);
             persistentSettings.unlockMessageQueue.Add("CASUAL MODE UNLOCKED");
         }
+        if(PlayerPrefs.GetInt("PAL_Pastel", 0) == 0) {
+            PlayerPrefs.SetInt("PAL_Pastel", 1);
+            persistentSettings.unlockMessageQueue.Add("PASTEL PALETTE UNLOCKED");
+        }
 
         //TODO
         #endregion
