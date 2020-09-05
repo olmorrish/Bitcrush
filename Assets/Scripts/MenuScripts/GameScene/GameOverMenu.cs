@@ -73,10 +73,13 @@ public class GameOverMenu : MonoBehaviour {
      */
     private void CheckForUnlocksAndQueueMsgs() {
 
+        //get info required for unlock decisions
         PersistentSettings persistentSettings = GameObject.Find("PersistentSettingsObject").GetComponent<PersistentSettings>();
+        GameMode currentMode = persistentSettings.currentModeName;
+        float score = scoreData.localHighScore;
 
         #region Unlock Checks and Unlock Messages
-        //Casual Mode: Unlocks after a single game is played
+        //Casual Mode + Pastel Palette (1 game played)
         if (PlayerPrefs.GetInt("UL_Casual", 0) == 0) {
             PlayerPrefs.SetInt("UL_Casual", 1);
             persistentSettings.unlockMessageQueue.Add("CASUAL MODE UNLOCKED");
@@ -84,6 +87,20 @@ public class GameOverMenu : MonoBehaviour {
         if(PlayerPrefs.GetInt("PAL_Pastel", 0) == 0) {
             PlayerPrefs.SetInt("PAL_Pastel", 1);
             persistentSettings.unlockMessageQueue.Add("PASTEL PALETTE UNLOCKED");
+        }
+
+        //Tromino Mode + Warm Palette (>25 points in Normal Mode)
+        if(PlayerPrefs.GetInt("UL_Tromino") == 0 && currentMode == GameMode.Normal && score >= 25) {
+            PlayerPrefs.SetInt("UL_Tromino", 1);
+            PlayerPrefs.SetInt("PAL_Warm", 1);
+            persistentSettings.unlockMessageQueue.Add("TROMiNO MODE UNLOCKED");
+            persistentSettings.unlockMessageQueue.Add("WARM PALETTE UNLOCKED");
+        }
+
+        //Cool Palette (>50 points in Tromino Mode)
+        if(PlayerPrefs.GetInt("PAL_Cool", 0) == 0 && currentMode == GameMode.Tromino && score >= 50){
+            PlayerPrefs.SetInt("PAL_Cool", 1);
+            persistentSettings.unlockMessageQueue.Add("COOL PALETTE UNLOCKED");
         }
 
         //TODO

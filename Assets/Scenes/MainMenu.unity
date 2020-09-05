@@ -12862,6 +12862,7 @@ MonoBehaviour:
   sfxToggleBackdropObj: {fileID: 1715384502}
   ppToggleBackdropObj: {fileID: 846731186}
   userHasPlayedARound: 0
+  needToApplyPersistentMusicMute: 0
 --- !u!4 &1873795402
 Transform:
   m_ObjectHideFlags: 0
