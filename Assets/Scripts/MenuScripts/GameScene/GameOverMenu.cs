@@ -85,10 +85,8 @@ public class GameOverMenu : MonoBehaviour {
         //Casual Mode + Pastel Palette (1 game played)
         if (PlayerPrefs.GetInt("UL_Casual", 0) == 0) {
             PlayerPrefs.SetInt("UL_Casual", 1);
-            persistentSettings.unlockMessageQueue.Add("CASUAL MODE UNLOCKED");
-        }
-        if(PlayerPrefs.GetInt("PAL_Pastel", 0) == 0) {
             PlayerPrefs.SetInt("PAL_Pastel", 1);
+            persistentSettings.unlockMessageQueue.Add("CASUAL MODE UNLOCKED");
             persistentSettings.unlockMessageQueue.Add("PASTEL PALETTE UNLOCKED");
         }
 
@@ -100,8 +98,14 @@ public class GameOverMenu : MonoBehaviour {
             persistentSettings.unlockMessageQueue.Add("WARM PALETTE UNLOCKED");
         }
 
+        //Retrowave Palette (>128 points in Normal Mode)
+        if (PlayerPrefs.GetInt("UL_Retrowave") == 0 && currentMode == GameMode.Normal && score >= 128) {
+            PlayerPrefs.SetInt("UL_Retrowave", 1);
+            persistentSettings.unlockMessageQueue.Add("RETROWAVE PALETTE UNLOCKED");
+        }
+
         //Cool Palette (>50 points in Tromino Mode)
-        if(PlayerPrefs.GetInt("PAL_Cool", 0) == 0 && currentMode == GameMode.Tromino && score >= 50){
+        if (PlayerPrefs.GetInt("PAL_Cool", 0) == 0 && currentMode == GameMode.Tromino && score >= 50){
             PlayerPrefs.SetInt("PAL_Cool", 1);
             persistentSettings.unlockMessageQueue.Add("COOL PALETTE UNLOCKED");
         }
@@ -118,6 +122,33 @@ public class GameOverMenu : MonoBehaviour {
             persistentSettings.unlockMessageQueue.Add("PENTOMiNO MODE UNLOCKED");
         }
 
+        //Palewave Palette (>75 points in normal, tromino, and pentomino mode)
+        if (PlayerPrefs.GetInt("PAL_Palewave", 0) == 0 && PlayerPrefs.GetInt("HS_Normal", 0) >= 75 && PlayerPrefs.GetInt("HS_Tromino", 0) >= 75 && PlayerPrefs.GetInt("HS_Pentomino", 0) >= 75){
+            PlayerPrefs.SetInt("PAL_Palewave", 1);
+            persistentSettings.unlockMessageQueue.Add("PALEWAVE PALETTE UNLOCKED");
+        }
+
+        //Slippery Slopes Mode + Mountain Palette (>100 points in pentomino mode)
+        if (PlayerPrefs.GetInt("UL_SlipperySlopes") == 0 && currentMode == GameMode.Pentomino && score >= 100) {
+            PlayerPrefs.SetInt("UL_SlipperySlopes", 1);
+            PlayerPrefs.SetInt("PAL_Mountain", 1);
+            persistentSettings.unlockMessageQueue.Add("SLiPPERY SLOPES MODE UNLOCKED");
+            persistentSettings.unlockMessageQueue.Add("MOUNTAiN PALETTE UNLOCKED");
+        }
+
+        //Bitwarped Mode (>200 points in any noncausual mode)
+        if (PlayerPrefs.GetInt("UL_Bitwarped") == 0 && currentMode != GameMode.Casual && score >= 200) {
+            PlayerPrefs.SetInt("UL_Bitwarped", 1);
+            persistentSettings.unlockMessageQueue.Add("BiTWARPED MODE UNLOCKED");
+        }
+
+        //Bitcrusher II Mode (>150 points in bitcrusher mode)
+        if (PlayerPrefs.GetInt("UL_Bitcrusher2") == 0 && currentMode == GameMode.Bitcrusher && score >= 150) {
+            PlayerPrefs.SetInt("UL_Bitcrusher2", 1);
+            persistentSettings.unlockMessageQueue.Add("BiTCRUSHER II MODE UNLOCKED");
+        }
+
+        //Monochrome Palette (>150 highscore sum)
         if (PlayerPrefs.GetInt("PAL_Monochrome", 0) == 0) {
             if(highscoreSum >= 150) {
                 PlayerPrefs.SetInt("PAL_Monochrome", 1);
@@ -125,19 +156,68 @@ public class GameOverMenu : MonoBehaviour {
             }
         }
 
-        if(PlayerPrefs.GetInt("UL_Tiny", 0) == 0) {
+        //Forest Palette (>250 highscore sum)
+        if (PlayerPrefs.GetInt("PAL_Forest", 0) == 0) {
+            if (highscoreSum >= 250) {
+                PlayerPrefs.SetInt("PAL_Forest", 1);
+                persistentSettings.unlockMessageQueue.Add("FOREST PALETTE UNLOCKED");
+            }
+        }
+
+        //Pride Palette (>400 highscore sum)
+        if (PlayerPrefs.GetInt("PAL_Pride", 0) == 0) {
+            if (highscoreSum >= 400) {
+                PlayerPrefs.SetInt("PAL_Pride", 1);
+                persistentSettings.unlockMessageQueue.Add("PRiDE PALETTE UNLOCKED");
+            }
+        }
+
+        //Upside Down Mode (>600 highscore sum)
+        if (PlayerPrefs.GetInt("UL_UpsideDown", 0) == 0) {
+            if (highscoreSum >= 500) {
+                PlayerPrefs.SetInt("UL_UpsideDown", 1);
+                persistentSettings.unlockMessageQueue.Add("UPSiDE DOWN MODE UNLOCKED");
+            }
+        }
+
+        //Impossible Mode (>1000 highscore sum)
+        if (PlayerPrefs.GetInt("UL_Impossible", 0) == 0) {
+            if (highscoreSum >= 1000) {
+                PlayerPrefs.SetInt("UL_Impossible", 1);
+                persistentSettings.unlockMessageQueue.Add("iMPOSSiBLE MODE UNLOCKED");
+            }
+        }
+
+        //Tiny Blocks (play 15 games)
+        if (PlayerPrefs.GetInt("UL_Tiny", 0) == 0) {
             if(numGamesPlayed >= 15) {
                 PlayerPrefs.SetInt("UL_Tiny", 1);
                 persistentSettings.unlockMessageQueue.Add("TiNY BLOCKS MODE UNLOCKED");
             }
         }
 
-            //TODO
-            #endregion
+        //Bitcrusher Mode (play 30 games)
+        if (PlayerPrefs.GetInt("UL_Bitcrusher", 0) == 0) {
+            if (numGamesPlayed >= 30) {
+                PlayerPrefs.SetInt("UL_Bitcrusher", 1);
+                persistentSettings.unlockMessageQueue.Add("BiTCRUSHER MODE UNLOCKED");
+            }
+        }
 
-            #region Unlock Hints
-            if (persistentSettings.unlockMessageQueue.Count < 1) {
-            persistentSettings.unlockMessageQueue.Add("GET 200 POiNTS iN NORMAL MODE FOR A NEW GAME MODE");
+        //Random Palette (play 50 games)
+        if (PlayerPrefs.GetInt("PAL_Random", 0) == 0) {
+            if (numGamesPlayed >= 50) {
+                PlayerPrefs.SetInt("PAL_Random", 1);
+                persistentSettings.unlockMessageQueue.Add("RANDOM PALETTE UNLOCKED");
+            }
+        }
+
+        //TODO Remaining Unlocks
+        #endregion
+
+        #region Unlock Hints
+        if (persistentSettings.unlockMessageQueue.Count == 0) {
+            persistentSettings.unlockMessageQueue.Add("<HiNT MESSAGE>");
         }
         #endregion
     }
@@ -163,7 +243,6 @@ public class GameOverMenu : MonoBehaviour {
         sum += PlayerPrefs.GetInt("HS_Impossible", 0);
         return sum;
     }
-
 
     /*
 	 * Loads scene again
