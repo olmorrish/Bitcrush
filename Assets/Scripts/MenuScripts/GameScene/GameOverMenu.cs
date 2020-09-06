@@ -174,7 +174,7 @@ public class GameOverMenu : MonoBehaviour {
 
         //Upside Down Mode (>600 highscore sum)
         if (PlayerPrefs.GetInt("UL_UpsideDown", 0) == 0) {
-            if (highscoreSum >= 500) {
+            if (highscoreSum >= 600) {
                 PlayerPrefs.SetInt("UL_UpsideDown", 1);
                 persistentSettings.unlockMessageQueue.Add("UPSiDE DOWN MODE UNLOCKED");
             }
@@ -217,7 +217,67 @@ public class GameOverMenu : MonoBehaviour {
 
         #region Unlock Hints
         if (persistentSettings.unlockMessageQueue.Count == 0) {
-            persistentSettings.unlockMessageQueue.Add("<HiNT MESSAGE>");
+
+            System.Random rand = new System.Random();
+            List<string> possibleHintMessages = new List<string>();
+
+            //Normal Mode Unlocks
+            if(PlayerPrefs.GetInt("PAL_Retrowave", 0) == 0) {
+                possibleHintMessages.Add("GET 128 POiNTS in NORMAL MODE TO UNLOCK A RETRO PALETTE");
+            }
+
+            //Highscore sum unlock hints
+            if(highscoreSum < 150) {
+                possibleHintMessages.Add("GET A TOTAL HiGHSCORE OF 150 ACROSS ALL NON-CASUAL MODES TO UNLOCK AN OLD-TiMEY PALETTE");
+            }
+            else if(highscoreSum < 250) {
+                possibleHintMessages.Add("GET A TOTAL HiGHSCORE OF 250 ACROSS ALL NON-CASUAL MODES TO UNLOCK A NATURAL PALETTE");
+            }
+            else if (highscoreSum < 400) {
+                possibleHintMessages.Add("GET A TOTAL HiGHSCORE OF 400 ACROSS ALL NON-CASUAL MODES TO UNLOCK A PROUD PALETTE");
+            }
+            else if (highscoreSum < 600) {
+                possibleHintMessages.Add("GET A TOTAL HiGHSCORE OF 600 ACROSS ALL NON-CASUAL MODES TO UNLOCK A ZANY GAME MODE");
+            }
+            else if (highscoreSum < 1000) {
+                possibleHintMessages.Add("GET A TOTAL HiGHSCORE OF 1000 ACROSS ALL NON-CASUAL MODES TO UNLOCK AN iMPOSSIBLE GAME MODE");
+            }
+
+            //Games played unlock hints
+            if(numGamesPlayed < 15) {
+                possibleHintMessages.Add("PLAY 15 GAMES TO UNLOCK A MiCROSCOPiC GAME MODE");
+            }
+            else if (numGamesPlayed < 30) {
+                possibleHintMessages.Add("PLAY 30 GAMES TO UNLOCK A DiFFiCULT GAME MODE");
+            }
+            else if (numGamesPlayed < 50) {
+                possibleHintMessages.Add("PLAY 50 GAMES TO UNLOCK A WiLD PALETTE");
+            }
+
+            //Tromino Mode Gate
+            if (PlayerPrefs.GetInt("UL_Tromino", 0) == 0) {
+                possibleHintMessages.Add("GET 25 POiNTS iN NORMAL MODE TO UNLOCK A NEW GAME MODE");
+            }
+            else {
+                possibleHintMessages.Add("GET 50 POiNTS iN TROMiNO MODE TO UNLOCK A CHiLLY PALETTE");
+                possibleHintMessages.Add("GET HiGHSCORES OF 30 iN NORMAL MODE AND TROMiNO MODE TO UNLOCK AN APROPOS GAME MODE");
+            }
+
+            //Pentomino Gate (University Sim hint also locked here)
+            if (PlayerPrefs.GetInt("UL_Pentomino", 0) == 1) {
+                possibleHintMessages.Add("GET 75 POiNTS iN NORMAL, TROMiNO, AND PENTOMiNO MODE TO UNLOCK A TRENDY PALETTE");
+                possibleHintMessages.Add("GET 100 POiNTS iN PENTOMiNO MODE TO UNLOCK A TREACHEROUS GAME MODE");
+                possibleHintMessages.Add("PERFORM TERRiBLY TO UNLOCK AN APPROPRiATE GAME MODE");
+            }
+
+            //Bitcrusher Gate (Bitwarped hint also locked here)
+            if (PlayerPrefs.GetInt("UL_Bitcrusher", 0) == 1) {
+                possibleHintMessages.Add("GET 150 POiNTS in BiTCRUSHER MODE TO UNLOCK A PUNiSHING GAME MODE");
+                possibleHintMessages.Add("GET 200 POiNTS iN ANY NON-CASUAL MODE TO UNLOCK A BiZARRE GAME MODE");
+            }
+
+            string hintMessageSelected = possibleHintMessages[rand.Next(0, possibleHintMessages.Count)];
+            persistentSettings.unlockMessageQueue.Add(hintMessageSelected);
         }
         #endregion
     }
