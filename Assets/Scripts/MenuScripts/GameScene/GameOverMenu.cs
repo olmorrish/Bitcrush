@@ -61,15 +61,16 @@ public class GameOverMenu : MonoBehaviour {
             block.GetComponent<Freezer>().hasntBeenFrozenYet = false;    //stops them from freezing for a first time after gameover
         }
 
-        //highscorescore saves update and 
+        //highscorescore saves update, game count increment, unlocks 
         scoreData.GameOverSaveHighScore();
-        CheckForUnlocksAndQueueMsgs();
+        IncrementGameCount();
+        CheckForUnlocksAndQueueMsgs(); //new highscores and game counter are current
 
     }
 
     /* Check for Unlocks, Queue Messages
      * Runs through all unlock conditions, the unlocks any that the player has met the requirements for. 
-     * If no unlocks were achieved, queues a hint about what to try next instead. 
+     * If no unlocks were achieved, queues a hint about what to try next instead, which is based on what has already been unlocked. 
      */
     private void CheckForUnlocksAndQueueMsgs() {
 
@@ -77,6 +78,8 @@ public class GameOverMenu : MonoBehaviour {
         PersistentSettings persistentSettings = GameObject.Find("PersistentSettingsObject").GetComponent<PersistentSettings>();
         GameMode currentMode = persistentSettings.currentModeName;
         float score = scoreData.localHighScore;
+        int numGamesPlayed = PlayerPrefs.GetInt("numGamesPlayed", 0);
+        int highscoreSum = GetHighscoreSum();
 
         #region Unlock Checks and Unlock Messages
         //Casual Mode + Pastel Palette (1 game played)
@@ -103,15 +106,64 @@ public class GameOverMenu : MonoBehaviour {
             persistentSettings.unlockMessageQueue.Add("COOL PALETTE UNLOCKED");
         }
 
-        //TODO
-        #endregion
+        //University Sim. (<5 points)
+        if (PlayerPrefs.GetInt("UL_UniversitySim", 0) == 0 && score < 5) {
+            PlayerPrefs.SetInt("UL_UniversitySim", 1);
+            persistentSettings.unlockMessageQueue.Add("UNiVERSiTY SiM MODE UNLOCKED");
+        }
 
-        #region Unlock Hints
-        if (persistentSettings.unlockMessageQueue.Count < 1) {
+        //Pentomino Mode (>30 points in both normal and tromino mode)
+        if (PlayerPrefs.GetInt("UL_Pentomino", 0) == 0 && PlayerPrefs.GetInt("HS_Normal", 0) >= 30 && PlayerPrefs.GetInt("HS_Tromino", 0) >= 30) {
+            PlayerPrefs.SetInt("UL_Pentomino", 1);
+            persistentSettings.unlockMessageQueue.Add("PENTOMiNO MODE UNLOCKED");
+        }
+
+        if (PlayerPrefs.GetInt("PAL_Monochrome", 0) == 0) {
+            if(highscoreSum >= 150) {
+                PlayerPrefs.SetInt("PAL_Monochrome", 1);
+                persistentSettings.unlockMessageQueue.Add("MONOCHROME PALETTE UNLOCKED");
+            }
+        }
+
+        if(PlayerPrefs.GetInt("UL_Tiny", 0) == 0) {
+            if(numGamesPlayed >= 15) {
+                PlayerPrefs.SetInt("UL_Tiny", 1);
+                persistentSettings.unlockMessageQueue.Add("TiNY BLOCKS MODE UNLOCKED");
+            }
+        }
+
+            //TODO
+            #endregion
+
+            #region Unlock Hints
+            if (persistentSettings.unlockMessageQueue.Count < 1) {
             persistentSettings.unlockMessageQueue.Add("GET 200 POiNTS iN NORMAL MODE FOR A NEW GAME MODE");
         }
         #endregion
     }
+
+    /* Increment Games Count
+     */
+    private void IncrementGameCount() {
+        int count = PlayerPrefs.GetInt("numGamesPlayed",0);
+        PlayerPrefs.SetInt("numGamesPlayed", count + 1);
+    }
+
+    private int GetHighscoreSum() {
+        int sum = PlayerPrefs.GetInt("HS_Normal", 0);
+        sum += PlayerPrefs.GetInt("HS_Tromino", 0);
+        sum += PlayerPrefs.GetInt("HS_Pentomino", 0);
+        sum += PlayerPrefs.GetInt("HS_Tiny", 0);
+        sum += PlayerPrefs.GetInt("HS_Bitcrusher", 0);
+        sum += PlayerPrefs.GetInt("HS_SlipperySlopes", 0);
+        sum += PlayerPrefs.GetInt("HS_UpsideDown", 0);
+        sum += PlayerPrefs.GetInt("HS_UniversitySim", 0);
+        sum += PlayerPrefs.GetInt("HS_Bitwarped", 0);
+        sum += PlayerPrefs.GetInt("HS_Bitcrusher2", 0);
+        sum += PlayerPrefs.GetInt("HS_Impossible", 0);
+        return sum;
+    }
+
 
     /*
 	 * Loads scene again
