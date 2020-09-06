@@ -51,7 +51,7 @@ public class ScoreData : MonoBehaviour{
 
         string prefSaveName = currentMode.ToString();
 
-        if (localHighScore > PlayerPrefs.GetInt(prefSaveName, 0)) {
+        if (localHighScore > PlayerPrefs.GetInt("HS_" + prefSaveName, 0)) {
             PlayerPrefs.SetInt("HS_" + prefSaveName, (int)Mathf.Ceil(localHighScore));
         }
     }

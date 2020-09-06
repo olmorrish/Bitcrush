@@ -239,7 +239,7 @@ public class GameOverMenu : MonoBehaviour {
             else if (highscoreSum < 600) {
                 possibleHintMessages.Add("GET A TOTAL HiGHSCORE OF 600 ACROSS ALL NON-CASUAL MODES TO UNLOCK A ZANY GAME MODE");
             }
-            else if (highscoreSum < 1000) {
+            else if (highscoreSum < 1000 && PlayerPrefs.GetInt("UL_Impossible", 0) == 0) {
                 possibleHintMessages.Add("GET A TOTAL HiGHSCORE OF 1000 ACROSS ALL NON-CASUAL MODES TO UNLOCK AN iMPOSSIBLE GAME MODE");
             }
 
@@ -259,21 +259,28 @@ public class GameOverMenu : MonoBehaviour {
                 possibleHintMessages.Add("GET 25 POiNTS iN NORMAL MODE TO UNLOCK A NEW GAME MODE");
             }
             else {
-                possibleHintMessages.Add("GET 50 POiNTS iN TROMiNO MODE TO UNLOCK A CHiLLY PALETTE");
-                possibleHintMessages.Add("GET HiGHSCORES OF 30 iN NORMAL MODE AND TROMiNO MODE TO UNLOCK AN APROPOS GAME MODE");
+                if (PlayerPrefs.GetInt("PAL_Cool", 0) == 0)
+                    possibleHintMessages.Add("GET 50 POiNTS iN TROMiNO MODE TO UNLOCK A CHiLLY PALETTE");
+                if (PlayerPrefs.GetInt("UL_Pentomino", 0) == 0)
+                    possibleHintMessages.Add("GET HiGHSCORES OF 30 iN NORMAL MODE AND TROMiNO MODE TO UNLOCK AN APROPOS GAME MODE");
             }
 
             //Pentomino Gate (University Sim hint also locked here)
             if (PlayerPrefs.GetInt("UL_Pentomino", 0) == 1) {
-                possibleHintMessages.Add("GET 75 POiNTS iN NORMAL, TROMiNO, AND PENTOMiNO MODE TO UNLOCK A TRENDY PALETTE");
-                possibleHintMessages.Add("GET 100 POiNTS iN PENTOMiNO MODE TO UNLOCK A TREACHEROUS GAME MODE");
-                possibleHintMessages.Add("PERFORM TERRiBLY TO UNLOCK AN APPROPRiATE GAME MODE");
+                if(PlayerPrefs.GetInt("PAL_Palewave", 0) == 0)
+                    possibleHintMessages.Add("GET 75 POiNTS iN NORMAL, TROMiNO, AND PENTOMiNO MODE TO UNLOCK A TRENDY PALETTE");
+                if (PlayerPrefs.GetInt("UL_SlipperySlopes", 0) == 0)
+                    possibleHintMessages.Add("GET 100 POiNTS iN PENTOMiNO MODE TO UNLOCK A TREACHEROUS GAME MODE");
+                if (PlayerPrefs.GetInt("UL_UniversitySim", 0) == 0)
+                    possibleHintMessages.Add("PERFORM TERRiBLY TO UNLOCK AN APPROPRiATE GAME MODE");
             }
 
             //Bitcrusher Gate (Bitwarped hint also locked here)
             if (PlayerPrefs.GetInt("UL_Bitcrusher", 0) == 1) {
-                possibleHintMessages.Add("GET 150 POiNTS in BiTCRUSHER MODE TO UNLOCK A PUNiSHING GAME MODE");
-                possibleHintMessages.Add("GET 200 POiNTS iN ANY NON-CASUAL MODE TO UNLOCK A BiZARRE GAME MODE");
+                if (PlayerPrefs.GetInt("UL_Bitcrusher2", 0) == 0)
+                    possibleHintMessages.Add("GET 150 POiNTS in BiTCRUSHER MODE TO UNLOCK A PUNiSHING GAME MODE");
+                if (PlayerPrefs.GetInt("UL_Bitwarped", 0) == 0)
+                    possibleHintMessages.Add("GET 200 POiNTS iN ANY NON-CASUAL MODE TO UNLOCK A BiZARRE GAME MODE");
             }
 
             string hintMessageSelected = possibleHintMessages[rand.Next(0, possibleHintMessages.Count)];
