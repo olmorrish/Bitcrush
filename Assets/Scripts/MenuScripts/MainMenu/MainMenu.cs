@@ -45,6 +45,7 @@ public class MainMenu : MonoBehaviour {
     [Header("Unlocks and Audio Settings")]
     public bool userHasPlayedARound = false;
     public bool needToApplyPersistentMusicMute = false;
+    public bool needToApplyPersistentSFXMute = false;
 
     private void Awake() {
         userHasPlayedARound = false; //ensures game always boots to main menu
@@ -87,6 +88,11 @@ public class MainMenu : MonoBehaviour {
         //this flag can be set by the persistentsettings if the scene needs to be muted; has to wait a frame
         if (needToApplyPersistentMusicMute) {
             ToggleMusic();
+            needToApplyPersistentMusicMute = false;
+        }
+
+        if (needToApplyPersistentSFXMute) {
+            ToggleSFX();
             needToApplyPersistentMusicMute = false;
         }
     }
@@ -276,12 +282,12 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void ToggleSFX() {
-        //TODO
+        //TODO - Toggle an SFX handler, change button backdrop colour, and set PersistentSettings
+        //basically copy the music toggle above
+        
     }
 
     public void TogglePostProcessing() {
-        //ppVolume.enabled = !ppVolume.isActiveAndEnabled;
-
         if (ppVolume.isActiveAndEnabled) {
             ppVolume.enabled = false;
             ppToggleBackdrop.color = red;

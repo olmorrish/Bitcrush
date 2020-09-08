@@ -173,8 +173,13 @@ public class PersistentSettings : MonoBehaviour {
             }
 
             if (musicMuted) {
-                Debug.Log("attempting to mute music on main menu");
+                Debug.Log("Attempting to mute music on main menu");
                 menuNav.needToApplyPersistentMusicMute = true;
+            }
+
+            if (sfxMuted) {
+                Debug.Log("Attempting to mute SFX on main menu.");
+                menuNav.needToApplyPersistentSFXMute = true;
             }
         }
 
