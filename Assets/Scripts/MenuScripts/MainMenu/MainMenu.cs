@@ -29,6 +29,8 @@ public class MainMenu : MonoBehaviour {
     public GameObject musicObj;
     private AudioSource music;
     private float musicInitialVolume;
+    public GameObject sfxHandlerObj;
+    private SFXHandler sfx;
     private GameObject postProcessingObj;
     private PostProcessVolume ppVolume;
 
@@ -73,6 +75,7 @@ public class MainMenu : MonoBehaviour {
 
         music = musicObj.GetComponent<AudioSource>();
         musicInitialVolume = music.volume;
+        sfx = sfxHandlerObj.GetComponent<SFXHandler>();
         postProcessingObj = GameObject.Find("PostProcessing");                       //because it may be from a previous main menu load
         ppVolume = postProcessingObj.GetComponent<PostProcessVolume>();
     }
@@ -282,9 +285,16 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void ToggleSFX() {
-        //TODO - Toggle an SFX handler, change button backdrop colour, and set PersistentSettings
-        //basically copy the music toggle above
-        
+        if (sfx.sfxMuted) {
+            settings.sfxMuted = false;
+            sfx.ToggleMute();
+            sfxToggleBackdrop.color = green;
+        }
+        else {
+            settings.sfxMuted = true;
+            sfx.ToggleMute();
+            sfxToggleBackdrop.color = red;
+        }
     }
 
     public void TogglePostProcessing() {
