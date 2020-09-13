@@ -47,7 +47,6 @@ public class PersistentSettings : MonoBehaviour {
 
     [Header("Audio Settings")]
     public bool musicMuted = false;
-    public bool sfxMuted = false;
 
     //Singleton
     static PersistentSettings instance;
@@ -175,11 +174,6 @@ public class PersistentSettings : MonoBehaviour {
             if (musicMuted) {
                 Debug.Log("Attempting to mute music on main menu");
                 menuNav.needToApplyPersistentMusicMute = true;
-            }
-
-            if (sfxMuted) {
-                Debug.Log("Attempting to mute SFX on main menu.");
-                menuNav.needToApplyPersistentSFXMute = true;
             }
         }
 

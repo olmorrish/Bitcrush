@@ -10,7 +10,6 @@ public class GameModeSelectOnHover : MonoBehaviour {
         Button button = this.GetComponent<Button>();
 
         if (button.interactable) {
-
             button.Select();
         }
     }

@@ -29,8 +29,6 @@ public class MainMenu : MonoBehaviour {
     public GameObject musicObj;
     private AudioSource music;
     private float musicInitialVolume;
-    public GameObject sfxHandlerObj;
-    private SFXHandler sfx;
     private GameObject postProcessingObj;
     private PostProcessVolume ppVolume;
 
@@ -39,15 +37,12 @@ public class MainMenu : MonoBehaviour {
     private Color red;
     public GameObject musicToggleBackdropObj;
     private SpriteRenderer musicToggleBackdrop;
-    public GameObject sfxToggleBackdropObj;
-    private SpriteRenderer sfxToggleBackdrop;
     public GameObject ppToggleBackdropObj;
     private SpriteRenderer ppToggleBackdrop;
 
     [Header("Unlocks and Audio Settings")]
     public bool userHasPlayedARound = false;
     public bool needToApplyPersistentMusicMute = false;
-    public bool needToApplyPersistentSFXMute = false;
 
     private void Awake() {
         userHasPlayedARound = false; //ensures game always boots to main menu
@@ -68,12 +63,10 @@ public class MainMenu : MonoBehaviour {
         green = new Color(0f, 1f, 0f, 0.5f);
         red = new Color(1f, 0f, 0f, 0.5f);
         musicToggleBackdrop = musicToggleBackdropObj.GetComponent<SpriteRenderer>();
-        sfxToggleBackdrop = sfxToggleBackdropObj.GetComponent<SpriteRenderer>();
         ppToggleBackdrop = ppToggleBackdropObj.GetComponent<SpriteRenderer>();
 
         music = musicObj.GetComponent<AudioSource>();
         musicInitialVolume = music.volume;
-        sfx = sfxHandlerObj.GetComponent<SFXHandler>();
         postProcessingObj = GameObject.Find("PostProcessing");                       //because it may be from a previous main menu load
         ppVolume = postProcessingObj.GetComponent<PostProcessVolume>();
     }
@@ -89,11 +82,6 @@ public class MainMenu : MonoBehaviour {
         //this flag can be set by the persistentsettings if the scene needs to be muted; has to wait a frame
         if (needToApplyPersistentMusicMute) {
             ToggleMusic();
-            needToApplyPersistentMusicMute = false;
-        }
-
-        if (needToApplyPersistentSFXMute) {
-            ToggleSFX();
             needToApplyPersistentMusicMute = false;
         }
     }
@@ -279,19 +267,6 @@ public class MainMenu : MonoBehaviour {
             settings.musicMuted = true;
             music.volume = 0f;
             musicToggleBackdrop.color = red;
-        }
-    }
-
-    public void ToggleSFX() {
-        if (sfx.sfxMuted) {
-            settings.sfxMuted = false;
-            sfx.ToggleMute();
-            sfxToggleBackdrop.color = green;
-        }
-        else {
-            settings.sfxMuted = true;
-            sfx.ToggleMute();
-            sfxToggleBackdrop.color = red;
         }
     }
 
