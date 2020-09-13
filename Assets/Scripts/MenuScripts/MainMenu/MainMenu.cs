@@ -16,6 +16,10 @@ public class MainMenu : MonoBehaviour {
     public Button paletteSelectionDefaultButton;
     public GameObject highscoresCanvas;
     public Button highscoresDefaultButton;
+    public GameObject optionsCanvas;
+    public Button optionsDefaultButton;
+    public GameObject resetConfirmationCanvas;
+    public Button resetConfirmationDefaultButton;
     public GameObject unlocksCanvas;
     public Button unlocksDefaultButton;
 
@@ -92,6 +96,8 @@ public class MainMenu : MonoBehaviour {
         gameModesCanvas.SetActive(false);
         paletteSelectionCanvas.SetActive(false);
         highscoresCanvas.SetActive(false);
+        optionsCanvas.SetActive(false);
+        resetConfirmationCanvas.SetActive(false);
         unlocksCanvas.SetActive(false);
 
         switch (menuName) {
@@ -114,6 +120,16 @@ public class MainMenu : MonoBehaviour {
                 Debug.Log("Going to highscores menu.");
                 highscoresCanvas.SetActive(true);
                 highscoresDefaultButton.Select();
+                break;
+            case "Options":
+                Debug.Log("Going to options menu.");
+                optionsCanvas.SetActive(true);
+                optionsDefaultButton.Select();
+                break;
+            case "ResetConfirmation":
+                Debug.Log("Going to reset confirmation menu.");
+                resetConfirmationCanvas.SetActive(true);
+                resetConfirmationDefaultButton.Select();
                 break;
             case "Unlocks":
                 Debug.Log("Going to unlocks menu.");
@@ -281,4 +297,8 @@ public class MainMenu : MonoBehaviour {
         }
     }
 
+    public void ResetAllProgress() {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
 }
