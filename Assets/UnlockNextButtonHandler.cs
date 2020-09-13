@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/* Unlock Next Button Handler
+ * Handles the unlock messages on the menu. When a game has just been played, this script grabs the appropriate hints/unlock messages from PersistentSettings,
+ * then displays them one by one as the player hits the "next" button
+ */
 public class UnlockNextButtonHandler : MonoBehaviour {
 
     public GameObject menuNavigatorObj;
@@ -23,11 +27,6 @@ public class UnlockNextButtonHandler : MonoBehaviour {
         if(unlockMessageQueue.Count > 0) {
             ShowNextUnlock(); //subsequent calls to ShowNextUnlock are handled by user input
         }
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
     }
 
     /* Show Next Unlock

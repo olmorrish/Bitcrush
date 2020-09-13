@@ -18,7 +18,7 @@ public class GameOverMenu : MonoBehaviour {
 	private AudioSource musicTrack;
     private Boost playerBoost;
 
-    // Use this for initialization
+    // Start is called before the first frame update
     void Start () {
 		theGameOverMenu = GameObject.Find("GameOverMenu");                      // Thanks, 2018-me - don't know how this works but it does. Sincerely, 2020-me.
 		theGameOverMenu.SetActive(false);
@@ -45,8 +45,8 @@ public class GameOverMenu : MonoBehaviour {
 		}
 	}
 	
-	/*
-	 * Activates Gameover
+	/* Game Over
+	 * Activates Gameover, including bringing up the menu, unfreezing blocks, saving highscore, and triggering unlock message decisions
 	 */
 	public void GameOver(){
         //enable the menu

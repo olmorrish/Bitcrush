@@ -53,9 +53,7 @@ public class MainMenu : MonoBehaviour {
         userHasPlayedARound = false; //ensures game always boots to main menu
     }
 
-    //public GameObject postProcessing;
-    //private PostProcessVolume postProcessVolume;
-    //private bool postProcessingCurrentlyEnabled;
+    // Start is called before the first frame update
     private void Start() {
 
         settingsObject = GameObject.Find("PersistentSettingsObject");                 //because it may be from a previous main menu load

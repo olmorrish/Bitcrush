@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 /* PlayerProgress
  * This script deals with any unlocks or changes made the the menu based on PlayerPrefs variables.
- * 
  */
 public class PlayerProgress : MonoBehaviour {
 
@@ -179,10 +178,5 @@ public class PlayerProgress : MonoBehaviour {
 
         #endregion
 
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
     }
 }

@@ -6,7 +6,6 @@ public class SFXHandler : MonoBehaviour {
 
     public List<GameObject> menuSFXObjects;
     private List<AudioSource> menuSFX;
-
     public bool sfxMuted;
 
     private void Awake() {
@@ -20,11 +19,6 @@ public class SFXHandler : MonoBehaviour {
         foreach(GameObject obj in menuSFXObjects) {
             menuSFX.Add(obj.GetComponent<AudioSource>());
         }
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
     }
 
     /* Play SFX
