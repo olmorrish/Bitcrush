@@ -1877,6 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_SlipperySlopes
 --- !u!1 &237044750
 GameObject:
@@ -2157,6 +2158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_Casual
 --- !u!1 &291972418
 GameObject:
@@ -2641,13 +2643,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355726435}
-  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 919620010}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -216, y: -650.5}
@@ -2666,7 +2668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 1, g: 0, b: 1, a: 0.5}
-  m_EffectDistance: {x: 4, y: 4}
+  m_EffectDistance: {x: -4, y: -4}
   m_UseGraphicAlpha: 1
 --- !u!114 &355726438
 MonoBehaviour:
@@ -2721,6 +2723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 1
   prefsHighscoreVarName: HS_UpsideDown
 --- !u!1 &376534191
 GameObject:
@@ -3001,6 +3004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_Bitcrusher
 --- !u!1 &476468066
 GameObject:
@@ -3297,6 +3301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_Tromino
 --- !u!1 &492748947
 GameObject:
@@ -4740,7 +4745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &589682920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5671,6 +5676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_Pentomino
 --- !u!1 &782062160
 GameObject:
@@ -6986,6 +6992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_Bitwarped
 --- !u!1 &929311866
 GameObject:
@@ -10456,6 +10463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_Bitcrusher2
 --- !u!1 &1413495092
 GameObject:
@@ -15117,6 +15125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_Tiny
 --- !u!1 &1967780338
 GameObject:
@@ -15688,6 +15697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_Normal
 --- !u!114 &2086265800
 MonoBehaviour:
@@ -16134,6 +16144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d617183fe3c860642ad7fba857014cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNegativeSign: 0
   prefsHighscoreVarName: HS_UniversitySim
 --- !u!1 &2142345494
 GameObject:
