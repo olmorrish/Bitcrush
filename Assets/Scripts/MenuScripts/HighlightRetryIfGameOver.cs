@@ -6,22 +6,22 @@ using UnityEngine.UI;
 public class HighlightRetryIfGameOver : MonoBehaviour {
 
 	public Button retryButton;
-	private GameOverMenu goMenu;
+	private GameOverMenu gameOverMenu;
 	private bool retrySet = false;
 
 	// Use this for initialization
 	void Start () {
-		goMenu = GetComponent<GameOverMenu>();
+		gameOverMenu = GetComponent<GameOverMenu>();
 		retrySet = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(goMenu.isGameOver && !retrySet){
+		if(gameOverMenu.isGameOver && !retrySet){
 			retryButton.Select();
 			retrySet = true;
 		}
-		else if(!goMenu.isGameOver){
+		else if(!gameOverMenu.isGameOver){
 			retrySet = false;
 		}
 	}
