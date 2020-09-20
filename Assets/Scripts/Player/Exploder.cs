@@ -45,13 +45,13 @@ public class Exploder : MonoBehaviour {
 		
 	}
 	void OnCollisionStay2D(Collision2D collision){
-        if (!immuneToCrush) {
-            if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedToExplode) {
+        if (collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > collisionSpeedToExplode) {
+            if (!immuneToCrush) {
                 Explode();
             }
-            else if (collision.gameObject.Equals(killLine)) {
-                Explode();
-            }
+        }
+        else if (collision.gameObject.Equals(killLine)) {
+            Explode();
         }
     }
 	
