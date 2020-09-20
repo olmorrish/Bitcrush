@@ -61,11 +61,17 @@ public class GameOverMenu : MonoBehaviour {
             block.GetComponent<Freezer>().hasntBeenFrozenYet = false;    //stops them from freezing for a first time after gameover
         }
 
-        //highscorescore saves update, game count increment, unlocks 
+        PostGameWrapUp();
+    }
+
+    /* Post Game Wrap Up
+     * highscorescore saves update, game count increment, unlocks
+     * This is called on a GameOver (see above) and also on a reset by the PaudMenu script
+     */
+    public void PostGameWrapUp() {
         scoreData.GameOverSaveHighScore();
         IncrementGameCount();
         CheckForUnlocksAndQueueMsgs(); //new highscores and game counter are current
-
     }
 
     /* Check for Unlocks, Queue Messages
